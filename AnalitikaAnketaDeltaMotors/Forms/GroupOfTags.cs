@@ -21,6 +21,14 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         private void SetDataGrid()
         {
             dataGridView1.DataSource = context.Groups.Local.ToBindingList();
+            InitializeDataGridView();
+        }
+
+        private void InitializeDataGridView()
+        {
+
+            dataGridView1.Columns["Name"].HeaderText = "Naziv";
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 

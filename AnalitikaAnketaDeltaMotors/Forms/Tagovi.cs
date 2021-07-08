@@ -7,7 +7,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class Tagovi : Form
     {
-        AddingUser AddNewUser;
+     
         DatabaseContext context = new DatabaseContext();
         public Tagovi()
         {
@@ -23,7 +23,17 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             
             dataGridView1.DataSource = context.Tags.Local.ToBindingList();
-            dataGridView1.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            InitializeDataGridView();
+        }
+
+        private void InitializeDataGridView()
+        {
+   
+            dataGridView1.Columns["GroupId"].Visible =false;
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["Name"].HeaderText = "Naziv";
+            dataGridView1.Columns["Group"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
