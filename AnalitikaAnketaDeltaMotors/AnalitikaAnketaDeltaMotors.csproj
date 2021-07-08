@@ -75,6 +75,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ConfigHelper.cs" />
+    <Compile Include="Classes\Configuration.cs" />
     <Compile Include="Classes\ExcelHelper.cs" />
     <Compile Include="AnalitikaAnketaDeltaMotors.cs">
       <SubType>Form</SubType>
