@@ -1,4 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
+
 using System.Data;
 
 namespace AnalitikaAnketaDeltaMotors.Classes
@@ -12,25 +13,65 @@ namespace AnalitikaAnketaDeltaMotors.Classes
 
         }
 
-        public void ImportData()
+        public System.Data.DataTable ImportData()
         {
             if (FilePath.Trim() == "")
             {
-                return;
+                return null;
             }
-
+            System.Data.DataTable dt = new System.Data.DataTable();           
             Application excel = new Application();
             Workbook wb = excel.Workbooks.Open(FilePath);
-
-            Microsoft.Office.Interop.Excel.Sheets excelSheets = wb.Worksheets;
-            Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelSheets[1];
-            var cell = (Microsoft.Office.Interop.Excel.Range)excelWorksheet.Cells[2, 2];
-
-            var cellValue = (excelWorksheet.Cells[2, 2] as Microsoft.Office.Interop.Excel.Range).Value;
-
-            var sitovi = wb.Sheets;
-
-
+            Sheets excelSheets = wb.Worksheets;
+            Worksheet sheet = (Worksheet)excelSheets[1];
+            Range xlRange = sheet.UsedRange;
+            int rowCount = xlRange.Rows.Count;
+            int colCount = xlRange.Columns.Count;
+            for (int i = 1; i < 2; i++)
+            {              
+                for (int j = 1; j < colCount; j++)
+                {
+                    try
+                    {
+                        DataColumn column = new DataColumn();
+                        column.ColumnName = sheet.Cells[i, j].Value.ToString();
+                        dt.Columns.Add(sheet.Cells[i, j].Value.ToString());
+                    }
+                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+                    {
+                        break;
+                    }
+                }
+            }
+            int emptyCell = 0;
+            for (int i = 2; i <= rowCount; i++)
+            {
+                DataRow newRow = dt.NewRow();
+                for (int j = 1; j <= colCount; j++)
+                {
+                    try
+                    {
+                        newRow[j-1] = sheet.Cells[i, j].Value.ToString();
+                        string s = sheet.Cells[i, j].Value.ToString();
+                        emptyCell = 0;
+                    }
+                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+                    {
+                        emptyCell++;
+                        if (emptyCell== colCount-4)
+                        {
+                            break;
+                        }
+                        continue;                      
+                    }
+                }
+                dt.Rows.Add(newRow);
+                if (emptyCell > colCount-5)
+                {
+                    break;
+                }
+            }
+            return dt;
         }
     }
 }
