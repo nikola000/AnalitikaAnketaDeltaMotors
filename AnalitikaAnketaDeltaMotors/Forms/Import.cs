@@ -7,6 +7,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     public partial class Import : Form
     {
         ExcelHelper helper;
+        
         public Import()
         {
             InitializeComponent();
@@ -34,14 +35,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;           
             for (int i = 0; i < dataGridView1.Columns.Count - 2;i++)
             {
-                double kolone = 1.0 / (dataGridView1.Columns.Count - 1);
-                double n1= (dataGridView1.Width * kolone);
-                int n= (int)(dataGridView1.Width * (1.0 / (dataGridView1.Columns.Count - 1)));
-
-                dataGridView1.Columns[i].Width = (int)(dataGridView1.Width * (1.0 / (dataGridView1.Columns.Count-1)));
+                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            dataGridView1.Columns[dataGridView1.Columns.Count - 2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-        
         }
     }
 }

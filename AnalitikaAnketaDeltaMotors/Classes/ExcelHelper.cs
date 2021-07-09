@@ -1,5 +1,5 @@
 ﻿using Microsoft.Office.Interop.Excel;
-
+using System;
 using System.Data;
 
 namespace AnalitikaAnketaDeltaMotors.Classes
@@ -37,7 +37,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                         column.ColumnName = sheet.Cells[i, j].Value.ToString();
                         dt.Columns.Add(sheet.Cells[i, j].Value.ToString());
                     }
-                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+                    catch (Exception e)
                     {
                         break;
                     }
@@ -55,7 +55,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                         string s = sheet.Cells[i, j].Value.ToString();
                         emptyCell = 0;
                     }
-                    catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException e)
+                    catch (Exception e)
                     {
                         emptyCell++;
                         if (emptyCell== colCount-4)
