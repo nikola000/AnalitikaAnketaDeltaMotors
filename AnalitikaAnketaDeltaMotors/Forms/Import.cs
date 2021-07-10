@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
 using UnitOfWorkExample.UnitOfWork;
@@ -31,10 +31,17 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void bUcitaj_Click(object sender, EventArgs e)
         {
-            helper.FilePath = txtIzborFajla.Text;
-            dt = helper.ImportData();
-            dataGridView1.DataSource = dt;
-            DataGridFormat();
+            if (txtIzborFajla.Text.Trim() == "")
+            {
+                MessageBox.Show("MORATE imati putanju excel file-a kako bi ucitali podatke");
+            }
+            else
+            {
+                helper.FilePath = txtIzborFajla.Text;
+                dt = helper.ImportData();
+                dataGridView1.DataSource = dt;
+                DataGridFormat();
+            }           
         }
         private void DataGridFormat()
         { 
@@ -51,7 +58,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             newImportData.ImportDate = DateTime.Now;
             newImportData.Description = "";
             List<Entry> entries = new List<Entry>();
-
             foreach (DataRow row in dt.Rows)
             {
                 Entry newEntry = new Entry();
@@ -59,8 +65,11 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 newEntry.Ocena = int.Parse(row[1].ToString());
                 newEntry.Odgovor = row[2].ToString();
                 newEntry.PredlogPoboljsanja = row[3].ToString();
-                newEntry.Kontakt = row[4].ToString();               
-                entries.Add(newEntry);
+                newEntry.Kontakt = row[4].ToString();
+                if (DoesRecordExist(newEntry))
+                {
+                    entries.Add(newEntry);                  
+                }
             }
             newImportData.Entries = entries;
             AddRecord(newImportData);
@@ -74,9 +83,15 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 db.SaveChanges();
             }
         }
-        public bool DoesRecordExist()
+        public bool DoesRecordExist(Entry newEntry)
         {
-            return false;
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                if (db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
+                    return false;
+                else
+                    return true;
+            }            
         }
     }
 }
