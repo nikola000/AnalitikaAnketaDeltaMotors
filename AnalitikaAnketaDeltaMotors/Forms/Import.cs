@@ -37,11 +37,12 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             }
             else
             {
+                progressBar1.Value = 0;
                 helper.FilePath = txtIzborFajla.Text;
-                dt = helper.ImportData();
+                dt = helper.ImportData(progressBar1);
                 dataGridView1.DataSource = dt;
                 DataGridFormat();
-            }           
+            }
         }
         private void DataGridFormat()
         { 
