@@ -146,6 +146,18 @@
     <Compile Include="Migrations\202107071849422_RelationshipGroupTag.Designer.cs">
       <DependentUpon>202107071849422_RelationshipGroupTag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107101208175_Entry.cs" />
+    <Compile Include="Migrations\202107101208175_Entry.designer.cs">
+      <DependentUpon>202107101208175_Entry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107101214557_ImportData.cs" />
+    <Compile Include="Migrations\202107101214557_ImportData.designer.cs">
+      <DependentUpon>202107101214557_ImportData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107101220160_RelationShipImportDataEntry.cs" />
+    <Compile Include="Migrations\202107101220160_RelationShipImportDataEntry.designer.cs">
+      <DependentUpon>202107101220160_RelationShipImportDataEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -157,7 +169,9 @@
     <Compile Include="UnitOfWork\IGenericRepository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\Models\Entry.cs" />
     <Compile Include="UnitOfWork\Models\Group.cs" />
+    <Compile Include="UnitOfWork\Models\ImportData.cs" />
     <Compile Include="UnitOfWork\Models\Tag.cs" />
     <Compile Include="UnitOfWork\Models\User.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
@@ -200,6 +214,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107071849422_RelationshipGroupTag.resx">
       <DependentUpon>202107071849422_RelationshipGroupTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107101208175_Entry.resx">
+      <DependentUpon>202107101208175_Entry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107101214557_ImportData.resx">
+      <DependentUpon>202107101214557_ImportData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107101220160_RelationShipImportDataEntry.resx">
+      <DependentUpon>202107101220160_RelationShipImportDataEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

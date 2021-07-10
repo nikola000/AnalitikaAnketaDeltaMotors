@@ -37,7 +37,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                         column.ColumnName = sheet.Cells[i, j].Value.ToString();
                         dt.Columns.Add(sheet.Cells[i, j].Value.ToString());
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         break;
                     }
@@ -52,10 +52,9 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                     try
                     {
                         newRow[j-1] = sheet.Cells[i, j].Value.ToString();
-                        string s = sheet.Cells[i, j].Value.ToString();
                         emptyCell = 0;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
                         emptyCell++;
                         if (emptyCell== colCount-4)
@@ -65,11 +64,11 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                         continue;                      
                     }
                 }
-                dt.Rows.Add(newRow);
                 if (emptyCell > colCount-5)
                 {
                     break;
                 }
+                dt.Rows.Add(newRow);
             }
             return dt;
         }

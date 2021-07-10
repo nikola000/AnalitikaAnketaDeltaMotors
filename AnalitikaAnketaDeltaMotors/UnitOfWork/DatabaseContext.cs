@@ -10,6 +10,8 @@ namespace UnitOfWorkExample.UnitOfWork
         public DbSet<User> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Entry> Entries { get; set; }
+        public DbSet<ImportData> ImportDatas { get; set; }
         // Server=localhost\SQLEXPRESS;Database=AnalitikaAnketaDB;Trusted_Connection=True;
         public DatabaseContext() : base(AnalitikaAnketaDeltaMotors.Classes.Configuration.GetInstance().ConnectionString)
         {

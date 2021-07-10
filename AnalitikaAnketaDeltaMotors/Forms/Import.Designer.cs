@@ -36,8 +36,9 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.bAddTag = new System.Windows.Forms.Button();
             this.panelTags = new System.Windows.Forms.Panel();
+            this.bAddTag = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -91,7 +92,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1.Location = new System.Drawing.Point(3, 37);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(700, 302);
+            this.dataGridView1.Size = new System.Drawing.Size(700, 267);
             this.dataGridView1.TabIndex = 4;
             // 
             // progressBar1
@@ -126,6 +127,17 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.splitContainer1.SplitterDistance = 706;
             this.splitContainer1.TabIndex = 6;
             // 
+            // panelTags
+            // 
+            this.panelTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelTags.Location = new System.Drawing.Point(12, 37);
+            this.panelTags.Name = "panelTags";
+            this.panelTags.Size = new System.Drawing.Size(250, 255);
+            this.panelTags.TabIndex = 1;
+            // 
             // bAddTag
             // 
             this.bAddTag.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -137,16 +149,15 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.bAddTag.Text = "Dodaj oznaku";
             this.bAddTag.UseVisualStyleBackColor = true;
             // 
-            // panelTags
+            // btnSave
             // 
-            this.panelTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelTags.Location = new System.Drawing.Point(12, 37);
-            this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(250, 290);
-            this.panelTags.TabIndex = 1;
+            this.btnSave.Location = new System.Drawing.Point(3, 0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 7;
+            this.btnSave.Text = "Sacuvaj";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // Import
             // 
@@ -154,6 +165,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1005, 412);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.progressBar1);
             this.Name = "Import";
@@ -178,5 +190,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel panelTags;
         private System.Windows.Forms.Button bAddTag;
+        private System.Windows.Forms.Button btnSave;
     }
 }
