@@ -43,7 +43,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 helper.FilePath = txtIzborFajla.Text;
                 dt = helper.ImportData(ref _maximum, UpdateProgressBar);
                 dataGridView1.DataSource = dt;
-                DataGridFormat();
             }
         }
 
@@ -54,17 +53,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 progressBar1.Maximum = _maximum;
             }
             progressBar1.Value = value;
-        }
-
-        private void DataGridFormat()
-        { 
-            //dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;           
-            //for (int i = 0; i < dataGridView1.Columns.Count - 2;i++)
-            //{
-            //    //dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //}
-
-            //dataGridView1.AutoSize = AutoSize.
         }
 
         private void btnSave_Click(object sender, EventArgs e)
