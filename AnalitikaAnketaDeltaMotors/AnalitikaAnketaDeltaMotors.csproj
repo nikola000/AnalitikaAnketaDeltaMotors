@@ -158,6 +158,10 @@
     <Compile Include="Migrations\202107101220160_RelationShipImportDataEntry.designer.cs">
       <DependentUpon>202107101220160_RelationShipImportDataEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107111153450_relation-table.cs" />
+    <Compile Include="Migrations\202107111153450_relation-table.designer.cs">
+      <DependentUpon>202107111153450_relation-table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107101220160_RelationShipImportDataEntry.resx">
       <DependentUpon>202107101220160_RelationShipImportDataEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107111153450_relation-table.resx">
+      <DependentUpon>202107111153450_relation-table.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

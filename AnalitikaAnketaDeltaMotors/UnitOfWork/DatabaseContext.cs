@@ -13,7 +13,8 @@ namespace UnitOfWorkExample.UnitOfWork
         public DbSet<Entry> Entries { get; set; }
         public DbSet<ImportData> ImportDatas { get; set; }
         // Server=localhost\SQLEXPRESS;Database=AnalitikaAnketaDB;Trusted_Connection=True;
-        public DatabaseContext() : base(AnalitikaAnketaDeltaMotors.Classes.Configuration.GetInstance().ConnectionString)
+        //public DatabaseContext() : base(AnalitikaAnketaDeltaMotors.Classes.Configuration.GetInstance().ConnectionString)
+        public DatabaseContext() : base("AnalitikaConnection")
         {
             Database.SetInitializer<DatabaseContext>(new CreateDatabaseIfNotExists<DatabaseContext>());
             //Database.SetInitializer<DatabaseContext>(null);
