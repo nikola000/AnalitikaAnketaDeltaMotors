@@ -29,57 +29,85 @@ namespace AnalitikaAnketaDeltaMotors
         {
             this._userService = userService;
             InitializeComponent();
+            
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            if (e.ClickedItem.Name == toolStripMenuItem1.Name)
-            {
-                if (user != null)
-                {
-                    MessageBox.Show("Vec ste ulogovani");
-                }
-                else
-                {
-                    frm2 = new LogOn(user, _userService);
-                    frm2.ShowDialog();
-                    user = frm2.getUser();
-                    if (user != null)
-                    {
-                        toolStripStatusLabelLogin.Text = "Ulogovan: " + user.Name;
-
-                        if (user.IsAdministrator == true)
-                        {
-                            tsmiAdministrator.Visible = true;
-                        }
-                    }
-                }
-            }
+            
             if (e.ClickedItem.Name == ToolStripMenuItem2.Name)
             {
                 frm3 = new Import();
                 frm3.ShowDialog();
             }
-            if (e.ClickedItem.Name == tsmiAdministrator.Name)
+        }
+
+        private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // check data for save
+            this.Close();
+        }
+
+        private void korisniciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAdmin = new Administration();
+            frmAdmin.ShowDialog();
+        }
+
+        private void grupeOznakaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGroup = new GroupOfTags();
+            frmGroup.ShowDialog();
+        }
+
+        private void oznakeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmtag = new Tagovi();
+            frmtag.ShowDialog();
+        }
+
+        private void bazaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPodesavanja = new Podesavanja();
+            frmPodesavanja.ShowDialog();
+        }
+
+        private void prijavaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (user != null)
             {
-                frmAdmin = new Administration();
-                frmAdmin.ShowDialog();
+                var result = MessageBox.Show("Da li ste sigurni da zelite da se odjavite", "Odjava", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    user = null;
+                    toolStripStatusLabelLogin.Text = "";
+                    prijavaToolStripMenuItem.Text = "Prijava";
+                }
             }
-            if (e.ClickedItem.Name == tsmiGroupOfTags.Name)
+            else
             {
-                frmGroup = new GroupOfTags();
-                frmGroup.ShowDialog();
+                frm2 = new LogOn(user, _userService);
+                frm2.ShowDialog();
+                user = frm2.getUser();
+                if (user != null)
+                {
+                    toolStripStatusLabelLogin.Text = "Ulogovan/a: " + user.Name;
+                    korisniciToolStripMenuItem.Visible = user.IsAdministrator;
+                    prijavaToolStripMenuItem.Text = "Odjava";
+                }
             }
-            if (e.ClickedItem.Name == tagsToolStripMenuItem.Name)
-            {
-                frmtag = new Tagovi();
-                frmtag.ShowDialog();
-            }
-            if (e.ClickedItem.Name == podesavanjaToolStripMenuItem.Name)
-            {
-                frmPodesavanja = new Podesavanja();
-                frmPodesavanja.ShowDialog();
-            }
+        }
+
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var g = e.Graphics;
+            var text = this.tabControl1.TabPages[e.Index].Text;
+            var sizeText = g.MeasureString(text, this.tabControl1.Font);
+
+            var x = e.Bounds.Left + 3;
+            var y = e.Bounds.Top + (e.Bounds.Height - sizeText.Height) / 2;
+
+            g.DrawString(text, this.tabControl1.Font, Brushes.Black, x, y);
         }
 
     }

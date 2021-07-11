@@ -53,5 +53,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 this.Dispose();
             }
         }
+
+        private void bExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
