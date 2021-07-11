@@ -57,44 +57,32 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            ImportData newImportData = new ImportData();
-            newImportData.ImportDate = DateTime.Now;
-            newImportData.Description = "";
-            List<Entry> entries = new List<Entry>();
-            foreach (DataRow row in dt.Rows)
-            {
-                Entry newEntry = new Entry();
-                newEntry.CreatedAt = DateTime.Parse(row[0].ToString());
-                newEntry.Ocena = int.Parse(row[1].ToString());
-                newEntry.Odgovor = row[2].ToString();
-                newEntry.PredlogPoboljsanja = row[3].ToString();
-                newEntry.Kontakt = row[4].ToString();
-                if (DoesRecordExist(newEntry))
-                {
-                    entries.Add(newEntry);                  
-                }
-            }
-            newImportData.Entries = entries;
-            AddRecord(newImportData);
-            MessageBox.Show("Podaci su sacuvani");
-        }
-        public void AddRecord(ImportData newImportData)
-        {
             using (DatabaseContext db = new DatabaseContext())
             {
+                ImportData newImportData = new ImportData();
+                newImportData.ImportDate = DateTime.Now;
+                newImportData.Description = "";
+                List<Entry> entries = new List<Entry>();
+                foreach (DataRow row in dt.Rows)
+                {
+                    Entry newEntry = new Entry();
+                    newEntry.CreatedAt = DateTime.Parse(row[0].ToString());
+                    newEntry.Ocena = int.Parse(row[1].ToString());
+                    newEntry.Odgovor = row[2].ToString();
+                    newEntry.PredlogPoboljsanja = row[3].ToString();
+                    newEntry.Kontakt = row[4].ToString();
+
+                    if (db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
+                    {
+                        entries.Add(newEntry);
+                    }
+                }
+                newImportData.Entries = entries;
+
                 db.ImportDatas.Add(newImportData);
                 db.SaveChanges();
             }
-        }
-        public bool DoesRecordExist(Entry newEntry)
-        {
-            using (DatabaseContext db = new DatabaseContext())
-            {
-                if (db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
-                    return false;
-                else
-                    return true;
-            }            
+            MessageBox.Show("Podaci su sacuvani");
         }
     }
 }
