@@ -120,6 +120,12 @@
     <Compile Include="Forms\Podesavanja.Designer.cs">
       <DependentUpon>Podesavanja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TagBookmarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TagBookmarks.Designer.cs">
+      <DependentUpon>TagBookmarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Tagovi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Podesavanja.resx">
       <DependentUpon>Podesavanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TagBookmarks.resx">
+      <DependentUpon>TagBookmarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tagovi.resx">
       <DependentUpon>Tagovi.cs</DependentUpon>

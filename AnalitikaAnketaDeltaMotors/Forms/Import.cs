@@ -13,6 +13,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     {
         ExcelHelper helper;
         DataTable dt = new DataTable();
+        TagBookmarks tagBookmarks;
         public Import()
         {
             InitializeComponent();
@@ -83,6 +84,32 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 db.SaveChanges();
             }
             MessageBox.Show("Podaci su sacuvani");
+        }
+
+        private void bAddTag_Click(object sender, EventArgs e)
+        {
+            panelTags.Controls.Clear();
+            tagBookmarks = new TagBookmarks();
+            var result=tagBookmarks.ShowDialog();
+            if (result==DialogResult.Cancel)
+            {
+                    FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+                    flowLayoutPanel.AutoSize = true;
+                    flowLayoutPanel.Dock = DockStyle.Fill;
+                    flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+                foreach (var item in tagBookmarks.Ids)
+                {                    
+                    using (DatabaseContext db = new DatabaseContext())
+                    {                       
+                        var tag = db.Tags.Where(x => x.Id == item).FirstOrDefault();                       
+                        Label label = new Label();
+                        label.Name = tag.Id.ToString();
+                        label.Text = tag.Name;
+                        flowLayoutPanel.Controls.Add(label);                       
+                    }
+                    panelTags.Controls.Add(flowLayoutPanel);
+                }
+            }
         }
     }
 }

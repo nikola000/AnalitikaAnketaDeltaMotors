@@ -158,6 +158,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.bAddTag.TabIndex = 0;
             this.bAddTag.Text = "Dodaj oznaku";
             this.bAddTag.UseVisualStyleBackColor = true;
+            this.bAddTag.Click += new System.EventHandler(this.bAddTag_Click);
             // 
             // btnSave
             // 
