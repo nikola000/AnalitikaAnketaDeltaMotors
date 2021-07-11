@@ -16,8 +16,14 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     public partial class TagBookmarks : Form
     {
         public List<int> Ids { get; set; } = new List<int>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
         public TagBookmarks()
         {
+            InitializeComponent();
+        }
+        public TagBookmarks(List<Tag> Tags)
+        {
+            this.Tags = Tags;
             InitializeComponent();
         }
         private void TagBookmarks_Load(object sender, EventArgs e)
@@ -41,6 +47,14 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                         CheckBox checkBox = new CheckBox();
                         checkBox.Name = tag.Id.ToString();
                         checkBox.Text = tag.Name;
+                        for (int i = 0; i < Tags.Count; i++)
+                        {
+                            if (Tags[i].Id == tag.Id)
+                            {
+                                Tags.Remove(Tags[i]);
+                                checkBox.Checked = true;
+                            }
+                        }
                         groupBoxFlowLayout.Controls.Add(checkBox);
                     }
                     groupBox.AutoSize = true;

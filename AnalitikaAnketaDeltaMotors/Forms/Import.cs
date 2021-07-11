@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
 
@@ -14,6 +15,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         ExcelHelper helper;
         DataTable dt = new DataTable();
         TagBookmarks tagBookmarks;
+        public List<Tag> Tags { get; set; } = new List<Tag>();
         public Import()
         {
             InitializeComponent();
@@ -79,7 +81,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     }
                 }
                 newImportData.Entries = entries;
-
+                newImportData.Tags = Tags;
                 db.ImportDatas.Add(newImportData);
                 db.SaveChanges();
             }
@@ -89,7 +91,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         private void bAddTag_Click(object sender, EventArgs e)
         {
             panelTags.Controls.Clear();
-            tagBookmarks = new TagBookmarks();
+            tagBookmarks = new TagBookmarks(Tags);
             var result=tagBookmarks.ShowDialog();
             if (result==DialogResult.Cancel)
             {
@@ -101,11 +103,12 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 {                    
                     using (DatabaseContext db = new DatabaseContext())
                     {                       
-                        var tag = db.Tags.Where(x => x.Id == item).FirstOrDefault();                       
-                        Label label = new Label();
-                        label.Name = tag.Id.ToString();
-                        label.Text = tag.Name;
-                        flowLayoutPanel.Controls.Add(label);                       
+                        var tag = db.Tags.Where(x => x.Id == item).FirstOrDefault();
+                        Tags.Add(tag);
+                        Button button = new Button();
+                        button.Name = tag.Id.ToString();
+                        button.Text = tag.Name;
+                        flowLayoutPanel.Controls.Add(button);                       
                     }
                     panelTags.Controls.Add(flowLayoutPanel);
                 }
