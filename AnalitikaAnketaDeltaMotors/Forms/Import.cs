@@ -29,28 +29,42 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             }
         }
 
+        int _maximum = 0;
         private void bUcitaj_Click(object sender, EventArgs e)
         {
             if (txtIzborFajla.Text.Trim() == "")
             {
-                MessageBox.Show("MORATE imati putanju excel file-a kako bi ucitali podatke");
+                MessageBox.Show("Morate izbrati excel file", "Upozorenje", MessageBoxButtons.OK);
             }
             else
             {
                 progressBar1.Value = 0;
+                progressBar1.Maximum = 0;
                 helper.FilePath = txtIzborFajla.Text;
-                dt = helper.ImportData(progressBar1);
+                dt = helper.ImportData(ref _maximum, UpdateProgressBar);
                 dataGridView1.DataSource = dt;
                 DataGridFormat();
             }
         }
+
+        private void UpdateProgressBar(int value)
+        {
+            if (progressBar1.Maximum == 0)
+            {
+                progressBar1.Maximum = _maximum;
+            }
+            progressBar1.Value = value;
+        }
+
         private void DataGridFormat()
         { 
-            dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;           
-            for (int i = 0; i < dataGridView1.Columns.Count - 2;i++)
-            {
-                dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
+            //dataGridView1.Columns[dataGridView1.Columns.Count - 1].Visible = false;           
+            //for (int i = 0; i < dataGridView1.Columns.Count - 2;i++)
+            //{
+            //    //dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //}
+
+            //dataGridView1.AutoSize = AutoSize.
         }
 
         private void btnSave_Click(object sender, EventArgs e)

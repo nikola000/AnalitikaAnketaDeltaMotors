@@ -13,12 +13,16 @@ namespace AnalitikaAnketaDeltaMotors.Classes
         {
 
         }
-        public System.Data.DataTable ImportData(ProgressBar progressBar)
+        
+        public System.Data.DataTable ImportData(ref int maximum, System.Action<int> updateProgressBar)
         {
+            maximum = 0;
+
             if (FilePath.Trim() == "")
             {
                 return null;
             }
+
             System.Data.DataTable dt = new System.Data.DataTable();
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             Workbook wb = excel.Workbooks.Open(FilePath);
@@ -26,7 +30,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
             Worksheet sheet = (Worksheet)excelSheets[1];
             Range xlRange = sheet.UsedRange;
             int colCount = xlRange.Columns.Count;
-            double progressValue = progressBar.Value;
+
             int rowCount = 0;
             for (int i = 2; i < xlRange.Rows.Count; i++)
             {
@@ -40,20 +44,21 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                     break;
                 }                
             }
-            for (int i = 1; i < 2; i++)
-            {              
-                for (int j = 1; j < colCount; j++)
+
+            maximum = rowCount + 1;
+
+            for (int j = 1; j < colCount; j++)
+            {
+                try
                 {
-                    try
-                    {
-                        dt.Columns.Add(sheet.Cells[i, j].Value.ToString());
-                    }
-                    catch (Exception)
-                    {
-                        break;
-                    }
+                    dt.Columns.Add(sheet.Cells[1, j].Value.ToString());
                 }
-            }     
+                catch (Exception)
+                {
+                    break;
+                }
+            }
+
             for (int i = 2; i <= rowCount+1; i++)
             {
                 DataRow newRow = dt.NewRow();
@@ -68,10 +73,8 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                         continue;                      
                     }
                 }
-                progressValue += 100.0 / rowCount;
-                if (progressValue > 100)
-                    progressValue = 100;
-                progressBar.Value = (int)Math.Ceiling(progressValue);
+
+                updateProgressBar.Invoke(i);
                 dt.Rows.Add(newRow);
             }
             return dt;

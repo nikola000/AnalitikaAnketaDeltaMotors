@@ -50,7 +50,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(497, 8);
+            this.button1.Location = new System.Drawing.Point(481, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // bUcitaj
             // 
             this.bUcitaj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bUcitaj.Location = new System.Drawing.Point(603, 8);
+            this.bUcitaj.Location = new System.Drawing.Point(587, 8);
             this.bUcitaj.Name = "bUcitaj";
             this.bUcitaj.Size = new System.Drawing.Size(100, 23);
             this.bUcitaj.TabIndex = 2;
@@ -79,7 +79,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtIzborFajla.Location = new System.Drawing.Point(3, 10);
             this.txtIzborFajla.Name = "txtIzborFajla";
-            this.txtIzborFajla.Size = new System.Drawing.Size(488, 20);
+            this.txtIzborFajla.Size = new System.Drawing.Size(472, 20);
             this.txtIzborFajla.TabIndex = 3;
             // 
             // dataGridView1
@@ -89,19 +89,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 37);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(700, 267);
+            this.dataGridView1.Size = new System.Drawing.Size(684, 432);
             this.dataGridView1.TabIndex = 4;
             // 
             // progressBar1
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(13, 377);
+            this.progressBar1.Location = new System.Drawing.Point(13, 542);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(986, 23);
+            this.progressBar1.Size = new System.Drawing.Size(965, 23);
             this.progressBar1.TabIndex = 5;
             // 
             // splitContainer1
@@ -123,8 +124,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelTags);
             this.splitContainer1.Panel2.Controls.Add(this.bAddTag);
-            this.splitContainer1.Size = new System.Drawing.Size(986, 342);
-            this.splitContainer1.SplitterDistance = 706;
+            this.splitContainer1.Size = new System.Drawing.Size(965, 507);
+            this.splitContainer1.SplitterDistance = 690;
             this.splitContainer1.TabIndex = 6;
             // 
             // panelTags
@@ -135,7 +136,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.panelTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTags.Location = new System.Drawing.Point(12, 37);
             this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(250, 255);
+            this.panelTags.Size = new System.Drawing.Size(245, 420);
             this.panelTags.TabIndex = 1;
             // 
             // bAddTag
@@ -144,7 +145,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.bAddTag.Location = new System.Drawing.Point(12, 8);
             this.bAddTag.Name = "bAddTag";
-            this.bAddTag.Size = new System.Drawing.Size(250, 23);
+            this.bAddTag.Size = new System.Drawing.Size(245, 23);
             this.bAddTag.TabIndex = 0;
             this.bAddTag.Text = "Dodaj oznaku";
             this.bAddTag.UseVisualStyleBackColor = true;
@@ -164,7 +165,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1005, 412);
+            this.ClientSize = new System.Drawing.Size(984, 577);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.progressBar1);
