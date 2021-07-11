@@ -93,10 +93,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             var result=tagBookmarks.ShowDialog();
             if (result==DialogResult.Cancel)
             {
-                    FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
-                    flowLayoutPanel.AutoSize = true;
-                    flowLayoutPanel.Dock = DockStyle.Fill;
-                    flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+                FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+                flowLayoutPanel.AutoSize = true;
+                flowLayoutPanel.Dock = DockStyle.Fill;
+                flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
                 foreach (var item in tagBookmarks.Ids)
                 {                    
                     using (DatabaseContext db = new DatabaseContext())

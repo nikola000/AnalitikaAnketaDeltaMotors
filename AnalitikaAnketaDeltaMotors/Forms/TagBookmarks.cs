@@ -25,7 +25,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             flowLayoutPanel1.WrapContents = true;
             using (DatabaseContext db = new DatabaseContext())
             {
-                var groups = db.Groups.Where(x => x.Id > 0);
+                var groups = db.Groups.Include(x=>x.Tags).Where(x => x.Id > 0);
                 foreach (var item in groups)
                 {
                     GroupBox groupBox = new GroupBox();
@@ -36,16 +36,12 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     groupBoxFlowLayout.Dock = DockStyle.Fill;
                     groupBoxFlowLayout.FlowDirection = FlowDirection.TopDown;
                     groupBox.Controls.Add(groupBoxFlowLayout);
-                    using (DatabaseContext db1 = new DatabaseContext())
-                    { 
-                        var tags = db1.Tags.Where(x => x.GroupId == item.Id);
-                        foreach (var tag in tags)
-                        {
-                            CheckBox checkBox = new CheckBox();
-                            checkBox.Name = tag.Id.ToString();
-                            checkBox.Text = tag.Name;
-                            groupBoxFlowLayout.Controls.Add(checkBox);
-                        }
+                    foreach (var tag in item.Tags)
+                    {
+                        CheckBox checkBox = new CheckBox();
+                        checkBox.Name = tag.Id.ToString();
+                        checkBox.Text = tag.Name;
+                        groupBoxFlowLayout.Controls.Add(checkBox);
                     }
                     groupBox.AutoSize = true;
                     flowLayoutPanel1.Controls.Add(groupBox);
