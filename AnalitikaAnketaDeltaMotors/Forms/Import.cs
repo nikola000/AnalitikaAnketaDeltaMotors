@@ -72,7 +72,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     newEntry.PredlogPoboljsanja = row[3].ToString();
                     newEntry.Kontakt = row[4].ToString();
 
-                    if (db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
+                    if (!db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
                     {
                         entries.Add(newEntry);
                     }
