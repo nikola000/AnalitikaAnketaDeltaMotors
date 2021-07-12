@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.Controls;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
@@ -90,29 +91,29 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void bAddTag_Click(object sender, EventArgs e)
         {
-            panelTags.Controls.Clear();
             tagBookmarks = new TagBookmarks(Tags);
             var result=tagBookmarks.ShowDialog();
             if (result==DialogResult.Cancel)
             {
-                FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
-                flowLayoutPanel.AutoSize = true;
-                flowLayoutPanel.Dock = DockStyle.Fill;
-                flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
-                foreach (var item in tagBookmarks.Ids)
-                {                    
-                    using (DatabaseContext db = new DatabaseContext())
-                    {                       
-                        var tag = db.Tags.Where(x => x.Id == item).FirstOrDefault();
-                        Tags.Add(tag);
-                        Button button = new Button();
-                        button.Name = tag.Id.ToString();
-                        button.Text = tag.Name;
-                        flowLayoutPanel.Controls.Add(button);                       
-                    }
-                    panelTags.Controls.Add(flowLayoutPanel);
-                }
+                AddTags();
             }
+        }
+        public void AddTags()
+        {
+            panelTags.Controls.Clear();
+            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+            flowLayoutPanel.AutoSize = true;
+            flowLayoutPanel.Dock = DockStyle.Fill;
+            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            Tags = tagBookmarks.Tags;
+            foreach (var item in Tags)
+            {
+                Button button = new Button();
+                button.Name = item.Id.ToString();
+                button.Text = item.Name;
+                flowLayoutPanel.Controls.Add(button);
+            }
+            panelTags.Controls.Add(flowLayoutPanel);
         }
     }
 }
