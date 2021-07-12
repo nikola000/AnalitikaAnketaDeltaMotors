@@ -93,7 +93,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
             if (result > 0)
             {
-                MessageBox.Show("Izmene su uspesno sacuvane");
+                MessageBox.Show("Izmene su uspesno sacuvane", "Cuvanje");
             }
         }
 
