@@ -65,7 +65,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             {
                 ImportData newImportData = new ImportData();
                 newImportData.ImportDate = DateTime.Now;
-                newImportData.Description = "";
+                newImportData.Description = txtIzborFajla.Text;
                 List<Entry> entries = new List<Entry>();
                 foreach (DataRow row in dt.Rows)
                 {
