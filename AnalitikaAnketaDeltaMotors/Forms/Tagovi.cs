@@ -1,23 +1,24 @@
 ﻿
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
+using UnitOfWorkExample.UnitOfWork.Models;
 namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class Tagovi : Form
-    {
-     
+    {   
         DatabaseContext context = new DatabaseContext();
         public Tagovi()
         {
             InitializeComponent();
         }
-
         private void grupaTagova_Load(object sender, EventArgs e)
         {
-            context.Tags.Include(x => x.Group).Load();
-            SetDataGrid();
+            context.Tags.Include(x => x.Group).Load();         
+            FillComboBox();
         }
         private void SetDataGrid()
         {
@@ -25,7 +26,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.DataSource = context.Tags.Local.ToBindingList();
             InitializeDataGridView();
         }
-
         private void InitializeDataGridView()
         {
    
@@ -35,7 +35,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.Columns["Group"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             int result = context.SaveChanges();
@@ -44,6 +43,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             {
                 MessageBox.Show("Izmene su uspesno sacuvane");
             }
+        }
+        private void FillComboBox() 
+        {
+            List<Group> groups = context.Groups.Where(x => x.Id > 0).ToList();
+            foreach (Group i in groups)
+            {
+                comboBox1.Items.Add(i);
+            }
+        }
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            Group item = (Group)comboBox1.SelectedItem;
+            dataGridView1.DataSource = context.Tags.Where(x => x.GroupId == item.Id).ToList();
+            InitializeDataGridView();
         }
     }
 }
