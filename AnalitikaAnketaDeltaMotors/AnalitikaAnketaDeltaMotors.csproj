@@ -84,6 +84,12 @@
     <Compile Include="AnalitikaAnketaDeltaMotors.Designer.cs">
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ctrlTagBookmarks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlTagBookmarks.Designer.cs">
+      <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddingUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="Forms\Podesavanja.Designer.cs">
       <DependentUpon>Podesavanja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TagBookmarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TagBookmarks.Designer.cs">
+      <DependentUpon>TagBookmarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tagovi.cs">
       <SubType>Form</SubType>
@@ -183,6 +195,9 @@
     <EmbeddedResource Include="AnalitikaAnketaDeltaMotors.resx">
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlTagBookmarks.resx">
+      <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddingUser.resx">
       <DependentUpon>AddingUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Podesavanja.resx">
       <DependentUpon>Podesavanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TagBookmarks.resx">
+      <DependentUpon>TagBookmarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tagovi.resx">
       <DependentUpon>Tagovi.cs</DependentUpon>
@@ -254,6 +272,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

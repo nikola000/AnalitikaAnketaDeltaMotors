@@ -4,6 +4,8 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.Controls;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
 
@@ -13,6 +15,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     {
         ExcelHelper helper;
         DataTable dt = new DataTable();
+        TagBookmarks tagBookmarks;
+        public List<Tag> Tags { get; set; } = new List<Tag>();
         public Import()
         {
             InitializeComponent();
@@ -78,11 +82,38 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     }
                 }
                 newImportData.Entries = entries;
-
+                newImportData.Tags = Tags;
                 db.ImportDatas.Add(newImportData);
                 db.SaveChanges();
             }
             MessageBox.Show("Podaci su sacuvani");
+        }
+
+        private void bAddTag_Click(object sender, EventArgs e)
+        {
+            tagBookmarks = new TagBookmarks(Tags);
+            var result=tagBookmarks.ShowDialog();
+            if (result==DialogResult.Cancel)
+            {
+                AddTags();
+            }
+        }
+        public void AddTags()
+        {
+            panelTags.Controls.Clear();
+            FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
+            flowLayoutPanel.AutoSize = true;
+            flowLayoutPanel.Dock = DockStyle.Fill;
+            flowLayoutPanel.FlowDirection = FlowDirection.LeftToRight;
+            Tags = tagBookmarks.Tags;
+            foreach (var item in Tags)
+            {
+                Button button = new Button();
+                button.Name = item.Id.ToString();
+                button.Text = item.Name;
+                flowLayoutPanel.Controls.Add(button);
+            }
+            panelTags.Controls.Add(flowLayoutPanel);
         }
     }
 }
