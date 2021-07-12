@@ -33,11 +33,13 @@ namespace AnalitikaAnketaDeltaMotors
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdministrator = new System.Windows.Forms.ToolStripMenuItem();
+            this.podesavanjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGroupOfTags = new System.Windows.Forms.ToolStripMenuItem();
             this.tagsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.topicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelLogin = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsmiGroupOfTags = new System.Windows.Forms.ToolStripMenuItem();
-            this.podesavanjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.subtopicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,10 +52,13 @@ namespace AnalitikaAnketaDeltaMotors
             this.tsmiAdministrator,
             this.podesavanjaToolStripMenuItem,
             this.tsmiGroupOfTags,
-            this.tagsToolStripMenuItem});
+            this.tagsToolStripMenuItem,
+            this.topicsToolStripMenuItem,
+            this.subtopicsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(686, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -77,32 +82,11 @@ namespace AnalitikaAnketaDeltaMotors
             this.tsmiAdministrator.Text = "Korisnici";
             this.tsmiAdministrator.Visible = false;
             // 
-            // tagsToolStripMenuItem
-            // 
-            this.tagsToolStripMenuItem.Name = "tagsToolStripMenuItem";
-            this.tagsToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
-            this.tagsToolStripMenuItem.Text = "Tagovi";
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelLogin});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 428);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // podešavanjaToolStripMenuItem
+            // podesavanjaToolStripMenuItem
             // 
             this.podesavanjaToolStripMenuItem.Name = "podesavanjaToolStripMenuItem";
             this.podesavanjaToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.podesavanjaToolStripMenuItem.Text = "Podešavanja";
-            // 
-            // toolStripStatusLabelLogin
-            // 
-            this.toolStripStatusLabelLogin.Name = "toolStripStatusLabelLogin";
-            this.toolStripStatusLabelLogin.Size = new System.Drawing.Size(0, 17);
             // 
             // tsmiGroupOfTags
             // 
@@ -110,15 +94,49 @@ namespace AnalitikaAnketaDeltaMotors
             this.tsmiGroupOfTags.Size = new System.Drawing.Size(90, 20);
             this.tsmiGroupOfTags.Text = "Grupe tagova";
             // 
-            // AnalitikaAnketa
+            // tagsToolStripMenuItem
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.tagsToolStripMenuItem.Name = "tagsToolStripMenuItem";
+            this.tagsToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.tagsToolStripMenuItem.Text = "Tagovi";
+            // 
+            // topicsToolStripMenuItem
+            // 
+            this.topicsToolStripMenuItem.Name = "topicsToolStripMenuItem";
+            this.topicsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.topicsToolStripMenuItem.Text = "Topics";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelLogin});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 368);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(686, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelLogin
+            // 
+            this.toolStripStatusLabelLogin.Name = "toolStripStatusLabelLogin";
+            this.toolStripStatusLabelLogin.Size = new System.Drawing.Size(0, 17);
+            // 
+            // subtopicsToolStripMenuItem
+            // 
+            this.subtopicsToolStripMenuItem.Name = "subtopicsToolStripMenuItem";
+            this.subtopicsToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.subtopicsToolStripMenuItem.Text = "Subtopics";
+            // 
+            // AnalitikaAnketaDeltaMotors
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "AnalitikaAnketa";
+            this.Name = "AnalitikaAnketaDeltaMotors";
             this.Text = "Analitika anketa";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -139,6 +157,8 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.ToolStripMenuItem tsmiGroupOfTags;
         private System.Windows.Forms.ToolStripMenuItem tagsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem podesavanjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem topicsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem subtopicsToolStripMenuItem;
     }
 }
 
