@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using UnitOfWorkExample.UnitOfWork;
 
 namespace AnalitikaAnketaDeltaMotors.Forms
 {
@@ -24,6 +25,30 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             ConfigHelper.WriteConfigFile(textBox1.Text);
             Configuration.GetInstance().ResetConnectionString();
         }
-        
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Trim().Length < 1)
+            {
+                MessageBox.Show("morate uneti konekcioni string");
+                return;
+            }
+
+
+            using (DatabaseContext dbContext = new DatabaseContext())
+            {
+                try
+                {
+                    dbContext.Database.Exists();
+                    MessageBox.Show("Konekcija uspesna");
+                }
+
+
+                catch
+                {
+                    MessageBox.Show("Konekcija neuspesna");
+                }
+            }
+        }
     }
 }
