@@ -104,7 +104,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             FlowLayoutPanel flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.AutoSize = true;
             flowLayoutPanel.Dock = DockStyle.Fill;
-            flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel.FlowDirection = FlowDirection.LeftToRight;
             Tags = tagBookmarks.Tags;
             foreach (var item in Tags)
             {
