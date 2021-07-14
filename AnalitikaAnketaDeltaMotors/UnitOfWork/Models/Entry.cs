@@ -1,5 +1,6 @@
 ﻿using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using System;
+using System.Collections.Generic;
 
 namespace UnitOfWorkExample.UnitOfWork.Models
 {
@@ -13,5 +14,6 @@ namespace UnitOfWorkExample.UnitOfWork.Models
         public string Kontakt { get; set; }
         public int ImportDataId{get; set; }
         public ImportData ImportData { get; set; }
+        public virtual ICollection<EntryScore> EntryScores { get; set; }
     }
 }

@@ -85,11 +85,18 @@
     <Compile Include="AnalitikaAnketaDeltaMotors.Designer.cs">
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Utils.cs" />
     <Compile Include="Controls\ctrlAnswer.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\ctrlAnswer.Designer.cs">
       <DependentUpon>ctrlAnswer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ctrlAnswerGrades.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ctrlAnswerGrades.Designer.cs">
+      <DependentUpon>ctrlAnswerGrades.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ctrlTagBookmarks.cs">
       <SubType>UserControl</SubType>
@@ -205,6 +212,10 @@
     <Compile Include="Migrations\202107121413215_RelationshipTopicSubtopic.designer.cs">
       <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107141827333_EntryScore.cs" />
+    <Compile Include="Migrations\202107141827333_EntryScore.designer.cs">
+      <DependentUpon>202107141827333_EntryScore.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -219,6 +230,7 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
     <Compile Include="UnitOfWork\Models\Entry.cs" />
+    <Compile Include="UnitOfWork\Models\EntryScore.cs" />
     <Compile Include="UnitOfWork\Models\Group.cs" />
     <Compile Include="UnitOfWork\Models\ImportData.cs" />
     <Compile Include="UnitOfWork\Models\Subtopic.cs" />
@@ -232,6 +244,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlAnswer.resx">
       <DependentUpon>ctrlAnswer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ctrlAnswerGrades.resx">
+      <DependentUpon>ctrlAnswerGrades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlTagBookmarks.resx">
       <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>
@@ -301,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107121413215_RelationshipTopicSubtopic.resx">
       <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107141827333_EntryScore.resx">
+      <DependentUpon>202107141827333_EntryScore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
