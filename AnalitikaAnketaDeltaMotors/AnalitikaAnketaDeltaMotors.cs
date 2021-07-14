@@ -24,7 +24,8 @@ namespace AnalitikaAnketaDeltaMotors
         Tagovi frmtag;
         GroupOfTags frmGroup;
         Podesavanja frmPodesavanja;
-
+        Topics frmTopic;
+        Subtopics frmSubtopic;
         public AnalitikaAnketaDeltaMotors(IUserService userService)
         {
             this._userService = userService;
@@ -80,7 +81,16 @@ namespace AnalitikaAnketaDeltaMotors
                 frmPodesavanja = new Podesavanja();
                 frmPodesavanja.ShowDialog();
             }
+            if (e.ClickedItem.Name == topicsToolStripMenuItem.Name)
+            {
+                frmTopic = new Topics();
+                frmTopic.ShowDialog();
+            }
+            if (e.ClickedItem.Name == subtopicsToolStripMenuItem.Name)
+            {
+                frmSubtopic = new Subtopics();
+                frmSubtopic.ShowDialog();
+            }
         }
-
     }
 }

@@ -131,12 +131,23 @@
     </Compile>
     <Compile Include="Forms\TagBookmarks.Designer.cs">
       <DependentUpon>TagBookmarks.cs</DependentUpon>
+    <Compile Include="Forms\Subtopics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Subtopics.Designer.cs">
+      <DependentUpon>Subtopics.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Tagovi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Tagovi.Designer.cs">
       <DependentUpon>Tagovi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Topics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Topics.Designer.cs">
+      <DependentUpon>Topics.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202107031701309_InitialCreate.cs" />
     <Compile Include="Migrations\202107031701309_InitialCreate.Designer.cs">
@@ -174,6 +185,18 @@
     <Compile Include="Migrations\202107111153450_relation-table.designer.cs">
       <DependentUpon>202107111153450_relation-table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107121404388_Topic.cs" />
+    <Compile Include="Migrations\202107121404388_Topic.designer.cs">
+      <DependentUpon>202107121404388_Topic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107121408059_Subtopic.cs" />
+    <Compile Include="Migrations\202107121408059_Subtopic.designer.cs">
+      <DependentUpon>202107121408059_Subtopic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107121413215_RelationshipTopicSubtopic.cs" />
+    <Compile Include="Migrations\202107121413215_RelationshipTopicSubtopic.designer.cs">
+      <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,7 +211,9 @@
     <Compile Include="UnitOfWork\Models\Entry.cs" />
     <Compile Include="UnitOfWork\Models\Group.cs" />
     <Compile Include="UnitOfWork\Models\ImportData.cs" />
+    <Compile Include="UnitOfWork\Models\Subtopic.cs" />
     <Compile Include="UnitOfWork\Models\Tag.cs" />
+    <Compile Include="UnitOfWork\Models\Topic.cs" />
     <Compile Include="UnitOfWork\Models\User.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWorkFactory.cs" />
@@ -218,9 +243,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TagBookmarks.resx">
       <DependentUpon>TagBookmarks.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Subtopics.resx">
+      <DependentUpon>Subtopics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Tagovi.resx">
       <DependentUpon>Tagovi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Topics.resx">
+      <DependentUpon>Topics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107031701309_InitialCreate.resx">
       <DependentUpon>202107031701309_InitialCreate.cs</DependentUpon>
@@ -248,6 +278,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107111153450_relation-table.resx">
       <DependentUpon>202107111153450_relation-table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121404388_Topic.resx">
+      <DependentUpon>202107121404388_Topic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121408059_Subtopic.resx">
+      <DependentUpon>202107121408059_Subtopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107121413215_RelationshipTopicSubtopic.resx">
+      <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
