@@ -25,7 +25,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             using (DatabaseContext db = new DatabaseContext())
             {
                 db.Topics.Include(x => x.Subtopics).Load();
-                foreach (var Topic in db.Topics.Where(x => x.Id > 0).ToList())
+                foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
                 {
                     listBox1.Items.Add(Topic);
                     foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
@@ -54,6 +54,32 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             else
             {
                 e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), new Font(Font, FontStyle.Regular), new SolidBrush(ForeColor), e.Bounds.X, e.Bounds.Y);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                db.Topics.Include(x => x.Subtopics).Load();
+                var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+                List<Topic> filteredTopics=new List<Topic>();
+                foreach (var item in filtered)
+                {
+                    filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
+                }               
+                foreach (var Topic in filteredTopics)
+                {
+                    listBox1.Items.Add(Topic);
+                    foreach (var Subtopic in filtered)
+                    {
+                        if (Subtopic.TopicId == Topic.Id)
+                            listBox1.Items.Add(Subtopic);
+                    }
+                }
+                this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+                this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem); ;
             }
         }
     }
