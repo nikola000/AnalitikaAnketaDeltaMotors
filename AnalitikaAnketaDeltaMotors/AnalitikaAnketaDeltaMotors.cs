@@ -153,12 +153,11 @@ namespace AnalitikaAnketaDeltaMotors
             dataGrid.Columns["ImportData"].Visible = false;
         }
 
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
             if (tabControl1.SelectedTab == tabPage3)
             {
                 tabPage3.Controls.Clear();
-                MessageBox.Show("");
                 ctrlAnswer answer = new ctrlAnswer();
                 tabPage3.Controls.Add(answer);
             }

@@ -39,6 +39,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(172, 290);
             this.listBox1.TabIndex = 0;
+            this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             // 
             // ctrlAnswer
             // 
@@ -47,6 +48,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.Controls.Add(this.listBox1);
             this.Name = "ctrlAnswer";
             this.Size = new System.Drawing.Size(632, 392);
+            this.Load += new System.EventHandler(this.ctrlAnswer_Load);
             this.ResumeLayout(false);
 
         }
