@@ -137,9 +137,7 @@ namespace AnalitikaAnketaDeltaMotors
                 dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
                 dataGrid.ReadOnly = true;
                 tabPage2.Controls.Add(dataGrid);
-                intializeDataGrid(dataGrid); 
-                
-                
+                intializeDataGrid(dataGrid);                                
             }
         }
         private void intializeDataGrid(DataGridView dataGrid) 
@@ -151,16 +149,16 @@ namespace AnalitikaAnketaDeltaMotors
             dataGrid.Columns["Kontakt"].Visible = false;
             dataGrid.Columns["ImportDataId"].Visible = false;
             dataGrid.Columns["ImportData"].Visible = false;
+            dataGrid.SelectionChanged += DataGrid_SelectionChanged;
         }
 
-        private void tabControl1_Selected(object sender, TabControlEventArgs e)
+        private void DataGrid_SelectionChanged(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage3)
-            {
-                tabPage3.Controls.Clear();
-                ctrlAnswer answer = new ctrlAnswer();
-                tabPage3.Controls.Add(answer);
-            }
+            int answerId = int.Parse((sender as DataGridView).Rows[(sender as DataGridView).CurrentRow.Index].Cells["Id"].Value.ToString());
+            tabPage3.Controls.Clear();
+            ctrlAnswer answer = new ctrlAnswer(answerId);
+            tabPage3.Controls.Add(answer);
+            tabControl1.SelectTab(tabPage3);
         }
     }
 }

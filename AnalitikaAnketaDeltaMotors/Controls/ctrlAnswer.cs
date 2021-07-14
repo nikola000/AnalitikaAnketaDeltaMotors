@@ -15,8 +15,14 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class ctrlAnswer : UserControl
     {
+        int selectedAnswer=0;
         public ctrlAnswer()
         {
+            InitializeComponent();
+        }
+        public ctrlAnswer(int n)
+        {
+            selectedAnswer = n;
             InitializeComponent();
         }
 
@@ -34,8 +40,11 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                     }
                 }
                 this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-                this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem); ;
+                this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+                var nesto= db.Entries.Where(x => x.Id == selectedAnswer).FirstOrDefault().Odgovor;
+                richTextBox1.Text = nesto;
             }
+            
         }
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
