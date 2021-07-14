@@ -24,6 +24,8 @@ namespace AnalitikaAnketaDeltaMotors
         Tagovi frmtag;
         GroupOfTags frmGroup;
         Podesavanja frmPodesavanja;
+        Topics frmTopic;
+        Subtopics frmSubtopic;
 
         public AnalitikaAnketaDeltaMotors(IUserService userService)
         {
@@ -110,5 +112,21 @@ namespace AnalitikaAnketaDeltaMotors
             g.DrawString(text, this.tabControl1.Font, Brushes.Black, x, y);
         }
 
+        private void topicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTopic = new Topics();
+            frmTopic.ShowDialog();
+        }
+
+        private void subtopicToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSubtopic = new Subtopics();
+            frmSubtopic.ShowDialog();
+        }
+
+        private void bUcitaj_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
