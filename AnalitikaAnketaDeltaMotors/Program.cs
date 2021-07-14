@@ -36,6 +36,8 @@ namespace AnalitikaAnketaDeltaMotors
         {
             services.AddSingleton<IUnitOfWorkFactory, UnitOfWorkFactory>()
                 .AddScoped<IUserService, UserService>();
+            services.AddSingleton<IUnitOfWorkFactory, UnitOfWorkFactory>()
+                .AddScoped<IEntryService, EntryService>();
         }
 
     }

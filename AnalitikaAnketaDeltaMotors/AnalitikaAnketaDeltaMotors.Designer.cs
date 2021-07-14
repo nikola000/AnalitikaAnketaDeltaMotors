@@ -48,15 +48,16 @@ namespace AnalitikaAnketaDeltaMotors
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelLogin = new System.Windows.Forms.ToolStripStatusLabel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.bUcitaj = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -97,64 +98,64 @@ namespace AnalitikaAnketaDeltaMotors
             // prijavaToolStripMenuItem
             // 
             this.prijavaToolStripMenuItem.Name = "prijavaToolStripMenuItem";
-            this.prijavaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prijavaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.prijavaToolStripMenuItem.Text = "Prijava";
             this.prijavaToolStripMenuItem.Click += new System.EventHandler(this.prijavaToolStripMenuItem_Click);
             // 
             // korisniciToolStripMenuItem
             // 
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.korisniciToolStripMenuItem.Text = "Korisnici";
             this.korisniciToolStripMenuItem.Click += new System.EventHandler(this.korisniciToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // grupeOznakaToolStripMenuItem
             // 
             this.grupeOznakaToolStripMenuItem.Name = "grupeOznakaToolStripMenuItem";
-            this.grupeOznakaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grupeOznakaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.grupeOznakaToolStripMenuItem.Text = "Grupe oznaka";
             this.grupeOznakaToolStripMenuItem.Click += new System.EventHandler(this.grupeOznakaToolStripMenuItem_Click);
             // 
             // oznakeToolStripMenuItem
             // 
             this.oznakeToolStripMenuItem.Name = "oznakeToolStripMenuItem";
-            this.oznakeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oznakeToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.oznakeToolStripMenuItem.Text = "Oznake";
             this.oznakeToolStripMenuItem.Click += new System.EventHandler(this.oznakeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // topicToolStripMenuItem
             // 
             this.topicToolStripMenuItem.Name = "topicToolStripMenuItem";
-            this.topicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.topicToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.topicToolStripMenuItem.Text = "Topic";
             this.topicToolStripMenuItem.Click += new System.EventHandler(this.topicToolStripMenuItem_Click);
             // 
             // subtopicToolStripMenuItem
             // 
             this.subtopicToolStripMenuItem.Name = "subtopicToolStripMenuItem";
-            this.subtopicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.subtopicToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.subtopicToolStripMenuItem.Text = "Subtopic";
             this.subtopicToolStripMenuItem.Click += new System.EventHandler(this.subtopicToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
             // 
             // izlazToolStripMenuItem
             // 
             this.izlazToolStripMenuItem.Name = "izlazToolStripMenuItem";
-            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.izlazToolStripMenuItem.Text = "Izlaz";
             this.izlazToolStripMenuItem.Click += new System.EventHandler(this.izlazToolStripMenuItem_Click);
             // 
@@ -199,45 +200,6 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl1.ItemSize = new System.Drawing.Size(30, 120);
-            this.tabControl1.Location = new System.Drawing.Point(210, 79);
-            this.tabControl1.Multiline = true;
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(640, 413);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabControl1.TabIndex = 5;
-            this.tabControl1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl1_DrawItem);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(124, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(512, 405);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Dashboard";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(124, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(710, 433);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "All entries";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // entityCommand1
             // 
             this.entityCommand1.CommandTimeout = 0;
@@ -258,6 +220,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(12, 74);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(191, 20);
@@ -265,6 +228,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(12, 121);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(191, 20);
@@ -288,17 +252,57 @@ namespace AnalitikaAnketaDeltaMotors
             this.label2.TabIndex = 10;
             this.label2.Text = "Datum do";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(210, 74);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(640, 418);
+            this.tabControl1.TabIndex = 11;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(632, 392);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Dashboard";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(632, 392);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "All Entries";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(632, 392);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Odgovori";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // AnalitikaAnketaDeltaMotors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 517);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.bUcitaj);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -331,9 +335,6 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.ToolStripMenuItem izlazToolStripMenuItem;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ToolStripMenuItem bazaToolStripMenuItem;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
         private System.Windows.Forms.ToolStripMenuItem topicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem subtopicToolStripMenuItem;
@@ -343,6 +344,10 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.Controls;
 using AnalitikaAnketaDeltaMotors.Forms;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace AnalitikaAnketaDeltaMotors
     public partial class AnalitikaAnketaDeltaMotors : Form
     {
         private readonly IUserService _userService;
+        private readonly IEntryService _entryService;
         LogOn frm2;
         User user;
         Import frm3;
@@ -27,9 +29,10 @@ namespace AnalitikaAnketaDeltaMotors
         Topics frmTopic;
         Subtopics frmSubtopic;
 
-        public AnalitikaAnketaDeltaMotors(IUserService userService)
+        public AnalitikaAnketaDeltaMotors(IUserService userService,IEntryService entryService)
         {
             this._userService = userService;
+            this._entryService = entryService;
             InitializeComponent();
             
         }
@@ -126,7 +129,39 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void bUcitaj_Click(object sender, EventArgs e)
         {
+            if (tabControl1.SelectedTab == tabPage2)
+            {
+                tabPage2.Controls.Clear();
+                DataGridView dataGrid = new DataGridView();
+                dataGrid.Dock = DockStyle.Fill;              
+                dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
+                dataGrid.ReadOnly = true;
+                tabPage2.Controls.Add(dataGrid);
+                intializeDataGrid(dataGrid); 
+                
+                
+            }
+        }
+        private void intializeDataGrid(DataGridView dataGrid) 
+        {            
+            dataGrid.Columns["CreatedAt"].HeaderText = "Datum";
+            dataGrid.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGrid.Columns["Ocena"].Visible = false;
+            dataGrid.Columns["PredlogPoboljsanja"].Visible = false;
+            dataGrid.Columns["Kontakt"].Visible = false;
+            dataGrid.Columns["ImportDataId"].Visible = false;
+            dataGrid.Columns["ImportData"].Visible = false;
+        }
 
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedTab == tabPage3)
+            {
+                tabPage3.Controls.Clear();
+                MessageBox.Show("");
+                ctrlAnswer answer = new ctrlAnswer();
+                tabPage3.Controls.Add(answer);
+            }
         }
     }
 }
