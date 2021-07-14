@@ -149,10 +149,11 @@ namespace AnalitikaAnketaDeltaMotors
             dataGrid.Columns["Kontakt"].Visible = false;
             dataGrid.Columns["ImportDataId"].Visible = false;
             dataGrid.Columns["ImportData"].Visible = false;
-            dataGrid.SelectionChanged += DataGrid_SelectionChanged;
+            //dataGrid.SelectionChanged += DataGrid_SelectionChanged;
+            dataGrid.DoubleClick += DataGrid_DoubleClick;
         }
 
-        private void DataGrid_SelectionChanged(object sender, EventArgs e)
+        private void DataGrid_DoubleClick(object sender, EventArgs e)
         {
             int answerId = int.Parse((sender as DataGridView).Rows[(sender as DataGridView).CurrentRow.Index].Cells["Id"].Value.ToString());
             tabPage3.Controls.Clear();
@@ -160,5 +161,14 @@ namespace AnalitikaAnketaDeltaMotors
             tabPage3.Controls.Add(answer);
             tabControl1.SelectTab(tabPage3);
         }
+
+        //private void DataGrid_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    int answerId = int.Parse((sender as DataGridView).Rows[(sender as DataGridView).CurrentRow.Index].Cells["Id"].Value.ToString());
+        //    tabPage3.Controls.Clear();
+        //    ctrlAnswer answer = new ctrlAnswer(answerId);
+        //    tabPage3.Controls.Add(answer);
+        //    tabControl1.SelectTab(tabPage3);
+        //}
     }
 }
