@@ -32,6 +32,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.ctrlAnswerGrades1 = new AnalitikaAnketaDeltaMotors.Controls.ctrlAnswerGrades();
             this.SuspendLayout();
             // 
             // listBox1
@@ -59,10 +60,19 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
+            // ctrlAnswerGrades1
+            // 
+            this.ctrlAnswerGrades1.Location = new System.Drawing.Point(453, 73);
+            this.ctrlAnswerGrades1.Margin = new System.Windows.Forms.Padding(0);
+            this.ctrlAnswerGrades1.Name = "ctrlAnswerGrades1";
+            this.ctrlAnswerGrades1.Size = new System.Drawing.Size(179, 80);
+            this.ctrlAnswerGrades1.TabIndex = 3;
+            // 
             // ctrlAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ctrlAnswerGrades1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
@@ -79,5 +89,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private AnalitikaAnketaDeltaMotors.Controls.ctrlAnswerGrades ctrlAnswerGrades1;
     }
 }
