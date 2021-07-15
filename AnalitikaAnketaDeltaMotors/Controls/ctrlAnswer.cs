@@ -13,40 +13,44 @@ using UnitOfWorkExample.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.Classes;
 
+
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class ctrlAnswer : UserControl
     {
+        Entry entry;
         EntryScore entryScore;
+        List<Subtopic> disabledSubtopics;
+        DatabaseContext db = new DatabaseContext();
         public ctrlAnswer()
         {
             InitializeComponent();
         }
         public ctrlAnswer(Entry entry)
         {
+            this.entry = entry;
             entryScore = new EntryScore();
             entryScore.Entry = entry;
+            entryScore.EntryId = entry.Id;
+            disabledSubtopics = new List<Subtopic>();
             InitializeComponent();
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
-        {
-            using (DatabaseContext db = new DatabaseContext())
+        {            
+            db.Topics.Include(x => x.Subtopics).Load();
+            foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
             {
-                db.Topics.Include(x => x.Subtopics).Load();
-                foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
+                listBox1.Items.Add(Topic);
+                foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
                 {
-                    listBox1.Items.Add(Topic);
-                    foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
-                    {
-                        listBox1.Items.Add(Subtopic);
-                    }
+                    listBox1.Items.Add(Subtopic);
                 }
-                this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-                this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
-                string textAnswer= db.Entries.Where(x => x.Id == entryScore.Entry.Id).FirstOrDefault().Odgovor;
-                richTextBox1.Text = textAnswer;
-            }           
+            }
+            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+            string textAnswer= db.Entries.Where(x => x.Id == entry.Id).FirstOrDefault().Odgovor;
+            richTextBox1.Text = textAnswer;                       
         }
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
@@ -70,28 +74,26 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            using (DatabaseContext db = new DatabaseContext())
+            listBox1.Items.Clear();            
+            db.Topics.Include(x => x.Subtopics).Load();
+            var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            List<Topic> filteredTopics=new List<Topic>();
+            foreach (var item in filtered)
+            {             
+                filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
+            }               
+            foreach (var Topic in filteredTopics)
             {
-                db.Topics.Include(x => x.Subtopics).Load();
-                var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
-                List<Topic> filteredTopics=new List<Topic>();
-                foreach (var item in filtered)
-                {
-                    filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
-                }               
-                foreach (var Topic in filteredTopics)
-                {
-                    listBox1.Items.Add(Topic);
-                    foreach (var Subtopic in filtered)
-                    {
-                        if (Subtopic.TopicId == Topic.Id)
-                            listBox1.Items.Add(Subtopic);
-                    }
+                listBox1.Items.Add(Topic);
+                foreach (var Subtopic in filtered)
+                {                    
+                    if (Subtopic.TopicId == Topic.Id)
+                        listBox1.Items.Add(Subtopic);
                 }
-                this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-                this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem); ;
             }
+            subtopicsAvailable();
+            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
         }
 
         private void bMark_Click(object sender, EventArgs e)
@@ -104,10 +106,14 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             {
                 return;
             }
-            ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScore.Subtopic);
+            EntryScore entryScoreTemp = new EntryScore();
+            entryScoreTemp = entryScore;
+            ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScoreTemp);
+            flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
+            entry.EntryScores.Add(entryScore);
+            disabledSubtopics.Add(entryScoreTemp.Subtopic);
+            entryScore.Subtopic = null;
         }
-        
-
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
@@ -127,7 +133,19 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void listBox1_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem is Topic)
+            {
+                listBox1.SelectedItem = null;
+            }
             entryScore.Subtopic = (Subtopic)listBox1.SelectedItem;
+        }
+        
+        private void subtopicsAvailable()
+        {
+            foreach (var item in disabledSubtopics)
+            {
+                listBox1.Items.Remove(item);
+            }            
         }
     }
 }

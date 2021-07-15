@@ -111,12 +111,13 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ctrlAnswerGrades";
-            this.Size = new System.Drawing.Size(195, 80);
+            this.Size = new System.Drawing.Size(191, 76);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

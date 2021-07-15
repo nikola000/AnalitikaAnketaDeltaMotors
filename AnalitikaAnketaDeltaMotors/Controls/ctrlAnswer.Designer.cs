@@ -118,6 +118,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(437, 102);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";

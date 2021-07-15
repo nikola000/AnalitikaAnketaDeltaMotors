@@ -8,37 +8,56 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using UnitOfWorkExample.UnitOfWork.Models;
+using static AnalitikaAnketaDeltaMotors.Classes.Utils;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class ctrlAnswerGrades : UserControl
     {
-        Utils.Score Score;
+        public EntryScore entryScore;
         public ctrlAnswerGrades()
         {
             InitializeComponent();
         }
-        public ctrlAnswerGrades(Subtopic subtopic)
+        public ctrlAnswerGrades(EntryScore entryScore)
         {
-            label1.Text = subtopic.Name;
-            label2.Text = subtopic.Topic.Name;
             InitializeComponent();
+            label1.Text = entryScore.Subtopic.Name;
+            label2.Text = entryScore.Subtopic.Topic.Name;
+            this.entryScore = entryScore;
+            checkRadioButton(entryScore.Score);
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked) 
             {
-                Score = Utils.Score.Low;
+                entryScore.Score = Score.Low;
             }
             if (radioButton2.Checked) 
             {
-                Score = Utils.Score.Medium;
+                entryScore.Score = Score.Medium;
             }
             if (radioButton3.Checked) 
             {
-                Score = Utils.Score.High;
+                entryScore.Score = Score.High;
+            }
+        }
+        private void checkRadioButton(Score score)
+        {
+            if (score==Score.Low)
+            {
+                radioButton1.Checked = true;
+            }
+            if (score == Score.Medium)
+            {
+                radioButton2.Checked = true;
+            }
+            if (score == Score.High)
+            {
+                radioButton3.Checked = true;
             }
         }
     }
