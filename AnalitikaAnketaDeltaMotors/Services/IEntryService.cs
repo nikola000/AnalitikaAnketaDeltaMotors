@@ -8,5 +8,6 @@ namespace UnitOfWorkExample.Services
     {
         List<Entry> GetEntriesAsync();
         List<Entry> GetEntriesAsync(DateTime startDate,DateTime endDate);
+        Entry GetEntryById(int id);
     }
 }

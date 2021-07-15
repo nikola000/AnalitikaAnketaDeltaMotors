@@ -1,37 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
 using System.Data.Entity;
 using UnitOfWorkExample.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
+using UnitOfWorkExample.Services;
 using AnalitikaAnketaDeltaMotors.Classes;
-
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class ctrlAnswer : UserControl
     {
         Entry entry;
-        EntryScore entryScore;
+        EntryScore entryScoreTemp;
         List<Subtopic> disabledSubtopics;
+        public Subtopic SelectedSubtopic { get; set; }
+        public Classes.Utils.Score SelectedScore { get; set; }
         DatabaseContext db = new DatabaseContext();
+        
         public ctrlAnswer()
         {
             InitializeComponent();
         }
         public ctrlAnswer(Entry entry)
         {
-            this.entry = entry;
-            entryScore = new EntryScore();
-            entryScore.Entry = entry;
-            entryScore.EntryId = entry.Id;
+            this.entry = db.Set<Entry>().Find(entry.Id);
             disabledSubtopics = new List<Subtopic>();
             InitializeComponent();
         }
@@ -62,13 +59,16 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         {
             e.DrawBackground();
             e.DrawFocusRectangle();
-            if (listBox1.Items[e.Index] is Topic)
+            if (listBox1.Items.Count > 0)
             {
-                e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), new Font(Font, FontStyle.Bold), new SolidBrush(ForeColor), e.Bounds.X, e.Bounds.Y);
-            }
-            else
-            {
-                e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), new Font(Font, FontStyle.Regular), new SolidBrush(ForeColor), e.Bounds.X, e.Bounds.Y);
+                if (listBox1.Items[e.Index] is Topic)
+                {
+                    e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), new Font(Font, FontStyle.Bold), new SolidBrush(ForeColor), e.Bounds.X, e.Bounds.Y);
+                }
+                else
+                {
+                    e.Graphics.DrawString(listBox1.Items[e.Index].ToString(), new Font(Font, FontStyle.Regular), new SolidBrush(ForeColor), e.Bounds.X, e.Bounds.Y);
+                }
             }
         }
 
@@ -106,28 +106,29 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             {
                 return;
             }
-            EntryScore entryScoreTemp = new EntryScore();
-            entryScoreTemp = entryScore;
+            entryScoreTemp = new EntryScore();
+            entryScoreTemp.Subtopic = SelectedSubtopic;
+            entryScoreTemp.Score = SelectedScore;
             ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScoreTemp);
             flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
-            entry.EntryScores.Add(entryScore);
+            entry.EntryScores.Add(entryScoreTemp);
             disabledSubtopics.Add(entryScoreTemp.Subtopic);
-            entryScore.Subtopic = null;
+            //entryScore.Subtopic = null;
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton1.Checked)
             {
-                entryScore.Score = Utils.Score.Low;
+                SelectedScore = Utils.Score.Low;
             }
             if (radioButton2.Checked)
             {
-                entryScore.Score = Utils.Score.Medium;
+                SelectedScore = Utils.Score.Medium;
             }
             if (radioButton3.Checked)
             {
-                entryScore.Score = Utils.Score.High;
+                SelectedScore = Utils.Score.High;
             }
         }
 
@@ -136,8 +137,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             if (listBox1.SelectedItem is Topic)
             {
                 listBox1.SelectedItem = null;
+                return;
             }
-            entryScore.Subtopic = (Subtopic)listBox1.SelectedItem;
+            SelectedSubtopic = (Subtopic)listBox1.SelectedItem;
         }
         
         private void subtopicsAvailable()

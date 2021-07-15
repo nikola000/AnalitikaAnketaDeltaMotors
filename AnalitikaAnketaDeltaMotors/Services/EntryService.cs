@@ -34,5 +34,13 @@ namespace UnitOfWorkExample.Services
             }
         }
 
+        public Entry GetEntryById(int id)
+        {
+            using (var unitOfWork = _unitOfWorkFactory.Create())
+            {
+                var entry = unitOfWork.Repository().Find<Entry>(x => x.Id == id).FirstOrDefault();
+                return entry;
+            }
+        }
     }
 }
