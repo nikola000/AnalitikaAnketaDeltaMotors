@@ -136,10 +136,17 @@ namespace AnalitikaAnketaDeltaMotors
                 dataGrid.Dock = DockStyle.Fill;              
                 dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
                 dataGrid.ReadOnly = true;
+                dataGrid.DataError += DataGrid_DataError;
                 tabPage2.Controls.Add(dataGrid);
                 intializeDataGrid(dataGrid);                                
             }
         }
+
+        private void DataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.Cancel=true;
+        }
+
         private void intializeDataGrid(DataGridView dataGrid) 
         {            
             dataGrid.Columns["CreatedAt"].HeaderText = "Datum";
@@ -154,9 +161,9 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
         {
-            int answerId = int.Parse((sender as DataGridView).Rows[(sender as DataGridView).CurrentRow.Index].Cells["Id"].Value.ToString());
+            Entry entry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
-            ctrlAnswer answer = new ctrlAnswer(answerId);
+            ctrlAnswer answer = new ctrlAnswer(entry);
             tabPage3.Controls.Add(answer);
             tabControl1.SelectTab(tabPage3);
         }

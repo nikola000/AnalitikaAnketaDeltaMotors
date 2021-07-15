@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnalitikaAnketaDeltaMotors.Classes;
+using UnitOfWorkExample.UnitOfWork.Models;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
@@ -16,6 +17,12 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         Utils.Score Score;
         public ctrlAnswerGrades()
         {
+            InitializeComponent();
+        }
+        public ctrlAnswerGrades(Subtopic subtopic)
+        {
+            label1.Text = subtopic.Name;
+            label2.Text = subtopic.Topic.Name;
             InitializeComponent();
         }
 

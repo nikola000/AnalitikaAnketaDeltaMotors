@@ -10,19 +10,22 @@ using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
 using System.Data.Entity;
 using UnitOfWorkExample.UnitOfWork.Models;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
+using AnalitikaAnketaDeltaMotors.Classes;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class ctrlAnswer : UserControl
     {
-        int selectedAnswer=0;
+        EntryScore entryScore;
         public ctrlAnswer()
         {
             InitializeComponent();
         }
-        public ctrlAnswer(int n)
+        public ctrlAnswer(Entry entry)
         {
-            selectedAnswer = n;
+            entryScore = new EntryScore();
+            entryScore.Entry = entry;
             InitializeComponent();
         }
 
@@ -41,10 +44,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 }
                 this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
                 this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
-                var nesto= db.Entries.Where(x => x.Id == selectedAnswer).FirstOrDefault().Odgovor;
-                richTextBox1.Text = nesto;
-            }
-            
+                string textAnswer= db.Entries.Where(x => x.Id == entryScore.Entry.Id).FirstOrDefault().Odgovor;
+                richTextBox1.Text = textAnswer;
+            }           
         }
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
@@ -90,6 +92,42 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
                 this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem); ;
             }
+        }
+
+        private void bMark_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem==null)
+            {
+                return;
+            }
+            if (!radioButton1.Checked && !radioButton2.Checked && !radioButton3.Checked)
+            {
+                return;
+            }
+            ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScore.Subtopic);
+        }
+        
+
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton1.Checked)
+            {
+                entryScore.Score = Utils.Score.Low;
+            }
+            if (radioButton2.Checked)
+            {
+                entryScore.Score = Utils.Score.Medium;
+            }
+            if (radioButton3.Checked)
+            {
+                entryScore.Score = Utils.Score.High;
+            }
+        }
+
+        private void listBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            entryScore.Subtopic = (Subtopic)listBox1.SelectedItem;
         }
     }
 }
