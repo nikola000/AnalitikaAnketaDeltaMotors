@@ -38,6 +38,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.bMark = new System.Windows.Forms.Button();
+            this.bClear = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -118,12 +119,15 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(437, 102);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(195, 290);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(212, 290);
             this.flowLayoutPanel1.TabIndex = 7;
+            this.flowLayoutPanel1.WrapContents = false;
             // 
             // bMark
             // 
@@ -135,10 +139,21 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.bMark.UseVisualStyleBackColor = true;
             this.bMark.Click += new System.EventHandler(this.bMark_Click);
             // 
+            // bClear
+            // 
+            this.bClear.Location = new System.Drawing.Point(267, 182);
+            this.bClear.Name = "bClear";
+            this.bClear.Size = new System.Drawing.Size(75, 23);
+            this.bClear.TabIndex = 9;
+            this.bClear.Text = "<<";
+            this.bClear.UseVisualStyleBackColor = true;
+            this.bClear.Click += new System.EventHandler(this.bClear_Click);
+            // 
             // ctrlAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bClear);
             this.Controls.Add(this.bMark);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
@@ -166,5 +181,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button bMark;
+        private System.Windows.Forms.Button bClear;
     }
 }

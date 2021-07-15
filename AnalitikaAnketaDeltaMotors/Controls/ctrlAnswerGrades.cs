@@ -25,7 +25,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         {
             InitializeComponent();
             label1.Text = entryScore.Subtopic.Name;
-            label2.Text = entryScore.Subtopic.Topic.Name;
+            label2.Text = "("+entryScore.Subtopic.Topic.Name+")";
             this.entryScore = entryScore;
             checkRadioButton(entryScore.Score);
         }

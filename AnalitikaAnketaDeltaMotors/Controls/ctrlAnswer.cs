@@ -34,18 +34,8 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
-        {            
-            db.Topics.Include(x => x.Subtopics).Load();
-            foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
-            {
-                listBox1.Items.Add(Topic);
-                foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
-                {
-                    listBox1.Items.Add(Subtopic);
-                }
-            }
-            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+        {
+            fillSubtopics();
             string textAnswer= db.Entries.Where(x => x.Id == entry.Id).FirstOrDefault().Odgovor;
             richTextBox1.Text = textAnswer;                       
         }
@@ -74,24 +64,52 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();            
-            db.Topics.Include(x => x.Subtopics).Load();
-            var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
-            List<Topic> filteredTopics=new List<Topic>();
-            foreach (var item in filtered)
-            {             
-                filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
-            }               
-            foreach (var Topic in filteredTopics)
+            listBox1.Items.Clear();
+            //var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            //foreach (var item in disabledSubtopics)
+            //{
+            //    filtered.Remove(item);
+            //}
+            //List<Topic> filteredTopics=new List<Topic>();
+            //foreach (var item in filtered)
+            //{             
+            //    filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
+            //}
+            //foreach (var item in db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList())
+            //{
+            //    if (!filteredTopics.Contains(item))
+            //    {
+            //        filteredTopics.Add(item);
+            //    }               
+            //}
+            //foreach (var item in db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList())
+            //{
+            //    foreach (var Top in filteredTopics)
+            //    {
+            //        if (Top == item)
+            //        {
+            //            continue;
+            //        }                   
+            //    }
+            //}            
+            //foreach (var Topic in filteredTopics)
+            //{
+            //    listBox1.Items.Add(Topic);
+            //    foreach (var Subtopic in filtered)
+            //    {                    
+            //        if (Subtopic.TopicId == Topic.Id)
+            //            listBox1.Items.Add(Subtopic);
+            //    }
+            //}
+            foreach (var Topic in filterTopics())
             {
                 listBox1.Items.Add(Topic);
-                foreach (var Subtopic in filtered)
-                {                    
+                foreach (var Subtopic in filterSubtopics())
+                {
                     if (Subtopic.TopicId == Topic.Id)
                         listBox1.Items.Add(Subtopic);
                 }
             }
-            subtopicsAvailable();
             this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
         }
@@ -113,6 +131,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
             entry.EntryScores.Add(entryScoreTemp);
             disabledSubtopics.Add(entryScoreTemp.Subtopic);
+            subtopicsAvailable();
             //entryScore.Subtopic = null;
         }
 
@@ -141,13 +160,56 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             }
             SelectedSubtopic = (Subtopic)listBox1.SelectedItem;
         }
-        
+
+        private void fillSubtopics()
+        {
+            foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
+            {
+                listBox1.Items.Add(Topic);
+                foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
+                {
+                    listBox1.Items.Add(Subtopic);
+                }
+            }
+            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+        }
         private void subtopicsAvailable()
         {
             foreach (var item in disabledSubtopics)
             {
                 listBox1.Items.Remove(item);
             }            
+        }
+
+        private void bClear_Click(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            disabledSubtopics.Clear();
+            listBox1.Items.Clear();
+            fillSubtopics();
+        }
+        private List<Subtopic> filterSubtopics()
+        {
+            var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            foreach (var item in disabledSubtopics)
+            {
+                filtered.Remove(item);
+            }
+            return filtered;
+        }
+        private List<Topic> filterTopics()
+        {
+            var filtered = db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            foreach (var item in filterSubtopics())
+            {
+                var temp = db.Topics.Where(x => x.Id==item.TopicId).FirstOrDefault();
+                if (!filtered.Contains(temp))
+                {
+                    filtered.Add(temp);
+                }
+            }
+            return filtered;
         }
     }
 }
