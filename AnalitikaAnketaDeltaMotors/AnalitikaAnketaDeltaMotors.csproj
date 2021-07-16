@@ -98,11 +98,11 @@
     <Compile Include="Controls\CtrlAnswerGrades.Designer.cs">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ctrlTagBookmarks.cs">
+    <Compile Include="Controls\CtrlTagBookmarks.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ctrlTagBookmarks.Designer.cs">
-      <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>
+    <Compile Include="Controls\CtrlTagBookmarks.Designer.cs">
+      <DependentUpon>CtrlTagBookmarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AddingUser.cs">
       <SubType>Form</SubType>
@@ -248,8 +248,8 @@
     <EmbeddedResource Include="Controls\CtrlAnswerGrades.resx">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ctrlTagBookmarks.resx">
-      <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CtrlTagBookmarks.resx">
+      <DependentUpon>CtrlTagBookmarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddingUser.resx">
       <DependentUpon>AddingUser.cs</DependentUpon>

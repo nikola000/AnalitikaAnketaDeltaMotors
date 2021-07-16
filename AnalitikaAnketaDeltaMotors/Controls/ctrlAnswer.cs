@@ -159,6 +159,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             flowLayoutPanel1.Controls.Clear();
             disabledSubtopics.Clear();
             listBox1.Items.Clear();
+            this.entry.EntryScores.Clear();
             fillSubtopics();
         }
         private List<Subtopic> filterSubtopics()
