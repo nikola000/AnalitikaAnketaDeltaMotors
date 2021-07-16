@@ -65,42 +65,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
-            //var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
-            //foreach (var item in disabledSubtopics)
-            //{
-            //    filtered.Remove(item);
-            //}
-            //List<Topic> filteredTopics=new List<Topic>();
-            //foreach (var item in filtered)
-            //{             
-            //    filteredTopics = db.Topics.Where(x => x.Name.Contains(textBox1.Text) || x.Id == item.TopicId).ToList();
-            //}
-            //foreach (var item in db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList())
-            //{
-            //    if (!filteredTopics.Contains(item))
-            //    {
-            //        filteredTopics.Add(item);
-            //    }               
-            //}
-            //foreach (var item in db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList())
-            //{
-            //    foreach (var Top in filteredTopics)
-            //    {
-            //        if (Top == item)
-            //        {
-            //            continue;
-            //        }                   
-            //    }
-            //}            
-            //foreach (var Topic in filteredTopics)
-            //{
-            //    listBox1.Items.Add(Topic);
-            //    foreach (var Subtopic in filtered)
-            //    {                    
-            //        if (Subtopic.TopicId == Topic.Id)
-            //            listBox1.Items.Add(Subtopic);
-            //    }
-            //}
             foreach (var Topic in filterTopics())
             {
                 listBox1.Items.Add(Topic);
