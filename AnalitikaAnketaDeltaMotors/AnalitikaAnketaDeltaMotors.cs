@@ -1,14 +1,9 @@
-﻿using AnalitikaAnketaDeltaMotors.Classes;
-using AnalitikaAnketaDeltaMotors.Controls;
+﻿using AnalitikaAnketaDeltaMotors.Controls;
 using AnalitikaAnketaDeltaMotors.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitOfWorkExample.Services;
 using UnitOfWorkExample.UnitOfWork;
@@ -21,7 +16,7 @@ namespace AnalitikaAnketaDeltaMotors
     {
         private readonly IUserService _userService;
         private readonly IEntryService _entryService;
-        DatabaseContext db = new DatabaseContext();
+        DatabaseContext dbContext = new DatabaseContext();
         LogOn frm2;
         User user;
         Import frm3;
@@ -132,19 +127,25 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void bUcitaj_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabPage2)
-            {
-                tabPage2.Controls.Clear();
-                DataGridView dataGrid = new DataGridView();
-                dataGrid.Dock = DockStyle.Fill;
-                //dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
-                dataGrid.DataSource = db.Entries.Include(x => x.EntryScores).Where(x => x.CreatedAt >= dateTimePicker1.Value 
-                                                                                        && x.CreatedAt <= dateTimePicker2.Value).ToList();
-                dataGrid.ReadOnly = true;
-                dataGrid.DataError += DataGrid_DataError;
-                tabPage2.Controls.Add(dataGrid);
-                intializeDataGrid(dataGrid);                                
-            }
+            dataGridViewRezultatiAnkete.AutoGenerateColumns = true;
+
+            dataGridViewRezultatiAnkete.DataSource = dbContext.Entries
+                .Include(x => x.EntryScores
+                    .Select(y => y.Subtopic)
+                    .Select(z => z.Topic))
+                .Where(x => x.CreatedAt >= dateTimePicker1.Value &&
+                            x.CreatedAt <= dateTimePicker2.Value).ToList();
+
+            intializeDataGrid(dataGridViewRezultatiAnkete);
+        }
+
+        private void DataGridViewRezultatiAnkete_Paint(object sender, PaintEventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewRezultatiAnkete.Rows)
+                if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).EntryScores.Count > 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                }
         }
 
         private void DataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -153,24 +154,30 @@ namespace AnalitikaAnketaDeltaMotors
         }
 
         private void intializeDataGrid(DataGridView dataGrid) 
-        {            
-            dataGrid.Columns["CreatedAt"].HeaderText = "Datum";
-            dataGrid.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGrid.Columns["Ocena"].Visible = false;
-            dataGrid.Columns["PredlogPoboljsanja"].Visible = false;
-            dataGrid.Columns["Kontakt"].Visible = false;
-            dataGrid.Columns["ImportDataId"].Visible = false;
-            dataGrid.Columns["ImportData"].Visible = false;
-            dataGrid.DoubleClick += DataGrid_DoubleClick;
+        {
+            dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
+            dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = false;
+
+            dataGridViewRezultatiAnkete.DataError += DataGrid_DataError;
+            dataGridViewRezultatiAnkete.Paint += DataGridViewRezultatiAnkete_Paint;
+            dataGridViewRezultatiAnkete.DoubleClick += DataGrid_DoubleClick;
         }
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
         {
             Entry entry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
-            CtrlAnswer answer = new CtrlAnswer(entry);
+            CtrlAnswer answer = new CtrlAnswer(entry, dbContext);
             tabPage3.Controls.Add(answer);
             tabControl1.SelectTab(tabPage3);
         }
+
+
     }
 }

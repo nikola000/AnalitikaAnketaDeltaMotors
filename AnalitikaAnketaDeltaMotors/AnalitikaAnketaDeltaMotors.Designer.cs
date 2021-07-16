@@ -58,10 +58,13 @@ namespace AnalitikaAnketaDeltaMotors
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridViewRezultatiAnkete = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRezultatiAnkete)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -275,6 +278,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.dataGridViewRezultatiAnkete);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -291,6 +295,19 @@ namespace AnalitikaAnketaDeltaMotors
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Odgovori";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewRezultatiAnkete
+            // 
+            this.dataGridViewRezultatiAnkete.AllowUserToAddRows = false;
+            this.dataGridViewRezultatiAnkete.AllowUserToDeleteRows = false;
+            this.dataGridViewRezultatiAnkete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRezultatiAnkete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRezultatiAnkete.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewRezultatiAnkete.Name = "dataGridViewRezultatiAnkete";
+            this.dataGridViewRezultatiAnkete.ReadOnly = true;
+            this.dataGridViewRezultatiAnkete.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewRezultatiAnkete.Size = new System.Drawing.Size(626, 386);
+            this.dataGridViewRezultatiAnkete.TabIndex = 0;
             // 
             // AnalitikaAnketaDeltaMotors
             // 
@@ -314,6 +331,8 @@ namespace AnalitikaAnketaDeltaMotors
             this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRezultatiAnkete)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,6 +367,7 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridViewRezultatiAnkete;
     }
 }
 

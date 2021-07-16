@@ -20,22 +20,22 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         List<Subtopic> disabledSubtopics;
         public Subtopic SelectedSubtopic { get; set; }
         public Classes.Utils.Score SelectedScore { get; set; }
-        DatabaseContext db = new DatabaseContext();
+        DatabaseContext dbContext = new DatabaseContext();
         
         public CtrlAnswer()
         {
             InitializeComponent();
         }
-        public CtrlAnswer(Entry entry)
+        public CtrlAnswer(Entry entry, DatabaseContext dbContext)
         {
-            this.entry = db.Set<Entry>().Find(entry.Id);
+            this.entry = entry;
+            this.dbContext = dbContext;
             disabledSubtopics = new List<Subtopic>();            
             InitializeComponent();
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
         {
-            db.EntryScores.Include(x => x.Subtopic.Topic).Load();
             foreach (var item in this.entry.EntryScores)
             {
                 ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(item);
@@ -43,8 +43,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 disabledSubtopics.Add(item.Subtopic);
             }
             fillSubtopics();
-            string textAnswer= db.Entries.Where(x => x.Id == entry.Id).FirstOrDefault().Odgovor;
-            richTextBox1.Text = textAnswer;                       
+            richTextBox1.Text = entry.Odgovor;
         }
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
@@ -134,10 +133,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void fillSubtopics()
         {
-            foreach (var Topic in db.Set<Topic>().AsEnumerable().ToList())
+            foreach (var Topic in dbContext.Set<Topic>().AsEnumerable().ToList())
             {
                 listBox1.Items.Add(Topic);
-                foreach (var Subtopic in db.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
+                foreach (var Subtopic in dbContext.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
                 {
                     listBox1.Items.Add(Subtopic);
                 }
@@ -164,7 +163,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         }
         private List<Subtopic> filterSubtopics()
         {
-            var filtered = db.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            var filtered = dbContext.Subtopics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
             foreach (var item in disabledSubtopics)
             {
                 filtered.Remove(item);
@@ -173,10 +172,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         }
         private List<Topic> filterTopics()
         {
-            var filtered = db.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
+            var filtered = dbContext.Topics.Where(x => x.Name.Contains(textBox1.Text)).ToList();
             foreach (var item in filterSubtopics())
             {
-                var temp = db.Topics.Where(x => x.Id==item.TopicId).FirstOrDefault();
+                var temp = dbContext.Topics.Where(x => x.Id==item.TopicId).FirstOrDefault();
                 if (!filtered.Contains(temp))
                 {
                     filtered.Add(temp);
@@ -185,9 +184,12 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             return filtered;
         }
 
+        
         private void bSave_Click(object sender, EventArgs e)
         {
-            db.SaveChanges();
+            dbContext.SaveChanges();
         }
+
+
     }
 }
