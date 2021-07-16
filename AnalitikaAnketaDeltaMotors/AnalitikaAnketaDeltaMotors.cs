@@ -146,6 +146,11 @@ namespace AnalitikaAnketaDeltaMotors
                 {
                     row.DefaultCellStyle.BackColor = Color.LightGreen;
                 }
+                else
+                {
+                    row.DefaultCellStyle.BackColor = Color.White;
+
+                }
         }
 
         private void DataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
