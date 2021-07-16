@@ -14,6 +14,7 @@ namespace UnitOfWorkExample.UnitOfWork
         public DbSet<ImportData> ImportDatas { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Subtopic> Subtopics { get; set; }
+        public DbSet<Settings> Settings { get; set; }
         // Server=localhost\SQLEXPRESS;Database=AnalitikaAnketaDB;Trusted_Connection=True;
         //public DatabaseContext() : base("AnalitikaConnection")
         public DatabaseContext() : base(AnalitikaAnketaDeltaMotors.Classes.Configuration.GetInstance().ConnectionString)

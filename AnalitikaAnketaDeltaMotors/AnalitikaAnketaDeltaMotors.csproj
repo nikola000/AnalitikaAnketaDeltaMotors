@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202107121413215_RelationshipTopicSubtopic.designer.cs">
       <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107161308242_Settings.cs" />
+    <Compile Include="Migrations\202107161308242_Settings.designer.cs">
+      <DependentUpon>202107161308242_Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -213,7 +217,7 @@
     <Compile Include="UnitOfWork\Models\Entry.cs" />
     <Compile Include="UnitOfWork\Models\Group.cs" />
     <Compile Include="UnitOfWork\Models\ImportData.cs" />
-    <Compile Include="UnitOfWork\Models\Podesavanje.cs" />
+    <Compile Include="UnitOfWork\Models\Settings.cs" />
     <Compile Include="UnitOfWork\Models\Subtopic.cs" />
     <Compile Include="UnitOfWork\Models\Tag.cs" />
     <Compile Include="UnitOfWork\Models\Topic.cs" />
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107121413215_RelationshipTopicSubtopic.resx">
       <DependentUpon>202107121413215_RelationshipTopicSubtopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107161308242_Settings.resx">
+      <DependentUpon>202107161308242_Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
