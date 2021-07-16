@@ -30,6 +30,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         {
             this.entry = db.Set<Entry>().Find(entry.Id);
             disabledSubtopics = new List<Subtopic>();
+            foreach (var item in entry.EntryScores)
+            {
+                disabledSubtopics.Add(item.Subtopic);
+            }
             InitializeComponent();
         }
 
@@ -135,6 +139,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                     listBox1.Items.Add(Subtopic);
                 }
             }
+            subtopicsAvailable();
             this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
         }
@@ -174,6 +179,11 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 }
             }
             return filtered;
+        }
+
+        private void bSave_Click(object sender, EventArgs e)
+        {
+            db.SaveChanges();
         }
     }
 }

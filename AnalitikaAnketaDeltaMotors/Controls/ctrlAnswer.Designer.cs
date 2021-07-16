@@ -39,6 +39,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.bMark = new System.Windows.Forms.Button();
             this.bClear = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,10 +150,21 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.bClear.UseVisualStyleBackColor = true;
             this.bClear.Click += new System.EventHandler(this.bClear_Click);
             // 
+            // bSave
+            // 
+            this.bSave.Location = new System.Drawing.Point(267, 349);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(75, 23);
+            this.bSave.TabIndex = 10;
+            this.bSave.Text = "Save";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
             // ctrlAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bSave);
             this.Controls.Add(this.bClear);
             this.Controls.Add(this.bMark);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -182,5 +194,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button bMark;
         private System.Windows.Forms.Button bClear;
+        private System.Windows.Forms.Button bSave;
     }
 }
