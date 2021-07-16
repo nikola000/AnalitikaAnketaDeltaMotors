@@ -21,15 +21,16 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         public Subtopic SelectedSubtopic { get; set; }
         public Classes.Utils.Score SelectedScore { get; set; }
         DatabaseContext dbContext = new DatabaseContext();
-        
+        Action<int> changeEntry;
         public CtrlAnswer()
         {
             InitializeComponent();
         }
-        public CtrlAnswer(Entry entry, DatabaseContext dbContext)
+        public CtrlAnswer(Entry entry, DatabaseContext dbContext, Action<int> changeEntry)
         {
             this.entry = entry;
             this.dbContext = dbContext;
+            this.changeEntry = changeEntry;
             disabledSubtopics = new List<Subtopic>();            
             InitializeComponent();
         }
@@ -209,6 +210,16 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             }
             listBox1.Items.Clear();
             fillSubtopics();
+        }
+
+        private void bNext_Click(object sender, EventArgs e)
+        {
+            changeEntry.Invoke(1);
+        }
+
+        private void bPrevious_Click(object sender, EventArgs e)
+        {
+            changeEntry.Invoke(-1);
         }
     }
 }

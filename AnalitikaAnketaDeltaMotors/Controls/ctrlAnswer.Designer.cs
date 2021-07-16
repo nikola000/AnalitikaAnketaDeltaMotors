@@ -41,6 +41,8 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.bClear = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.bNext = new System.Windows.Forms.Button();
+            this.bPrevious = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,9 +66,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(0, 0);
+            this.richTextBox1.Location = new System.Drawing.Point(38, 0);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(632, 70);
+            this.richTextBox1.Size = new System.Drawing.Size(554, 70);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -171,10 +173,32 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bNext
+            // 
+            this.bNext.Location = new System.Drawing.Point(591, 0);
+            this.bNext.Name = "bNext";
+            this.bNext.Size = new System.Drawing.Size(41, 70);
+            this.bNext.TabIndex = 12;
+            this.bNext.Text = ">";
+            this.bNext.UseVisualStyleBackColor = true;
+            this.bNext.Click += new System.EventHandler(this.bNext_Click);
+            // 
+            // bPrevious
+            // 
+            this.bPrevious.Location = new System.Drawing.Point(0, 0);
+            this.bPrevious.Name = "bPrevious";
+            this.bPrevious.Size = new System.Drawing.Size(41, 70);
+            this.bPrevious.TabIndex = 13;
+            this.bPrevious.Text = "<";
+            this.bPrevious.UseVisualStyleBackColor = true;
+            this.bPrevious.Click += new System.EventHandler(this.bPrevious_Click);
+            // 
             // CtrlAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bNext);
+            this.Controls.Add(this.bPrevious);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.bClear);
@@ -208,5 +232,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private System.Windows.Forms.Button bClear;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bNext;
+        private System.Windows.Forms.Button bPrevious;
     }
 }

@@ -9,6 +9,7 @@ using UnitOfWorkExample.Services;
 using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
 using System.Data.Entity;
+using System.Collections.Generic;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -26,7 +27,8 @@ namespace AnalitikaAnketaDeltaMotors
         Podesavanja frmPodesavanja;
         Topics frmTopic;
         Subtopics frmSubtopic;
-
+        Entry entry;
+        List<Entry> listOfEntries;
         public AnalitikaAnketaDeltaMotors(IUserService userService,IEntryService entryService)
         {
             this._userService = userService;
@@ -129,7 +131,7 @@ namespace AnalitikaAnketaDeltaMotors
         {
             dataGridViewRezultatiAnkete.AutoGenerateColumns = true;
 
-            dataGridViewRezultatiAnkete.DataSource = dbContext.Entries
+            dataGridViewRezultatiAnkete.DataSource = listOfEntries = dbContext.Entries
                 .Include(x => x.EntryScores
                     .Select(y => y.Subtopic)
                     .Select(z => z.Topic))
@@ -176,13 +178,31 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
         {
-            Entry entry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
+            entry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
-            CtrlAnswer answer = new CtrlAnswer(entry, dbContext);
+            CtrlAnswer answer = new CtrlAnswer(entry, dbContext, changeEntry);
             tabPage3.Controls.Add(answer);
             tabControl1.SelectTab(tabPage3);
         }
-
+        public void changeEntry(int direction)
+        {
+            if (listOfEntries.IndexOf(entry) + direction >= listOfEntries.Count)
+            {
+                entry = listOfEntries[0];
+            }
+            else if (listOfEntries.IndexOf(entry) + direction < 0)
+            {
+                entry = listOfEntries[listOfEntries.Count-1];
+            }
+            else
+            {
+                entry = listOfEntries[listOfEntries.IndexOf(entry)+direction];
+            }          
+            tabPage3.Controls.Clear();
+            CtrlAnswer answer = new CtrlAnswer(entry, dbContext, changeEntry);
+            tabPage3.Controls.Add(answer);
+            tabControl1.SelectTab(tabPage3);
+        }
 
     }
 }
