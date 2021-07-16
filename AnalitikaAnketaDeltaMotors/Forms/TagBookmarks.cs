@@ -16,7 +16,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class TagBookmarks : Form
     {
-        ctrlTagBookmarks tagBookmarks;
+        CtrlTagBookmarks tagBookmarks;
         public List<Tag> Tags;
         public TagBookmarks()
         {
@@ -29,7 +29,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         }
         private void TagBookmarks_Load(object sender, EventArgs e)
         {
-            tagBookmarks = new ctrlTagBookmarks(Tags);
+            tagBookmarks = new CtrlTagBookmarks(Tags);
             tagBookmarks.Dock = DockStyle.Fill;
             Controls.Add(tagBookmarks);
         }

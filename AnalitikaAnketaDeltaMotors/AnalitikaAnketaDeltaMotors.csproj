@@ -86,17 +86,17 @@
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Utils.cs" />
-    <Compile Include="Controls\ctrlAnswer.cs">
+    <Compile Include="Controls\CtrlAnswer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ctrlAnswer.Designer.cs">
-      <DependentUpon>ctrlAnswer.cs</DependentUpon>
+    <Compile Include="Controls\CtrlAnswer.Designer.cs">
+      <DependentUpon>CtrlAnswer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ctrlAnswerGrades.cs">
+    <Compile Include="Controls\CtrlAnswerGrades.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ctrlAnswerGrades.Designer.cs">
-      <DependentUpon>ctrlAnswerGrades.cs</DependentUpon>
+    <Compile Include="Controls\CtrlAnswerGrades.Designer.cs">
+      <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ctrlTagBookmarks.cs">
       <SubType>UserControl</SubType>
@@ -242,11 +242,11 @@
     <EmbeddedResource Include="AnalitikaAnketaDeltaMotors.resx">
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ctrlAnswer.resx">
-      <DependentUpon>ctrlAnswer.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CtrlAnswer.resx">
+      <DependentUpon>CtrlAnswer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\ctrlAnswerGrades.resx">
-      <DependentUpon>ctrlAnswerGrades.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\CtrlAnswerGrades.resx">
+      <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ctrlTagBookmarks.resx">
       <DependentUpon>ctrlTagBookmarks.cs</DependentUpon>

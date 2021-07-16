@@ -1,7 +1,7 @@
 ﻿
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
-    partial class ctrlTagBookmarks
+    partial class CtrlTagBookmarks
     {
         /// <summary> 
         /// Required designer variable.

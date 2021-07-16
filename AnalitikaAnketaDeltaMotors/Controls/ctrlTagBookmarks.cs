@@ -13,14 +13,14 @@ using UnitOfWorkExample.UnitOfWork;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
-    public partial class ctrlTagBookmarks : UserControl
+    public partial class CtrlTagBookmarks : UserControl
     {   
         public List<Tag> Tags;
-        public ctrlTagBookmarks()
+        public CtrlTagBookmarks()
         {
             InitializeComponent();
         }
-        public ctrlTagBookmarks(List<Tag> Tags)
+        public CtrlTagBookmarks(List<Tag> Tags)
         {
             this.Tags = Tags;
             InitializeComponent();

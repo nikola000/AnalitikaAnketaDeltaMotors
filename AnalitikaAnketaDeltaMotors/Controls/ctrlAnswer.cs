@@ -13,7 +13,7 @@ using AnalitikaAnketaDeltaMotors.Classes;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
-    public partial class ctrlAnswer : UserControl
+    public partial class CtrlAnswer : UserControl
     {
         Entry entry;
         EntryScore entryScoreTemp;
@@ -22,23 +22,26 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         public Classes.Utils.Score SelectedScore { get; set; }
         DatabaseContext db = new DatabaseContext();
         
-        public ctrlAnswer()
+        public CtrlAnswer()
         {
             InitializeComponent();
         }
-        public ctrlAnswer(Entry entry)
+        public CtrlAnswer(Entry entry)
         {
             this.entry = db.Set<Entry>().Find(entry.Id);
-            disabledSubtopics = new List<Subtopic>();
-            foreach (var item in entry.EntryScores)
-            {
-                disabledSubtopics.Add(item.Subtopic);
-            }
+            disabledSubtopics = new List<Subtopic>();            
             InitializeComponent();
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
         {
+            db.EntryScores.Include(x => x.Subtopic.Topic).Load();
+            foreach (var item in this.entry.EntryScores)
+            {
+                ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(item);
+                flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
+                disabledSubtopics.Add(item.Subtopic);
+            }
             fillSubtopics();
             string textAnswer= db.Entries.Where(x => x.Id == entry.Id).FirstOrDefault().Odgovor;
             richTextBox1.Text = textAnswer;                       

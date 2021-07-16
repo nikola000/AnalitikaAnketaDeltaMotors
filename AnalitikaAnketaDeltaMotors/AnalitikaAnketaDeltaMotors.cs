@@ -163,7 +163,7 @@ namespace AnalitikaAnketaDeltaMotors
         {
             Entry entry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
-            ctrlAnswer answer = new ctrlAnswer(entry);
+            CtrlAnswer answer = new CtrlAnswer(entry);
             tabPage3.Controls.Add(answer);
             tabControl1.SelectTab(tabPage3);
         }

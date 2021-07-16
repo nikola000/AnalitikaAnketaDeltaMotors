@@ -1,7 +1,7 @@
 ﻿
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
-    partial class ctrlAnswer
+    partial class CtrlAnswer
     {
         /// <summary> 
         /// Required designer variable.
