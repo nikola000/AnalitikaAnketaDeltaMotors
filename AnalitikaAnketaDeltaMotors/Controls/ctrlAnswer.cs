@@ -158,10 +158,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             flowLayoutPanel1.Controls.Clear();
             disabledSubtopics.Clear();
             listBox1.Items.Clear();
-            foreach (var item in this.entry.EntryScores.ToList())
-            {
-                dbContext.Set<EntryScore>().Remove(item);
-            }
+            dbContext.Set<EntryScore>().RemoveRange(this.entry.EntryScores);
             fillSubtopics();
         }
         private List<Subtopic> filterSubtopics()
@@ -193,6 +190,25 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             dbContext.SaveChanges();
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach (var item in flowLayoutPanel1.Controls)
+            {
+                if ((item as ctrlAnswerGrades).selected)
+                {
+                    disabledSubtopics.Remove((item as ctrlAnswerGrades).entryScore.Subtopic);
+                    dbContext.Set<EntryScore>().Remove((item as ctrlAnswerGrades).entryScore);
+                }
+            }
+            flowLayoutPanel1.Controls.Clear();
+            foreach (var item in this.entry.EntryScores)
+            {
+                ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(item);
+                flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
+                disabledSubtopics.Add(item.Subtopic);
+            }
+            listBox1.Items.Clear();
+            fillSubtopics();
+        }
     }
 }

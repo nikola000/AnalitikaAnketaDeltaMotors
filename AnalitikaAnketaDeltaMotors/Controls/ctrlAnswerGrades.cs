@@ -17,6 +17,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
     public partial class ctrlAnswerGrades : UserControl
     {
         public EntryScore entryScore;
+        public bool selected = false;
         public ctrlAnswerGrades()
         {
             InitializeComponent();
@@ -59,6 +60,17 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             {
                 radioButton3.Checked = true;
             }
+        }
+
+        private void ctrlAnswerGrades_Click(object sender, EventArgs e)
+        {
+            foreach (var item in (sender as ctrlAnswerGrades).Parent.Controls)
+            {
+                (item as ctrlAnswerGrades).BackColor = Color.White;
+                (item as ctrlAnswerGrades).selected = false;
+            }
+            this.BackColor = Color.LightGreen;
+            this.selected = true;
         }
     }
 }

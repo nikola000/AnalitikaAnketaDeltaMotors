@@ -118,6 +118,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ctrlAnswerGrades";
             this.Size = new System.Drawing.Size(191, 76);
+            this.Click += new System.EventHandler(this.ctrlAnswerGrades_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

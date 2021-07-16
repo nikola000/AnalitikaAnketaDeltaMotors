@@ -40,6 +40,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.bMark = new System.Windows.Forms.Button();
             this.bClear = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,10 +161,21 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
-            // ctrlAnswer
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(267, 140);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "<";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // CtrlAnswer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.bClear);
             this.Controls.Add(this.bMark);
@@ -172,7 +184,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
-            this.Name = "ctrlAnswer";
+            this.Name = "CtrlAnswer";
             this.Size = new System.Drawing.Size(632, 392);
             this.Load += new System.EventHandler(this.ctrlAnswer_Load);
             this.panel1.ResumeLayout(false);
@@ -195,5 +207,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private System.Windows.Forms.Button bMark;
         private System.Windows.Forms.Button bClear;
         private System.Windows.Forms.Button bSave;
+        private System.Windows.Forms.Button button1;
     }
 }
