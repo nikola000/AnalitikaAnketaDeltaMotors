@@ -11,7 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitOfWorkExample.Services;
+using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
+using System.Data.Entity;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -19,6 +21,7 @@ namespace AnalitikaAnketaDeltaMotors
     {
         private readonly IUserService _userService;
         private readonly IEntryService _entryService;
+        DatabaseContext db = new DatabaseContext();
         LogOn frm2;
         User user;
         Import frm3;
@@ -133,8 +136,10 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 tabPage2.Controls.Clear();
                 DataGridView dataGrid = new DataGridView();
-                dataGrid.Dock = DockStyle.Fill;              
-                dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
+                dataGrid.Dock = DockStyle.Fill;
+                //dataGrid.DataSource = _entryService.GetEntriesAsync(dateTimePicker1.Value, dateTimePicker2.Value);
+                dataGrid.DataSource = db.Entries.Include(x => x.EntryScores).Where(x => x.CreatedAt >= dateTimePicker1.Value 
+                                                                                        && x.CreatedAt <= dateTimePicker2.Value).ToList();
                 dataGrid.ReadOnly = true;
                 dataGrid.DataError += DataGrid_DataError;
                 tabPage2.Controls.Add(dataGrid);

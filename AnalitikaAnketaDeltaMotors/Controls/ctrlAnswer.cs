@@ -87,7 +87,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void bMark_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem==null)
+            if (listBox1.SelectedItem == null)
             {
                 return;
             }
