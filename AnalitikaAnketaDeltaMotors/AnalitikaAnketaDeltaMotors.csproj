@@ -132,7 +132,7 @@
     </Compile>
     <Compile Include="Forms\TagBookmarks.Designer.cs">
       <DependentUpon>TagBookmarks.cs</DependentUpon>
-	  </Compile>
+    </Compile>
     <Compile Include="Forms\Subtopics.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +213,7 @@
     <Compile Include="UnitOfWork\Models\Entry.cs" />
     <Compile Include="UnitOfWork\Models\Group.cs" />
     <Compile Include="UnitOfWork\Models\ImportData.cs" />
+    <Compile Include="UnitOfWork\Models\Podesavanje.cs" />
     <Compile Include="UnitOfWork\Models\Subtopic.cs" />
     <Compile Include="UnitOfWork\Models\Tag.cs" />
     <Compile Include="UnitOfWork\Models\Topic.cs" />
@@ -245,7 +246,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TagBookmarks.resx">
       <DependentUpon>TagBookmarks.cs</DependentUpon>
-	  </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Subtopics.resx">
       <DependentUpon>Subtopics.cs</DependentUpon>
     </EmbeddedResource>
