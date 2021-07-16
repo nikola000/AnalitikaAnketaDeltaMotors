@@ -69,7 +69,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 (item as ctrlAnswerGrades).BackColor = Color.White;
                 (item as ctrlAnswerGrades).selected = false;
             }
-            this.BackColor = Color.LightGreen;
+            this.BackColor = Color.LightSkyBlue;
             this.selected = true;
         }
     }
