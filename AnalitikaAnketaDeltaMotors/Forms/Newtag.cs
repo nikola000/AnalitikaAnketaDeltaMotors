@@ -36,10 +36,12 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+       
             Tag newTag = new Tag();
-            if (textBox1.Text.Trim().Length > 1)
+          
+
+        private void button1_Click(object sender, EventArgs e)
+        {  if (textBox1.Text.Trim().Length > 1)
             {
                 newTag.Name = textBox1.Text;
 
@@ -51,9 +53,11 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             {
                 MessageBox.Show("unesite neki tekst");
             }
+        
         }
-
-      
     }
-}
+           
+
+    }
+
 
