@@ -31,6 +31,7 @@ namespace AnalitikaAnketaDeltaMotors
         Subtopics frmSubtopic;
         CtrlTagBookmarks _cntrlTags;
         TagBookmarks _fitlerTagDialog;
+        SubtopicBookmarks _fitlerSubtopicDialog;
         public List<Tag> FilterTags { get; set; }
         public List<Subtopic> FilterSubtopics { get; set; }
         public IEnumerable<Entry> SearchedEntries { get; set; }
@@ -382,7 +383,10 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void buttonOpenFilterTopic_Click(object sender, EventArgs e)
         {
-           // ovde poziv filtera
+            _fitlerSubtopicDialog = new SubtopicBookmarks(FilterSubtopics);
+            _fitlerSubtopicDialog.ShowDialog();
+            FilterSubtopics = _fitlerSubtopicDialog.Subtopics;
+            labelFilterTopic.Text= "( " + FilterSubtopics.Count() + " )";
         }
     }
 }

@@ -98,6 +98,12 @@
     <Compile Include="Controls\CtrlAnswerGrades.Designer.cs">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CtrlSubtopicBookmarks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlSubtopicBookmarks.Designer.cs">
+      <DependentUpon>CtrlSubtopicBookmarks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CtrlTagBookmarks.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,12 @@
     </Compile>
     <Compile Include="Forms\Podesavanja.Designer.cs">
       <DependentUpon>Podesavanja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SubtopicBookmarks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SubtopicBookmarks.Designer.cs">
+      <DependentUpon>SubtopicBookmarks.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TagBookmarks.cs">
       <SubType>Form</SubType>
@@ -256,6 +268,9 @@
     <EmbeddedResource Include="Controls\CtrlAnswerGrades.resx">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlSubtopicBookmarks.resx">
+      <DependentUpon>CtrlSubtopicBookmarks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlTagBookmarks.resx">
       <DependentUpon>CtrlTagBookmarks.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Podesavanja.resx">
       <DependentUpon>Podesavanja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SubtopicBookmarks.resx">
+      <DependentUpon>SubtopicBookmarks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TagBookmarks.resx">
       <DependentUpon>TagBookmarks.cs</DependentUpon>
