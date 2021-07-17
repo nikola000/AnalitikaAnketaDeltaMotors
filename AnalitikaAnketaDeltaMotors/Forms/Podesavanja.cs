@@ -20,6 +20,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             InitializeComponent();
             UcitajFajl();
+          
         }
 
         private void UcitajFajl()
@@ -75,6 +76,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 {
                     automatskoCuvanje.Value = 1;
                 }
+
                 MessageBox.Show("Podesavanja su dodata u program");
             }
             else
@@ -83,8 +85,13 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 automatskoCuvanje.Name = "automatsko_cuvanje";
                 MessageBox.Show("Podesavanja su azurirana u program");
             }       
+            }
+
+        private void Podesavanja_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.Save();
         }
-        }
+    }
     }
 
 

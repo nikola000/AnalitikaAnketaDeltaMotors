@@ -78,21 +78,25 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(409, 74);
+            this.checkBox1.Checked = global::AnalitikaAnketaDeltaMotors.Properties.Settings.Default.checkBox1;
+            this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::AnalitikaAnketaDeltaMotors.Properties.Settings.Default, "checkBox1", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox1.Location = new System.Drawing.Point(427, 71);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 17);
+            this.checkBox1.Size = new System.Drawing.Size(167, 17);
             this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "listajOdgovore";
+            this.checkBox1.Text = "listaj_samo_odgovore_koji_su";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(523, 74);
+            this.checkBox3.Checked = global::AnalitikaAnketaDeltaMotors.Properties.Settings.Default.checkBox3;
+            this.checkBox3.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::AnalitikaAnketaDeltaMotors.Properties.Settings.Default, "checkBox3", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBox3.Location = new System.Drawing.Point(427, 110);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(120, 17);
+            this.checkBox3.Size = new System.Drawing.Size(125, 17);
             this.checkBox3.TabIndex = 7;
-            this.checkBox3.Text = "automatskoCuvanje";
+            this.checkBox3.Text = "automatsko_cuvanje";
             this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // Podesavanja
@@ -108,6 +112,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.Controls.Add(this.textBox1);
             this.Name = "Podesavanja";
             this.Text = "podesavanja";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Podesavanja_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
