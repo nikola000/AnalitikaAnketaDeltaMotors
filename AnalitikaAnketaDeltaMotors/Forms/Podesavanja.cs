@@ -10,30 +10,18 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class Podesavanja : Form
     {
-     
-        Settings listajOdgovore= new Settings();
+        Settings listajOdgovore = new Settings();
         Settings automatskoCuvanje = new Settings();
-
-
-
         public Podesavanja()
         {
             InitializeComponent();
             UcitajFajl();
-          
-        }
 
+        }
         private void UcitajFajl()
         {
-            textBox1.Text = ConfigHelper.ReadConfigFile(); 
+            textBox1.Text = ConfigHelper.ReadConfigFile();
         }
-
-
-
-
-
-
-
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -84,15 +72,24 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 listajOdgovore.Name = "listaj_samo_nekodirane";
                 automatskoCuvanje.Name = "automatsko_cuvanje";
                 MessageBox.Show("Podesavanja su azurirana u program");
-            }       
             }
+        }
 
-        private void Podesavanja_FormClosed(object sender, FormClosedEventArgs e)
+        //private void Podesavanja_FormClosed(object sender, FormClosedEventArgs e)
+        //{
+        //    Properties.Settings.Default.Save();
+        //}
+
+        private void Podesavanja_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            {
+                Properties.Settings.Default.Save();
+            }
         }
     }
-    }
+}
+   
+ 
 
 
 
