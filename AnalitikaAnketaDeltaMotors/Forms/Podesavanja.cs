@@ -1,4 +1,5 @@
 ﻿using AnalitikaAnketaDeltaMotors.Classes;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using System;
 using System.IO;
 using System.Text;
@@ -9,6 +10,12 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class Podesavanja : Form
     {
+     
+        Settings listajOdgovore= new Settings();
+        Settings automatskoCuvanje = new Settings();
+
+
+
         public Podesavanja()
         {
             InitializeComponent();
@@ -17,14 +24,15 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void UcitajFajl()
         {
-            textBox1.Text = ConfigHelper.ReadConfigFile();
+            textBox1.Text = ConfigHelper.ReadConfigFile(); 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ConfigHelper.WriteConfigFile(textBox1.Text);
-            Configuration.GetInstance().ResetConnectionString();
-        }
+
+
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -50,5 +58,34 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ConfigHelper.WriteConfigFile(textBox1.Text);
+            Configuration.GetInstance().ResetConnectionString();
+            if ((listajOdgovore.Name == null) && (automatskoCuvanje.Name == null))
+            {
+                listajOdgovore.Name = "listaj_samo_nekodirane";
+                automatskoCuvanje.Name = "automatsko_cuvanje";
+                if (checkBox1.Checked)
+                {
+                    listajOdgovore.Value = 1;
+                }
+                else if (checkBox3.Checked)
+                {
+                    automatskoCuvanje.Value = 1;
+                }
+                MessageBox.Show("Podesavanja su dodata u program");
+            }
+            else
+            {
+                listajOdgovore.Name = "listaj_samo_nekodirane";
+                automatskoCuvanje.Name = "automatsko_cuvanje";
+                MessageBox.Show("Podesavanja su azurirana u program");
+            }       
+        }
+        }
     }
-}
+
+
+
