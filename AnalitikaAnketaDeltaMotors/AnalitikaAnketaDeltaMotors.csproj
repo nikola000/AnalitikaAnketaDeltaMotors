@@ -220,6 +220,10 @@
     <Compile Include="Migrations\202107161332545_subtopicId.designer.cs">
       <DependentUpon>202107161332545_subtopicId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107170955018_entryscoreuser.cs" />
+    <Compile Include="Migrations\202107170955018_entryscoreuser.designer.cs">
+      <DependentUpon>202107170955018_entryscoreuser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -326,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107161332545_subtopicId.resx">
       <DependentUpon>202107161332545_subtopicId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107170955018_entryscoreuser.resx">
+      <DependentUpon>202107170955018_entryscoreuser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

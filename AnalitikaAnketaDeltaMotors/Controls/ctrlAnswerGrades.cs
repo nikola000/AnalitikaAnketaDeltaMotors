@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using AnalitikaAnketaDeltaMotors.Classes;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
-using UnitOfWorkExample.UnitOfWork.Models;
 using static AnalitikaAnketaDeltaMotors.Classes.Utils;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
@@ -47,7 +38,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         }
         private void checkRadioButton(Score score)
         {
-            if (score==Score.Low)
+            if (score == Score.Low)
             {
                 radioButton1.Checked = true;
             }

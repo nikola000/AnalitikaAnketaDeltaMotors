@@ -32,6 +32,8 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.dbContext = dbContext;
             disabledSubtopics = new List<Subtopic>();            
             InitializeComponent();
+            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
+            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
@@ -80,8 +82,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                         listBox1.Items.Add(Subtopic);
                 }
             }
-            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+            
         }
 
         private void bMark_Click(object sender, EventArgs e)
@@ -97,6 +98,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             entryScoreTemp = new EntryScore();
             entryScoreTemp.Subtopic = SelectedSubtopic;
             entryScoreTemp.Score = SelectedScore;
+            entryScoreTemp.UserId = Configuration.GetInstance().CurrentUser.Id;
             ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScoreTemp);
             flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
             entry.EntryScores.Add(entryScoreTemp);
@@ -142,8 +144,6 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 }
             }
             subtopicsAvailable();
-            this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
         }
         private void subtopicsAvailable()
         {

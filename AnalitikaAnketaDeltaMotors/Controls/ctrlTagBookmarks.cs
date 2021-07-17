@@ -73,6 +73,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                         CheckBox checkBox = new CheckBox();
                         checkBox.Name = tag.Id.ToString();
                         checkBox.Text = tag.Name;
+                        if (Tags == null)
+                        {
+                            Tags = new List<Tag>();
+                        }
                         for (int i = 0; i < Tags.Count; i++)
                         {
                             if (Tags[i].Id == tag.Id)

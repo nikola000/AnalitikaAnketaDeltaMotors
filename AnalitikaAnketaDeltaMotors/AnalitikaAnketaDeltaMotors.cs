@@ -9,6 +9,9 @@ using UnitOfWorkExample.Services;
 using UnitOfWorkExample.UnitOfWork;
 using UnitOfWorkExample.UnitOfWork.Models;
 using System.Data.Entity;
+using System.Collections.Generic;
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
+using AnalitikaAnketaDeltaMotors.Classes;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -26,13 +29,175 @@ namespace AnalitikaAnketaDeltaMotors
         Podesavanja frmPodesavanja;
         Topics frmTopic;
         Subtopics frmSubtopic;
+        CtrlTagBookmarks _cntrlTags;
+        TagBookmarks _fitlerTagDialog;
+        public List<Tag> FilterTags { get; set; }
+        public List<Subtopic> FilterSubtopics { get; set; }
+        public IEnumerable<Entry> SearchedEntries { get; set; }
 
         public AnalitikaAnketaDeltaMotors(IUserService userService,IEntryService entryService)
         {
             this._userService = userService;
             this._entryService = entryService;
             InitializeComponent();
+
+            // filteri
+            InitFilters();
             
+            // dashborad
+            SetupDashboard();
+        }
+
+        private void InitFilters()
+        {
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                FilterTags = db.Tags.Include(x => x.Group).ToList();
+                labelFilterTags.Text = "( " + FilterTags.Count() + " )";
+
+                FilterSubtopics = db.Subtopics.Include(x => x.Topic).ToList();
+                labelFilterTopic.Text = "( " + FilterSubtopics.Count() + " )";
+            }
+        }
+
+        private void SetupDashboard()
+        {
+
+            SetChartRezultati();
+            SetChartOdnosKodiranih();
+            SetChartTags();
+            SetChartGroups();
+            SetChartOverallNPS();
+            CalculateNPS();
+
+            labelUkupnoOdgovora.Text = "Ukupno odgovora: " + ((SearchedEntries == null) ? 0 : SearchedEntries.Count()); 
+        }
+
+        private void CalculateNPS()
+        {
+            if (SearchedEntries != null && SearchedEntries.Count() > 0)
+            {
+                decimal ucescePromotera = 0;
+                decimal ucesceDetraktora = 0;
+
+                ucesceDetraktora = SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6).Count() / SearchedEntries.Count();
+                ucescePromotera = SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10).Count() / SearchedEntries.Count();
+
+                labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString(); 
+            }
+            else
+            {
+                labelNPS.Text = "";
+            }
+        }
+
+        private void SetChartRezultati()
+        {
+            chartRezultati.Series["low"].Points.Clear();
+            chartRezultati.Series["medium"].Points.Clear();
+            chartRezultati.Series["high"].Points.Clear();
+
+            if (SearchedEntries != null)
+            {
+                var topics = SearchedEntries.SelectMany(x => x.EntryScores)
+                    .Select(x => x.Subtopic)
+                    .Select(x => x.Topic).ToList();
+
+                var topicGroups = topics.GroupBy(x => x.Id);
+
+                foreach (var item in topicGroups)
+                {
+                    var topic = item.FirstOrDefault();
+                    chartRezultati.Series["low"].Points.AddXY(topic.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.Subtopic.Topic.Id == topic.Id).Count());
+                    chartRezultati.Series["medium"].Points.AddXY(topic.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.Subtopic.Topic.Id == topic.Id).Count());
+                    chartRezultati.Series["high"].Points.AddXY(topic.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.High && x.Subtopic.Topic.Id == topic.Id).Count());
+
+                }
+            }
+        }
+
+        private void SetChartOverallNPS()
+        {
+            chartOverallNPS.Series["low"].Points.Clear();
+            chartOverallNPS.Series["medium"].Points.Clear();
+            chartOverallNPS.Series["high"].Points.Clear();
+
+            if (SearchedEntries != null)
+            {
+                chartOverallNPS.Series["low"].Points.AddXY("", SearchedEntries
+                .SelectMany(x => x.EntryScores)
+                .Where(x => x.Score == Classes.Utils.Score.Low).Count());
+                chartOverallNPS.Series["medium"].Points.AddXY("", SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count());
+                chartOverallNPS.Series["high"].Points.AddXY("", SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => x.Score == Classes.Utils.Score.High).Count());
+            }
+        }
+
+        private void SetChartGroups()
+        {
+            if (SearchedEntries != null)
+            {
+                chartGroups.Series["Groups"].Points.Clear();
+                var allgroups = SearchedEntries
+                    .Select(x => x.ImportData)
+                    .SelectMany(x => x.Tags)
+                    .Select(x => x.Group).ToList();
+
+                var groups = allgroups.GroupBy(x => x.Id);
+                foreach (var group in groups)
+                {
+                    if (group.FirstOrDefault() == null)
+                    {
+                        chartGroups.Series["Groups"].Points.AddXY("n/a", group.Count());
+                    }
+                    else
+                    {
+                        chartGroups.Series["Groups"].Points.AddXY(group.FirstOrDefault().Name, group.Count());
+                    }
+                }
+            }
+            
+        }
+
+        private void SetChartTags()
+        {
+            if (SearchedEntries != null)
+            { 
+                chartTagovi.Series["Tagovi"].Points.Clear();
+                var groups = SearchedEntries.GroupBy(x => x.ImportData.Tags).ToList();
+                foreach (var group in groups)
+                {
+                    if (group.Key.Count == 0)
+                    {
+                        chartTagovi.Series["Tagovi"].Points.AddXY("n/a", group.Count());
+                    }
+                    else
+                    {
+                        chartTagovi.Series["Tagovi"].Points.AddXY(group.Key.FirstOrDefault().Name, group.Count());
+                    }
+                }
+            }
+        }
+
+        private void SetChartOdnosKodiranih()
+        {
+            if (SearchedEntries != null)
+            {
+                chartOdnosKodiranih.Series["Kodirani"].Points.Clear();
+                int kodirani = SearchedEntries.Where(x => x.EntryScores.Count() > 0).Count();
+                int neKodirani = SearchedEntries.Count() - kodirani;
+                chartOdnosKodiranih.Series["Kodirani"].Points.AddXY("Kodirani", kodirani);
+                chartOdnosKodiranih.Series["Kodirani"].Points.AddXY("Nekodirani", neKodirani);
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -83,6 +248,7 @@ namespace AnalitikaAnketaDeltaMotors
                 if (result == DialogResult.Yes)
                 {
                     user = null;
+                    Configuration.GetInstance().CurrentUser = user;
                     toolStripStatusLabelLogin.Text = "";
                     prijavaToolStripMenuItem.Text = "Prijava";
                 }
@@ -94,6 +260,7 @@ namespace AnalitikaAnketaDeltaMotors
                 user = frm2.getUser();
                 if (user != null)
                 {
+                    Configuration.GetInstance().CurrentUser = user;
                     toolStripStatusLabelLogin.Text = "Ulogovan/a: " + user.Name;
                     korisniciToolStripMenuItem.Visible = user.IsAdministrator;
                     prijavaToolStripMenuItem.Text = "Odjava";
@@ -129,14 +296,31 @@ namespace AnalitikaAnketaDeltaMotors
         {
             dataGridViewRezultatiAnkete.AutoGenerateColumns = true;
 
-            dataGridViewRezultatiAnkete.DataSource = dbContext.Entries
+            var temp = dbContext.Entries
+                .Include(x => x.ImportData.Tags.Select(y => y.Group))
                 .Include(x => x.EntryScores
                     .Select(y => y.Subtopic)
                     .Select(z => z.Topic))
                 .Where(x => x.CreatedAt >= dateTimePicker1.Value &&
-                            x.CreatedAt <= dateTimePicker2.Value).ToList();
+                            x.CreatedAt <= dateTimePicker2.Value);
+
+            SearchedEntries = temp.ToList().Where(x => CheckPersmission(x)).ToList();
+            dataGridViewRezultatiAnkete.DataSource = SearchedEntries;
 
             intializeDataGrid(dataGridViewRezultatiAnkete);
+
+            SetupDashboard();
+        }
+
+        private bool CheckPersmission(Entry entry)
+        {
+            if (user == null)
+                return false;
+            
+            if (user.IsAdministrator)
+                return true;
+
+            return entry.EntryScores.Any(x => x.UserId == null || x.UserId == user.Id);
         }
 
         private void DataGridViewRezultatiAnkete_Paint(object sender, PaintEventArgs e)
@@ -183,6 +367,22 @@ namespace AnalitikaAnketaDeltaMotors
             tabControl1.SelectTab(tabPage3);
         }
 
+        private void AnalitikaAnketaDeltaMotors_Load(object sender, EventArgs e)
+        {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _fitlerTagDialog = new TagBookmarks(FilterTags);
+            _fitlerTagDialog.ShowDialog();
+            FilterTags = _fitlerTagDialog.Tags;
+            labelFilterTags.Text = "( " + FilterTags.Count() + " )";
+        }
+
+        private void buttonOpenFilterTopic_Click(object sender, EventArgs e)
+        {
+           // ovde poziv filtera
+        }
     }
 }

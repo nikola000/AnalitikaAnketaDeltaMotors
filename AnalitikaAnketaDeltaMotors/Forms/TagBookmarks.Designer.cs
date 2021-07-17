@@ -35,9 +35,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(527, 369);
             this.Name = "TagBookmarks";
-            this.Text = "TagBookmarks";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Oznake";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TagBookmarks_FormClosing);
             this.Load += new System.EventHandler(this.TagBookmarks_Load);
             this.ResumeLayout(false);
