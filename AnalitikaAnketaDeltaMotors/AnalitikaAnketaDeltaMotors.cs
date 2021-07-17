@@ -44,7 +44,9 @@ namespace AnalitikaAnketaDeltaMotors
 
             // filteri
             InitFilters();
-            
+
+            InitializeComboBox();
+
             // dashborad
             SetupDashboard();
         }
@@ -60,7 +62,14 @@ namespace AnalitikaAnketaDeltaMotors
                 labelFilterTopic.Text = "( " + FilterSubtopics.Count() + " )";
             }
         }
-
+        private void InitializeComboBox()
+        {
+            using (DatabaseContext db = new DatabaseContext())
+            {
+                comboBox1.Items.AddRange(db.Topics.Include(x => x.Subtopics).ToArray());
+            }
+            comboBox1.SelectedItem = comboBox1.Items[0];
+        }
         private void SetupDashboard()
         {
 
@@ -119,6 +128,28 @@ namespace AnalitikaAnketaDeltaMotors
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.High && x.Subtopic.Topic.Id == topic.Id).Count());
 
+                }
+            }
+        }
+        private void SetChartSubtopics()
+        {
+            chartSubtopics.Series["low"].Points.Clear();
+            chartSubtopics.Series["medium"].Points.Clear();
+            chartSubtopics.Series["high"].Points.Clear();
+
+            if (SearchedEntries != null)
+            {
+                foreach (var item in ((Topic)comboBox1.SelectedItem).Subtopics)
+                {
+                    chartSubtopics.Series["low"].Points.AddXY(item.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId==item.Id).Count());
+                    chartSubtopics.Series["medium"].Points.AddXY(item.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Id).Count());
+                    chartSubtopics.Series["high"].Points.AddXY(item.Name, SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => x.Score == Classes.Utils.Score.High && x.SubtopicId == item.Id).Count());
                 }
             }
         }
@@ -311,6 +342,8 @@ namespace AnalitikaAnketaDeltaMotors
             intializeDataGrid(dataGridViewRezultatiAnkete);
 
             SetupDashboard();
+
+            SetChartSubtopics();
         }
 
         private bool CheckPersmission(Entry entry)
@@ -387,6 +420,11 @@ namespace AnalitikaAnketaDeltaMotors
             _fitlerSubtopicDialog.ShowDialog();
             FilterSubtopics = _fitlerSubtopicDialog.Subtopics;
             labelFilterTopic.Text= "( " + FilterSubtopics.Count() + " )";
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            SetChartSubtopics();
         }
     }
 }
