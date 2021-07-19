@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnalitikaAnketaDeltaMotors.Classes
 {
-    public class Utils
+    public static class Utils
     {
         public enum Score
         {

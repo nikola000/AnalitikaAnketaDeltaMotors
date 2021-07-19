@@ -1,5 +1,4 @@
-﻿using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,28 +9,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
+using UnitOfWorkExample.UnitOfWork.Models;
 
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
-    public partial class CtrlTagBookmarks : UserControl
-    {   
-        public List<Tag> Tags;
-        public CtrlTagBookmarks()
+    public partial class CtrlSubtopicBookmarks : UserControl
+    {
+        public List<Subtopic> Subtopics;
+        public CtrlSubtopicBookmarks()
         {
             InitializeComponent();
         }
-        public CtrlTagBookmarks(List<Tag> Tags)
+        public CtrlSubtopicBookmarks(List<Subtopic> Subtopics)
         {
-            this.Tags = Tags;
+            this.Subtopics = Subtopics;
             InitializeComponent();
         }
-
-        public List<Tag> GetCheckedTags()
+        public List<Subtopic> GetCheckedSubtopics()
         {
-            Tags.Clear();
-            foreach (var group in flowLayoutPanel1.Controls)
+            Subtopics.Clear();
+            foreach (var topic in flowLayoutPanel1.Controls)
             {
-                foreach (var flowLayoutPanel in ((GroupBox)group).Controls)
+                foreach (var flowLayoutPanel in ((GroupBox)topic).Controls)
                 {
                     foreach (var item in ((FlowLayoutPanel)flowLayoutPanel).Controls)
                     {
@@ -42,23 +41,21 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                                 using (DatabaseContext db = new DatabaseContext())
                                 {
                                     int id = int.Parse(((CheckBox)item).Name);
-                                    Tags.Add(db.Tags.Where(x => x.Id == id).FirstOrDefault());
+                                    Subtopics.Add(db.Subtopics.Where(x => x.Id == id).FirstOrDefault());
                                 }
                             }
                         }
                     }
                 }
             }
-            return Tags;
+            return Subtopics;
         }
-
-        private void ctrlTagBookmarks_Load(object sender, EventArgs e)
+        private void CtrlSubtopicBookmarks_Load(object sender, EventArgs e)
         {
             flowLayoutPanel1.WrapContents = true;
             using (DatabaseContext db = new DatabaseContext())
             {
-                var groups = db.Groups.Include(x => x.Tags).Where(x => x.Id > 0);
-                foreach (var item in groups)
+                foreach (var item in db.Topics.Include(x => x.Subtopics).Where(x => x.Id > 0))
                 {
                     GroupBox groupBox = new GroupBox();
                     groupBox.Name = "gb" + item.Id;
@@ -68,20 +65,20 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                     groupBoxFlowLayout.Dock = DockStyle.Fill;
                     groupBoxFlowLayout.FlowDirection = FlowDirection.TopDown;
                     groupBox.Controls.Add(groupBoxFlowLayout);
-                    foreach (var tag in item.Tags)
+                    foreach (var subtopic in item.Subtopics)
                     {
                         CheckBox checkBox = new CheckBox();
-                        checkBox.Name = tag.Id.ToString();
-                        checkBox.Text = tag.Name;
-                        if (Tags == null)
+                        checkBox.Name = subtopic.Id.ToString();
+                        checkBox.Text = subtopic.Name;
+                        if (Subtopics == null)
                         {
-                            Tags = new List<Tag>();
+                            Subtopics = new List<Subtopic>();
                         }
-                        for (int i = 0; i < Tags.Count; i++)
+                        for (int i = 0; i < Subtopics.Count; i++)
                         {
-                            if (Tags[i].Id == tag.Id)
+                            if (Subtopics[i].Id == subtopic.Id)
                             {
-                                Tags.Remove(Tags[i]);
+                                Subtopics.Remove(Subtopics[i]);
                                 checkBox.Checked = true;
                             }
                         }

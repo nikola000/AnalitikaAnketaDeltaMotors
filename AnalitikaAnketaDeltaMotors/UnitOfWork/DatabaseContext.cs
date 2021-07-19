@@ -26,7 +26,12 @@ namespace UnitOfWorkExample.UnitOfWork
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Add your model configuration here            
+            // Add your model configuration here    
+
+            //modelBuilder.Entity<EntryScore>()
+            // .HasOptional<User>(s => s.User)
+            // .WithMany()
+            // .WillCascadeOnDelete(false);
         }
     }
 }

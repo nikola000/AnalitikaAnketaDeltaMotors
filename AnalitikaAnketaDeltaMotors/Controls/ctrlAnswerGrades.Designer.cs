@@ -53,7 +53,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.Red;
-            this.radioButton1.Location = new System.Drawing.Point(0, 0);
+            this.radioButton1.Location = new System.Drawing.Point(11, 5);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(34, 17);
             this.radioButton1.TabIndex = 1;
@@ -76,7 +76,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Yellow;
-            this.radioButton2.Location = new System.Drawing.Point(40, 0);
+            this.radioButton2.Location = new System.Drawing.Point(51, 5);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(34, 17);
             this.radioButton2.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Green;
-            this.radioButton3.Location = new System.Drawing.Point(80, 0);
+            this.radioButton3.Location = new System.Drawing.Point(91, 5);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(34, 17);
             this.radioButton3.TabIndex = 4;
@@ -102,9 +102,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Location = new System.Drawing.Point(6, 39);
+            this.panel1.Location = new System.Drawing.Point(6, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(121, 26);
+            this.panel1.Size = new System.Drawing.Size(138, 28);
             this.panel1.TabIndex = 5;
             // 
             // ctrlAnswerGrades
@@ -117,7 +117,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ctrlAnswerGrades";
-            this.Size = new System.Drawing.Size(191, 76);
+            this.Size = new System.Drawing.Size(270, 76);
             this.Click += new System.EventHandler(this.ctrlAnswerGrades_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

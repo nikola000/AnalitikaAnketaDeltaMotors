@@ -103,8 +103,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             var forDeletion = _filteredData.Select(x => x.Id).Except(_listOfSubtopics.Where(x => x.Id != -1).Select(x => x.Id)).ToList();
             foreach (var id in forDeletion)
             {
-                var ob = context.Tags.Find(id);
-                context.Tags.Remove(ob);
+                var ob = context.Subtopics.Find(id);
+                context.Subtopics.Remove(ob);
             }
             foreach (var item in forAdding)
             {

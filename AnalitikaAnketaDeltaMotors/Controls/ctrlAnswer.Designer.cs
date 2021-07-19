@@ -48,10 +48,12 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(0, 102);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(172, 290);
+            this.listBox1.Size = new System.Drawing.Size(261, 290);
             this.listBox1.TabIndex = 0;
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
@@ -60,26 +62,29 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             this.textBox1.Location = new System.Drawing.Point(0, 76);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 20);
+            this.textBox1.Size = new System.Drawing.Size(261, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(38, 0);
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox1.Location = new System.Drawing.Point(47, 16);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(554, 70);
+            this.richTextBox1.Size = new System.Drawing.Size(538, 48);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Location = new System.Drawing.Point(511, 76);
+            this.panel1.Location = new System.Drawing.Point(348, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(118, 20);
+            this.panel1.Size = new System.Drawing.Size(132, 26);
             this.panel1.TabIndex = 6;
             // 
             // radioButton3
@@ -87,7 +92,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Green;
-            this.radioButton3.Location = new System.Drawing.Point(80, 0);
+            this.radioButton3.Location = new System.Drawing.Point(88, 4);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(34, 17);
             this.radioButton3.TabIndex = 4;
@@ -100,7 +105,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.Yellow;
-            this.radioButton2.Location = new System.Drawing.Point(40, 0);
+            this.radioButton2.Location = new System.Drawing.Point(48, 4);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(34, 17);
             this.radioButton2.TabIndex = 3;
@@ -113,7 +118,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.Red;
-            this.radioButton1.Location = new System.Drawing.Point(0, 0);
+            this.radioButton1.Location = new System.Drawing.Point(8, 4);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(34, 17);
             this.radioButton1.TabIndex = 1;
@@ -123,21 +128,23 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(437, 102);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(348, 102);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(212, 290);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(277, 287);
             this.flowLayoutPanel1.TabIndex = 7;
             this.flowLayoutPanel1.WrapContents = false;
             // 
             // bMark
             // 
+            this.bMark.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.bMark.Location = new System.Drawing.Point(267, 102);
             this.bMark.Name = "bMark";
-            this.bMark.Size = new System.Drawing.Size(75, 23);
+            this.bMark.Size = new System.Drawing.Size(75, 49);
             this.bMark.TabIndex = 8;
             this.bMark.Text = ">";
             this.bMark.UseVisualStyleBackColor = true;
@@ -145,9 +152,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // bClear
             // 
-            this.bClear.Location = new System.Drawing.Point(267, 182);
+            this.bClear.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.bClear.Location = new System.Drawing.Point(267, 212);
             this.bClear.Name = "bClear";
-            this.bClear.Size = new System.Drawing.Size(75, 23);
+            this.bClear.Size = new System.Drawing.Size(75, 49);
             this.bClear.TabIndex = 9;
             this.bClear.Text = "<<";
             this.bClear.UseVisualStyleBackColor = true;
@@ -155,7 +163,8 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // bSave
             // 
-            this.bSave.Location = new System.Drawing.Point(267, 349);
+            this.bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bSave.Location = new System.Drawing.Point(550, 73);
             this.bSave.Name = "bSave";
             this.bSave.Size = new System.Drawing.Size(75, 23);
             this.bSave.TabIndex = 10;
@@ -165,9 +174,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(267, 140);
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button1.Location = new System.Drawing.Point(267, 157);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 49);
             this.button1.TabIndex = 11;
             this.button1.Text = "<";
             this.button1.UseVisualStyleBackColor = true;
@@ -175,9 +185,10 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // bNext
             // 
-            this.bNext.Location = new System.Drawing.Point(591, 0);
+            this.bNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bNext.Location = new System.Drawing.Point(591, 16);
             this.bNext.Name = "bNext";
-            this.bNext.Size = new System.Drawing.Size(41, 70);
+            this.bNext.Size = new System.Drawing.Size(38, 48);
             this.bNext.TabIndex = 12;
             this.bNext.Text = ">";
             this.bNext.UseVisualStyleBackColor = true;
@@ -185,9 +196,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             // bPrevious
             // 
-            this.bPrevious.Location = new System.Drawing.Point(0, 0);
+            this.bPrevious.Location = new System.Drawing.Point(3, 16);
             this.bPrevious.Name = "bPrevious";
-            this.bPrevious.Size = new System.Drawing.Size(41, 70);
+            this.bPrevious.Size = new System.Drawing.Size(38, 48);
             this.bPrevious.TabIndex = 13;
             this.bPrevious.Text = "<";
             this.bPrevious.UseVisualStyleBackColor = true;
