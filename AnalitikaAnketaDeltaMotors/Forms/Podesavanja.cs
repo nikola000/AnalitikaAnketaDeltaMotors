@@ -69,27 +69,29 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             }
             else
             {
-                listajOdgovore.Name = "listaj_samo_nekodirane";
-                automatskoCuvanje.Name = "automatsko_cuvanje";
-                MessageBox.Show("Podesavanja su azurirana u program");
+                MessageBox.Show("podesavanja su azurirana u program");
+
             }
         }
-
-        //private void Podesavanja_FormClosed(object sender, FormClosedEventArgs e)
-        //{
-        //    Properties.Settings.Default.Save();
-        //}
 
         private void Podesavanja_FormClosing(object sender, FormClosingEventArgs e)
         {
-            {
-                Properties.Settings.Default.Save();
-            }
+
+            Properties.Settings.Default.Save();
+
         }
     }
 }
-   
- 
+
+
+
+
+
+
+
+
+
+
 
 
 
