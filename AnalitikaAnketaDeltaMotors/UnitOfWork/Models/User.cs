@@ -1,4 +1,7 @@
-﻿namespace UnitOfWorkExample.UnitOfWork.Models
+﻿using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
+using System.Collections.Generic;
+
+namespace UnitOfWorkExample.UnitOfWork.Models
 {
     public class User
     {

@@ -42,7 +42,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.button1.Location = new System.Drawing.Point(80, 122);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 20);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 2;
             this.button1.Text = "U redu";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -52,7 +52,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.tbUser.Location = new System.Drawing.Point(50, 36);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(192, 20);
-            this.tbUser.TabIndex = 1;
+            this.tbUser.TabIndex = 0;
             this.tbUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
             // tbPassword
@@ -60,7 +60,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.tbPassword.Location = new System.Drawing.Point(50, 75);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(192, 20);
-            this.tbPassword.TabIndex = 2;
+            this.tbPassword.TabIndex = 1;
             this.tbPassword.UseSystemPasswordChar = true;
             this.tbPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_KeyPress);
             // 
@@ -70,7 +70,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.label1.Location = new System.Drawing.Point(50, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Korisnicko ime";
             // 
             // label2
@@ -79,7 +79,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.label2.Location = new System.Drawing.Point(50, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 11;
             this.label2.Text = "Lozinka";
             // 
             // bExit
@@ -87,7 +87,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.bExit.Location = new System.Drawing.Point(147, 122);
             this.bExit.Name = "bExit";
             this.bExit.Size = new System.Drawing.Size(64, 20);
-            this.bExit.TabIndex = 5;
+            this.bExit.TabIndex = 3;
             this.bExit.Text = "Odustani";
             this.bExit.UseVisualStyleBackColor = true;
             this.bExit.Click += new System.EventHandler(this.bExit_Click);

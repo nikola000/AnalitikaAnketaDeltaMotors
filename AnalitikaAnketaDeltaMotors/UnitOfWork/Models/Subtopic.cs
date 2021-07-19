@@ -8,5 +8,9 @@ namespace UnitOfWorkExample.UnitOfWork.Models
         public string Name { get; set; }
         public int TopicId { get; set; }
         public Topic Topic { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

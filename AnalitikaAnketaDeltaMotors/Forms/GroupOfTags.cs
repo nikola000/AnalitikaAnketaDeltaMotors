@@ -99,6 +99,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void UpdateData()
         {
+            if (_listOfTags == null)
+            {
+                return;
+            }
             var forAdding = _listOfTags.Where(x => x.Id == -1);
             var forDeletion = _filteredData.Select(x => x.Id).Except(_listOfTags.Where(x => x.Id != -1).Select(x => x.Id)).ToList();
             foreach (var id in forDeletion)

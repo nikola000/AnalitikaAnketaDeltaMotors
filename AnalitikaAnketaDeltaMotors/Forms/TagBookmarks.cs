@@ -16,8 +16,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 {
     public partial class TagBookmarks : Form
     {
-        ctrlTagBookmarks tagBookmarks;
-        public List<Tag> Tags;
+        CtrlTagBookmarks _tagBookmarks;
+        public List<Tag> Tags { get; set; }
         public TagBookmarks()
         {
             InitializeComponent();
@@ -29,14 +29,14 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         }
         private void TagBookmarks_Load(object sender, EventArgs e)
         {
-            tagBookmarks = new ctrlTagBookmarks(Tags);
-            tagBookmarks.Dock = DockStyle.Fill;
-            Controls.Add(tagBookmarks);
+            _tagBookmarks = new CtrlTagBookmarks(Tags);
+            _tagBookmarks.Dock = DockStyle.Fill;
+            Controls.Add(_tagBookmarks);
         }
 
         private void TagBookmarks_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Tags = tagBookmarks.GetCheckedTags();
+            Tags = _tagBookmarks.GetCheckedTags();
         }
     }
 }

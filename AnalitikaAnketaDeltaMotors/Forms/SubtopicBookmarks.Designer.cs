@@ -1,7 +1,7 @@
 ﻿
 namespace AnalitikaAnketaDeltaMotors.Forms
 {
-    partial class TagBookmarks
+    partial class SubtopicBookmarks
     {
         /// <summary>
         /// Required designer variable.
@@ -31,16 +31,16 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             this.SuspendLayout();
             // 
-            // TagBookmarks
+            // SubtopicBookmarks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 369);
-            this.Name = "TagBookmarks";
+            this.Name = "SubtopicBookmarks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Oznake";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TagBookmarks_FormClosing);
-            this.Load += new System.EventHandler(this.TagBookmarks_Load);
+            this.Text = "SubtopicBookmarks";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SubtopicBookmarks_FormClosing);
+            this.Load += new System.EventHandler(this.SubtopicBookmarks_Load);
             this.ResumeLayout(false);
 
         }

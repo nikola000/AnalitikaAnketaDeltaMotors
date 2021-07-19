@@ -11,6 +11,7 @@ namespace UnitOfWorkExample.UnitOfWork
         public DbSet<Group> Groups { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Entry> Entries { get; set; }
+        public DbSet<EntryScore> EntryScores { get; set; }
         public DbSet<ImportData> ImportDatas { get; set; }
         public DbSet<Topic> Topics { get; set; }
         public DbSet<Subtopic> Subtopics { get; set; }
@@ -25,7 +26,12 @@ namespace UnitOfWorkExample.UnitOfWork
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            // Add your model configuration here            
+            // Add your model configuration here    
+
+            //modelBuilder.Entity<EntryScore>()
+            // .HasOptional<User>(s => s.User)
+            // .WithMany()
+            // .WillCascadeOnDelete(false);
         }
     }
 }
