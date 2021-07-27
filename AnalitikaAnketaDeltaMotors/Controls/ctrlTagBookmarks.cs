@@ -14,7 +14,7 @@ using UnitOfWorkExample.UnitOfWork;
 namespace AnalitikaAnketaDeltaMotors.Controls
 {
     public partial class CtrlTagBookmarks : UserControl
-    {   
+    {
         public List<Tag> Tags;
         public CtrlTagBookmarks()
         {
@@ -29,17 +29,17 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         public List<Tag> GetCheckedTags()
         {
             Tags.Clear();
-            foreach (var group in flowLayoutPanel1.Controls)
+            using (DatabaseContext db = new DatabaseContext())
             {
-                foreach (var flowLayoutPanel in ((GroupBox)group).Controls)
+                foreach (var group in flowLayoutPanel1.Controls)
                 {
-                    foreach (var item in ((FlowLayoutPanel)flowLayoutPanel).Controls)
+                    foreach (var flowLayoutPanel in ((GroupBox)group).Controls)
                     {
-                        if (item is CheckBox)
+                        foreach (var item in ((FlowLayoutPanel)flowLayoutPanel).Controls)
                         {
-                            if (((CheckBox)item).Checked)
+                            if (item is CheckBox)
                             {
-                                using (DatabaseContext db = new DatabaseContext())
+                                if (((CheckBox)item).Checked)
                                 {
                                     int id = int.Parse(((CheckBox)item).Name);
                                     Tags.Add(db.Tags.Where(x => x.Id == id).FirstOrDefault());

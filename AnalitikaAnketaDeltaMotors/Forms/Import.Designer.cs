@@ -29,7 +29,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.bUcitaj = new System.Windows.Forms.Button();
@@ -89,20 +89,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 37);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(684, 432);
+            this.dataGridView1.Size = new System.Drawing.Size(684, 414);
             this.dataGridView1.TabIndex = 4;
             // 
             // progressBar1
@@ -119,7 +119,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(13, 29);
+            this.splitContainer1.Location = new System.Drawing.Point(13, 47);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -133,7 +133,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.splitContainer1.Panel2.Controls.Add(this.panelTags);
             this.splitContainer1.Panel2.Controls.Add(this.bAddTag);
-            this.splitContainer1.Size = new System.Drawing.Size(965, 507);
+            this.splitContainer1.Size = new System.Drawing.Size(965, 489);
             this.splitContainer1.SplitterDistance = 690;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -145,7 +145,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.panelTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTags.Location = new System.Drawing.Point(12, 37);
             this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(245, 420);
+            this.panelTags.Size = new System.Drawing.Size(245, 402);
             this.panelTags.TabIndex = 1;
             // 
             // bAddTag
@@ -162,9 +162,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(3, 0);
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Location = new System.Drawing.Point(879, 12);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(93, 23);
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -180,7 +181,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.progressBar1);
             this.Name = "Import";
-            this.Text = "Import";
+            this.Text = "Unos rezultata ankete";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

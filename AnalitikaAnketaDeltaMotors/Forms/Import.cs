@@ -36,6 +36,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         int _maximum = 0;
         private void bUcitaj_Click(object sender, EventArgs e)
         {
+            progressBar1.Value = 0;
             if (txtIzborFajla.Text.Trim() == "")
             {
                 MessageBox.Show("Morate izbrati excel file", "Upozorenje", MessageBoxButtons.OK);
@@ -82,9 +83,16 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     }
                 }
                 newImportData.Entries = entries;
-                newImportData.Tags = Tags;
-                db.ImportDatas.Add(newImportData);
-                db.SaveChanges();
+                
+                List<int> list = Tags.Select(y => y.Id).ToList();
+                newImportData.Tags = db.Tags.Where(x => list.Contains(x.Id)).ToList();// Tags;
+
+                if (newImportData.Entries.Count() > 0)
+                {
+                    db.ImportDatas.Add(newImportData);
+                    db.SaveChanges();
+                }
+                
             }
             MessageBox.Show("Podaci su sacuvani");
         }

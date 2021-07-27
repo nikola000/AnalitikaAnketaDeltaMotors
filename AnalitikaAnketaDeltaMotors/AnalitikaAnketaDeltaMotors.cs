@@ -91,11 +91,11 @@ namespace AnalitikaAnketaDeltaMotors
         {
             if (SearchedEntries != null && SearchedEntries.Count() > 0)
             {
-                decimal ucescePromotera = 0;
-                decimal ucesceDetraktora = 0;
+                double ucescePromotera = 0;
+                double ucesceDetraktora = 0;
 
-                ucesceDetraktora = SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6).Count() / SearchedEntries.Count();
-                ucescePromotera = SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10).Count() / SearchedEntries.Count();
+                ucesceDetraktora = ((double)(SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6).Count()) / (double)(SearchedEntries.Count())) * 100;
+                ucescePromotera = ((double)(SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10).Count()) / (double)(SearchedEntries.Count())) * 100;
 
                 labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString(); 
             }
@@ -144,8 +144,8 @@ namespace AnalitikaAnketaDeltaMotors
                 chartOcene.Series["Ocene"].Points.Clear();
 
                 var ocene = SearchedEntries
-                            .SelectMany(x => x.EntryScores)
-                            .Select(x => x.Entry.Ocena).Distinct();
+                            .Select(x => x.Ocena).Distinct();
+
                 foreach (var ocena in ocene)
                 {
                     chartOcene.Series["Ocene"].Points.AddXY(ocena.ToString(), SearchedEntries
