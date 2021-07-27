@@ -29,7 +29,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.bUcitaj = new System.Windows.Forms.Button();
@@ -40,6 +40,9 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.panelTags = new System.Windows.Forms.Panel();
             this.bAddTag = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.rtbReport = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -89,20 +92,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 37);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(684, 414);
+            this.dataGridView1.Size = new System.Drawing.Size(684, 292);
             this.dataGridView1.TabIndex = 4;
             // 
             // progressBar1
@@ -124,6 +127,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.rtbReport);
             this.splitContainer1.Panel1.Controls.Add(this.txtIzborFajla);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
@@ -145,7 +150,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.panelTags.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelTags.Location = new System.Drawing.Point(12, 37);
             this.panelTags.Name = "panelTags";
-            this.panelTags.Size = new System.Drawing.Size(245, 402);
+            this.panelTags.Size = new System.Drawing.Size(245, 440);
             this.panelTags.TabIndex = 1;
             // 
             // bAddTag
@@ -171,12 +176,42 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // rtbReport
+            // 
+            this.rtbReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbReport.Location = new System.Drawing.Point(4, 357);
+            this.rtbReport.Name = "rtbReport";
+            this.rtbReport.ReadOnly = true;
+            this.rtbReport.Size = new System.Drawing.Size(683, 129);
+            this.rtbReport.TabIndex = 5;
+            this.rtbReport.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 336);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Status:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 31);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Ucitavanje podataka";
+            // 
             // Import
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(984, 577);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.progressBar1);
@@ -189,6 +224,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -203,5 +239,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         private System.Windows.Forms.Panel panelTags;
         private System.Windows.Forms.Button bAddTag;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.RichTextBox rtbReport;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

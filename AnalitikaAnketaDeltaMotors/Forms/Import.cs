@@ -62,6 +62,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            rtbReport.Clear();
             using (DatabaseContext db = new DatabaseContext())
             {
                 ImportData newImportData = new ImportData();
@@ -70,16 +71,25 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 List<Entry> entries = new List<Entry>();
                 foreach (DataRow row in dt.Rows)
                 {
-                    Entry newEntry = new Entry();
-                    newEntry.CreatedAt = DateTime.Parse(row[0].ToString());
-                    newEntry.Ocena = int.Parse(row[1].ToString());
-                    newEntry.Odgovor = row[2].ToString();
-                    newEntry.PredlogPoboljsanja = row[3].ToString();
-                    newEntry.Kontakt = row[4].ToString();
-
-                    if (!db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
+                    try
                     {
-                        entries.Add(newEntry);
+                        Entry newEntry = new Entry();
+                        newEntry.CreatedAt = DateTime.Parse(row[0].ToString());
+                        newEntry.Ocena = int.Parse(row[1].ToString());
+                        newEntry.Odgovor = row[2].ToString();
+                        newEntry.PredlogPoboljsanja = row[3].ToString();
+                        newEntry.Kontakt = row[4].ToString();
+
+                        if (!db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
+                        {
+                            entries.Add(newEntry);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        rtbReport.Text += "Red: " + (dt.Rows.IndexOf(row) + 1) + " nije unet. Greska: " + ex.Message;
+                        rtbReport.Text += Environment.NewLine;
+                        continue;
                     }
                 }
                 newImportData.Entries = entries;

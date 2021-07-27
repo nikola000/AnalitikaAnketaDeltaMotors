@@ -26,57 +26,71 @@ namespace AnalitikaAnketaDeltaMotors.Classes
             System.Data.DataTable dt = new System.Data.DataTable();
             Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
             Workbook wb = excel.Workbooks.Open(FilePath);
-            Sheets excelSheets = wb.Worksheets;
-            Worksheet sheet = (Worksheet)excelSheets[1];
-            Range xlRange = sheet.UsedRange;
-            int colCount = xlRange.Columns.Count;
 
-            int rowCount = 0;
-            for (int i = 2; i < xlRange.Rows.Count; i++)
+            try
             {
-                try
-                {
-                    sheet.Cells[i, 1].Value.ToString();
-                    rowCount++;
-                }
-                catch (Exception)
-                {
-                    break;
-                }                
-            }
+                Sheets excelSheets = wb.Worksheets;
+                Worksheet sheet = (Worksheet)excelSheets[1];
+                Range xlRange = sheet.UsedRange;
+                int colCount = xlRange.Columns.Count;
 
-            maximum = rowCount + 1;
-
-            for (int j = 1; j < colCount; j++)
-            {
-                try
-                {
-                    dt.Columns.Add(sheet.Cells[1, j].Value.ToString());
-                }
-                catch (Exception)
-                {
-                    break;
-                }
-            }
-
-            for (int i = 2; i <= rowCount+1; i++)
-            {
-                DataRow newRow = dt.NewRow();
-                for (int j = 1; j <= colCount; j++)
+                int rowCount = 0;
+                for (int i = 2; i < xlRange.Rows.Count; i++)
                 {
                     try
                     {
-                        newRow[j-1] = sheet.Cells[i, j].Value.ToString();
+                        sheet.Cells[i, 1].Value.ToString();
+                        rowCount++;
                     }
                     catch (Exception)
                     {
-                        continue;                      
+                        break;
                     }
                 }
 
-                updateProgressBar.Invoke(i);
-                dt.Rows.Add(newRow);
+                maximum = rowCount + 1;
+
+                for (int j = 1; j < colCount; j++)
+                {
+                    try
+                    {
+                        dt.Columns.Add(sheet.Cells[1, j].Value.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        break;
+                    }
+                }
+
+                for (int i = 2; i <= rowCount + 1; i++)
+                {
+                    DataRow newRow = dt.NewRow();
+                    for (int j = 1; j <= colCount; j++)
+                    {
+                        try
+                        {
+                            newRow[j - 1] = sheet.Cells[i, j].Value.ToString();
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                    }
+
+                    updateProgressBar.Invoke(i);
+                    dt.Rows.Add(newRow);
+                }
+
+                wb.Close();
             }
+            catch (Exception e)
+            {
+                wb.Close();
+                MessageBox.Show(e.Message, "Dogodila se greska");
+                throw;
+            }
+
+            
             return dt;
         }
     }
