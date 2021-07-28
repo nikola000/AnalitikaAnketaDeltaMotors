@@ -439,26 +439,14 @@ namespace AnalitikaAnketaDeltaMotors
             Entry currentEntry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
             CntrlAnswer = new CtrlAnswer(currentEntry, dbContext, changeEntry);
+            disableButtons();
             tabPage3.Controls.Add(CntrlAnswer);
             CntrlAnswer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.SelectTab(tabPage3);
         }
         public void changeEntry(int direction)
         {
-            SelectedIndex += direction;
-
-            CntrlAnswer.DisablePrevious(false);
-            if (SelectedIndex == 0 )
-            {
-                CntrlAnswer.DisablePrevious(true);
-            }
-            
-            CntrlAnswer.DisableNext(false);
-            if (SelectedIndex == dataGridViewRezultatiAnkete.Rows.Count - 1)
-            {
-                CntrlAnswer.DisableNext(true);
-            }
-            
+            SelectedIndex += direction;                   
             dataGridViewRezultatiAnkete.ClearSelection();
             dataGridViewRezultatiAnkete.Rows[SelectedIndex].Selected = true;
 
@@ -468,6 +456,7 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 tabPage3.Controls.Clear();
                 CntrlAnswer = new CtrlAnswer((Entry)_selected, dbContext, changeEntry);
+                disableButtons();
                 tabPage3.Controls.Add(CntrlAnswer);
                 tabControl1.SelectTab(tabPage3);
             }
@@ -492,6 +481,19 @@ namespace AnalitikaAnketaDeltaMotors
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             SetChartSubtopics();
+        }
+        private void disableButtons()
+        {
+            CntrlAnswer.DisablePrevious(false);
+            if (SelectedIndex == 0)
+            {
+                CntrlAnswer.DisablePrevious(true);
+            }
+            CntrlAnswer.DisableNext(false);
+            if (SelectedIndex == dataGridViewRezultatiAnkete.Rows.Count - 1)
+            {
+                CntrlAnswer.DisableNext(true);
+            }
         }
     }
 }
