@@ -17,6 +17,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     public partial class TagBookmarks : Form
     {
         CtrlTagBookmarks _tagBookmarks;
+        bool isOk=false;
         public List<Tag> Tags { get; set; }
         public TagBookmarks()
         {
@@ -36,7 +37,22 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void TagBookmarks_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Tags = _tagBookmarks.GetCheckedTags();
+            if (isOk)
+            {
+                Tags = _tagBookmarks.GetCheckedTags();
+            }
+        }
+
+        private void bOk_Click(object sender, EventArgs e)
+        {
+            isOk = true;
+            this.Close();
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            isOk = false;
+            this.Close();
         }
     }
 }
