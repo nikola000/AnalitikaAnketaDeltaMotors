@@ -103,6 +103,21 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.labelFilterTopic = new System.Windows.Forms.Label();
             this.buttonOpenFilterTopic = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbHigh = new System.Windows.Forms.CheckBox();
+            this.cbMedium = new System.Windows.Forms.CheckBox();
+            this.cbLow = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cb5 = new System.Windows.Forms.CheckBox();
+            this.cb3 = new System.Windows.Forms.CheckBox();
+            this.cb1 = new System.Windows.Forms.CheckBox();
+            this.cb9 = new System.Windows.Forms.CheckBox();
+            this.cb7 = new System.Windows.Forms.CheckBox();
+            this.cb10 = new System.Windows.Forms.CheckBox();
+            this.cb8 = new System.Windows.Forms.CheckBox();
+            this.cb6 = new System.Windows.Forms.CheckBox();
+            this.cb4 = new System.Windows.Forms.CheckBox();
+            this.cb2 = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -124,6 +139,8 @@ namespace AnalitikaAnketaDeltaMotors
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRezultatiAnkete)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -738,11 +755,200 @@ namespace AnalitikaAnketaDeltaMotors
             this.buttonOpenFilterTopic.UseVisualStyleBackColor = true;
             this.buttonOpenFilterTopic.Click += new System.EventHandler(this.buttonOpenFilterTopic_Click);
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.cbHigh);
+            this.groupBox4.Controls.Add(this.cbMedium);
+            this.groupBox4.Controls.Add(this.cbLow);
+            this.groupBox4.Location = new System.Drawing.Point(12, 294);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(146, 93);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Filter sentiment";
+            // 
+            // cbHigh
+            // 
+            this.cbHigh.AutoSize = true;
+            this.cbHigh.Checked = true;
+            this.cbHigh.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbHigh.Location = new System.Drawing.Point(7, 66);
+            this.cbHigh.Name = "cbHigh";
+            this.cbHigh.Size = new System.Drawing.Size(48, 17);
+            this.cbHigh.TabIndex = 2;
+            this.cbHigh.Text = "High";
+            this.cbHigh.UseVisualStyleBackColor = true;
+            // 
+            // cbMedium
+            // 
+            this.cbMedium.AutoSize = true;
+            this.cbMedium.Checked = true;
+            this.cbMedium.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMedium.Location = new System.Drawing.Point(7, 43);
+            this.cbMedium.Name = "cbMedium";
+            this.cbMedium.Size = new System.Drawing.Size(63, 17);
+            this.cbMedium.TabIndex = 1;
+            this.cbMedium.Text = "Medium";
+            this.cbMedium.UseVisualStyleBackColor = true;
+            // 
+            // cbLow
+            // 
+            this.cbLow.AutoSize = true;
+            this.cbLow.Checked = true;
+            this.cbLow.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbLow.Location = new System.Drawing.Point(7, 20);
+            this.cbLow.Name = "cbLow";
+            this.cbLow.Size = new System.Drawing.Size(46, 17);
+            this.cbLow.TabIndex = 0;
+            this.cbLow.Text = "Low";
+            this.cbLow.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cb10);
+            this.groupBox5.Controls.Add(this.cb8);
+            this.groupBox5.Controls.Add(this.cb6);
+            this.groupBox5.Controls.Add(this.cb4);
+            this.groupBox5.Controls.Add(this.cb2);
+            this.groupBox5.Controls.Add(this.cb9);
+            this.groupBox5.Controls.Add(this.cb7);
+            this.groupBox5.Controls.Add(this.cb5);
+            this.groupBox5.Controls.Add(this.cb3);
+            this.groupBox5.Controls.Add(this.cb1);
+            this.groupBox5.Location = new System.Drawing.Point(12, 393);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(146, 132);
+            this.groupBox5.TabIndex = 16;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Filter ocena";
+            // 
+            // cb5
+            // 
+            this.cb5.AutoSize = true;
+            this.cb5.Checked = true;
+            this.cb5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb5.Location = new System.Drawing.Point(7, 66);
+            this.cb5.Name = "cb5";
+            this.cb5.Size = new System.Drawing.Size(32, 17);
+            this.cb5.TabIndex = 2;
+            this.cb5.Text = "5";
+            this.cb5.UseVisualStyleBackColor = true;
+            // 
+            // cb3
+            // 
+            this.cb3.AutoSize = true;
+            this.cb3.Checked = true;
+            this.cb3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb3.Location = new System.Drawing.Point(7, 43);
+            this.cb3.Name = "cb3";
+            this.cb3.Size = new System.Drawing.Size(32, 17);
+            this.cb3.TabIndex = 1;
+            this.cb3.Text = "3";
+            this.cb3.UseVisualStyleBackColor = true;
+            // 
+            // cb1
+            // 
+            this.cb1.AutoSize = true;
+            this.cb1.Checked = true;
+            this.cb1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb1.Location = new System.Drawing.Point(7, 20);
+            this.cb1.Name = "cb1";
+            this.cb1.Size = new System.Drawing.Size(32, 17);
+            this.cb1.TabIndex = 0;
+            this.cb1.Text = "1";
+            this.cb1.UseVisualStyleBackColor = true;
+            // 
+            // cb9
+            // 
+            this.cb9.AutoSize = true;
+            this.cb9.Checked = true;
+            this.cb9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb9.Location = new System.Drawing.Point(7, 112);
+            this.cb9.Name = "cb9";
+            this.cb9.Size = new System.Drawing.Size(32, 17);
+            this.cb9.TabIndex = 4;
+            this.cb9.Text = "9";
+            this.cb9.UseVisualStyleBackColor = true;
+            // 
+            // cb7
+            // 
+            this.cb7.AutoSize = true;
+            this.cb7.Checked = true;
+            this.cb7.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb7.Location = new System.Drawing.Point(7, 89);
+            this.cb7.Name = "cb7";
+            this.cb7.Size = new System.Drawing.Size(32, 17);
+            this.cb7.TabIndex = 3;
+            this.cb7.Text = "7";
+            this.cb7.UseVisualStyleBackColor = true;
+            // 
+            // cb10
+            // 
+            this.cb10.AutoSize = true;
+            this.cb10.Checked = true;
+            this.cb10.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb10.Location = new System.Drawing.Point(68, 112);
+            this.cb10.Name = "cb10";
+            this.cb10.Size = new System.Drawing.Size(38, 17);
+            this.cb10.TabIndex = 9;
+            this.cb10.Text = "10";
+            this.cb10.UseVisualStyleBackColor = true;
+            // 
+            // cb8
+            // 
+            this.cb8.AutoSize = true;
+            this.cb8.Checked = true;
+            this.cb8.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb8.Location = new System.Drawing.Point(68, 89);
+            this.cb8.Name = "cb8";
+            this.cb8.Size = new System.Drawing.Size(32, 17);
+            this.cb8.TabIndex = 8;
+            this.cb8.Text = "8";
+            this.cb8.UseVisualStyleBackColor = true;
+            // 
+            // cb6
+            // 
+            this.cb6.AutoSize = true;
+            this.cb6.Checked = true;
+            this.cb6.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb6.Location = new System.Drawing.Point(68, 66);
+            this.cb6.Name = "cb6";
+            this.cb6.Size = new System.Drawing.Size(32, 17);
+            this.cb6.TabIndex = 7;
+            this.cb6.Text = "6";
+            this.cb6.UseVisualStyleBackColor = true;
+            // 
+            // cb4
+            // 
+            this.cb4.AutoSize = true;
+            this.cb4.Checked = true;
+            this.cb4.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb4.Location = new System.Drawing.Point(68, 43);
+            this.cb4.Name = "cb4";
+            this.cb4.Size = new System.Drawing.Size(32, 17);
+            this.cb4.TabIndex = 6;
+            this.cb4.Text = "4";
+            this.cb4.UseVisualStyleBackColor = true;
+            // 
+            // cb2
+            // 
+            this.cb2.AutoSize = true;
+            this.cb2.Checked = true;
+            this.cb2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb2.Location = new System.Drawing.Point(68, 20);
+            this.cb2.Name = "cb2";
+            this.cb2.Size = new System.Drawing.Size(32, 17);
+            this.cb2.TabIndex = 5;
+            this.cb2.Text = "2";
+            this.cb2.UseVisualStyleBackColor = true;
+            // 
             // AnalitikaAnketaDeltaMotors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 659);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tabControl1);
@@ -782,6 +988,10 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -837,6 +1047,21 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSubtopics;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartOcene;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox cbHigh;
+        private System.Windows.Forms.CheckBox cbMedium;
+        private System.Windows.Forms.CheckBox cbLow;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.CheckBox cb10;
+        private System.Windows.Forms.CheckBox cb8;
+        private System.Windows.Forms.CheckBox cb6;
+        private System.Windows.Forms.CheckBox cb4;
+        private System.Windows.Forms.CheckBox cb2;
+        private System.Windows.Forms.CheckBox cb9;
+        private System.Windows.Forms.CheckBox cb7;
+        private System.Windows.Forms.CheckBox cb5;
+        private System.Windows.Forms.CheckBox cb3;
+        private System.Windows.Forms.CheckBox cb1;
     }
 }
 
