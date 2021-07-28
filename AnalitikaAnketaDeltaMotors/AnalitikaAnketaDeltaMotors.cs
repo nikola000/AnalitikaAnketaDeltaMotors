@@ -431,6 +431,10 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
         {
+            if (dataGridViewRezultatiAnkete.SelectedRows.Count < 1)
+            {
+                return;
+            }
             SelectedIndex = dataGridViewRezultatiAnkete.SelectedRows[0].Index;
             Entry currentEntry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
