@@ -15,7 +15,9 @@ namespace AnalitikaAnketaDeltaMotors.Forms
     public partial class SubtopicBookmarks : Form
     {
         CtrlSubtopicBookmarks _subtopicBookmarks;
+        bool isOk = false;
         public List<Subtopic> Subtopics { get; set; }
+        List<Subtopic> subtopicsTemp { get; set; }
         public SubtopicBookmarks()
         {
             InitializeComponent();
@@ -23,6 +25,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         public SubtopicBookmarks(List<Subtopic> Subtopics)
         {
             this.Subtopics = Subtopics;
+            subtopicsTemp = new List<Subtopic>();
+            subtopicsTemp.AddRange(Subtopics);
             InitializeComponent();
         }
         private void SubtopicBookmarks_Load(object sender, EventArgs e)
@@ -33,7 +37,26 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         }
         private void SubtopicBookmarks_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Subtopics = _subtopicBookmarks.GetCheckedSubtopics();
+            if (isOk)
+            {
+                Subtopics = _subtopicBookmarks.GetCheckedSubtopics();     
+            }
+            else
+            {
+                Subtopics = subtopicsTemp;
+            }
+        }
+
+        private void bOk_Click(object sender, EventArgs e)
+        {
+            isOk = true;
+            this.Close();
+        }
+
+        private void bCancel_Click(object sender, EventArgs e)
+        {
+            isOk = false;
+            this.Close();
         }
     }
 }

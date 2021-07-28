@@ -19,6 +19,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         CtrlTagBookmarks _tagBookmarks;
         bool isOk=false;
         public List<Tag> Tags { get; set; }
+        List<Tag> tagsTemp { get; set; }
         public TagBookmarks()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         public TagBookmarks(List<Tag> Tags)
         {
             this.Tags = Tags;
+            tagsTemp = new List<Tag>();
+            tagsTemp.AddRange(Tags);
             InitializeComponent();
         }
         private void TagBookmarks_Load(object sender, EventArgs e)
@@ -40,6 +43,10 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             if (isOk)
             {
                 Tags = _tagBookmarks.GetCheckedTags();
+            }
+            else
+            {
+                Tags = tagsTemp;
             }
         }
 
