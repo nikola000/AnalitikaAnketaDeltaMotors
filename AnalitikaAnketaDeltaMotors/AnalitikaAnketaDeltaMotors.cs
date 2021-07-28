@@ -489,5 +489,38 @@ namespace AnalitikaAnketaDeltaMotors
         {
             SetChartSubtopics();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int broj;
+            double rezultat;
+            label4.Text = " ";
+
+            try
+            {
+
+              
+                broj = Convert.ToInt32(textBox1.Text);
+                rezultat = (SearchedEntries.Count() / broj)* 100;
+                int rounded = (int)Math.Round(rezultat);
+                label4.Text = rezultat.ToString();
+
+
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+     (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
