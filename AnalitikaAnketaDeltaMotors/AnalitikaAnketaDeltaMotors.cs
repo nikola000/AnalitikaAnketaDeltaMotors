@@ -72,7 +72,7 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 comboBox1.Items.AddRange(db.Topics.Include(x => x.Subtopics).ToArray());
             }
-            comboBox1.SelectedItem = comboBox1.Items[0];
+           // comboBox1.SelectedItem = comboBox1.Items[0];
         }
         private void SetupDashboard()
         {
@@ -417,12 +417,12 @@ namespace AnalitikaAnketaDeltaMotors
         {
             dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
             dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = true;
 
             dataGridViewRezultatiAnkete.DataError += DataGrid_DataError;
             dataGridViewRezultatiAnkete.Paint += DataGridViewRezultatiAnkete_Paint;
