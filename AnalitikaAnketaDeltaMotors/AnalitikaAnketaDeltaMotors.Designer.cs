@@ -469,7 +469,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartOverallNPS.BorderlineWidth = 0;
             chartArea3.Name = "ChartArea1";
             this.chartOverallNPS.ChartAreas.Add(chartArea3);
-            this.chartOverallNPS.Location = new System.Drawing.Point(3, 295);
+            this.chartOverallNPS.Location = new System.Drawing.Point(3, 198);
             this.chartOverallNPS.Name = "chartOverallNPS";
             series7.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             series7.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -478,6 +478,7 @@ namespace AnalitikaAnketaDeltaMotors
             series7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             series7.IsValueShownAsLabel = true;
             series7.IsVisibleInLegend = false;
+            series7.Legend = "Legend2";
             series7.Name = "low";
             series7.ShadowColor = System.Drawing.Color.DarkGray;
             series7.ShadowOffset = 20;
@@ -488,6 +489,7 @@ namespace AnalitikaAnketaDeltaMotors
             series8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             series8.IsValueShownAsLabel = true;
             series8.IsVisibleInLegend = false;
+            series8.Legend = "Legend2";
             series8.Name = "medium";
             series8.ShadowColor = System.Drawing.Color.DarkGray;
             series8.ShadowOffset = 20;
@@ -498,13 +500,14 @@ namespace AnalitikaAnketaDeltaMotors
             series9.Color = System.Drawing.Color.Green;
             series9.IsValueShownAsLabel = true;
             series9.IsVisibleInLegend = false;
+            series9.Legend = "Legend2";
             series9.Name = "high";
             series9.ShadowColor = System.Drawing.Color.DarkGray;
             series9.ShadowOffset = 20;
             this.chartOverallNPS.Series.Add(series7);
             this.chartOverallNPS.Series.Add(series8);
             this.chartOverallNPS.Series.Add(series9);
-            this.chartOverallNPS.Size = new System.Drawing.Size(280, 106);
+            this.chartOverallNPS.Size = new System.Drawing.Size(280, 203);
             this.chartOverallNPS.TabIndex = 9;
             this.chartOverallNPS.Text = "chart1";
             // 

@@ -12,6 +12,7 @@ using System.Data.Entity;
 using System.Collections.Generic;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.Classes;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -29,18 +30,18 @@ namespace AnalitikaAnketaDeltaMotors
         Podesavanja frmPodesavanja;
         Topics frmTopic;
         Subtopics frmSubtopic;
-        
+
 
         CtrlTagBookmarks _cntrlTags;
         TagBookmarks _fitlerTagDialog;
         SubtopicBookmarks _fitlerSubtopicDialog;
-        public CtrlAnswer CntrlAnswer  { get; set; }
+        public CtrlAnswer CntrlAnswer { get; set; }
         public List<Tag> FilterTags { get; set; }
         public List<Subtopic> FilterSubtopics { get; set; }
         public IEnumerable<Entry> SearchedEntries { get; set; }
         public int SelectedIndex { get; set; }
 
-        public AnalitikaAnketaDeltaMotors(IUserService userService,IEntryService entryService)
+        public AnalitikaAnketaDeltaMotors(IUserService userService, IEntryService entryService)
         {
             this._userService = userService;
             this._entryService = entryService;
@@ -84,7 +85,7 @@ namespace AnalitikaAnketaDeltaMotors
             SetChartOcene();
             CalculateNPS();
 
-            labelUkupnoOdgovora.Text = "Ukupno odgovora: " + ((SearchedEntries == null) ? 0 : SearchedEntries.Count()); 
+            labelUkupnoOdgovora.Text = "Ukupno odgovora: " + ((SearchedEntries == null) ? 0 : SearchedEntries.Count());
         }
 
         private void CalculateNPS()
@@ -97,7 +98,7 @@ namespace AnalitikaAnketaDeltaMotors
                 ucesceDetraktora = ((double)(SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6).Count()) / (double)(SearchedEntries.Count())) * 100;
                 ucescePromotera = ((double)(SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10).Count()) / (double)(SearchedEntries.Count())) * 100;
 
-                labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString(); 
+                labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString();
             }
             else
             {
@@ -165,7 +166,7 @@ namespace AnalitikaAnketaDeltaMotors
                 {
                     chartSubtopics.Series["low"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
-                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId==item.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId == item.Id).Count());
                     chartSubtopics.Series["medium"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Id).Count());
@@ -182,17 +183,34 @@ namespace AnalitikaAnketaDeltaMotors
             chartOverallNPS.Series["medium"].Points.Clear();
             chartOverallNPS.Series["high"].Points.Clear();
 
-            if (SearchedEntries != null)
+            if (SearchedEntries != null && SearchedEntries.Count() > 0)
             {
-                chartOverallNPS.Series["low"].Points.AddXY("", SearchedEntries
-                .SelectMany(x => x.EntryScores)
-                .Where(x => x.Score == Classes.Utils.Score.Low).Count());
-                chartOverallNPS.Series["medium"].Points.AddXY("", SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count());
-                chartOverallNPS.Series["high"].Points.AddXY("", SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.High).Count());
+                chartOverallNPS.Series["low"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count());
+                chartOverallNPS.Series["medium"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count());
+                chartOverallNPS.Series["high"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count());
+                chartOverallNPS.Series["low"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count() + " %";
+                chartOverallNPS.Series["medium"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count() + " %";
+                chartOverallNPS.Series["high"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count() + " %";
+
+                chartOverallNPS.Legends.Clear();
+
+                chartOverallNPS.Legends.Add(new Legend("Legend1"));
+                chartOverallNPS.Legends["Legend1"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["low"].Legend = "Legend1";
+                chartOverallNPS.Series["low"].LegendText = "detraktori";
+                chartOverallNPS.Series["low"].IsVisibleInLegend = true;
+
+                chartOverallNPS.Legends.Add(new Legend("Legend2"));
+                chartOverallNPS.Legends["Legend2"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["medium"].Legend = "Legend2";
+                chartOverallNPS.Series["medium"].LegendText = "neutralni";
+                chartOverallNPS.Series["medium"].IsVisibleInLegend = true;
+
+                chartOverallNPS.Legends.Add(new Legend("Legend3"));
+                chartOverallNPS.Legends["Legend3"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["high"].Legend = "Legend3";
+                chartOverallNPS.Series["high"].LegendText = "promoteri";
+                chartOverallNPS.Series["high"].IsVisibleInLegend = true;
             }
         }
 
@@ -224,7 +242,7 @@ namespace AnalitikaAnketaDeltaMotors
         private void SetChartTags()
         {
             if (SearchedEntries != null)
-            { 
+            {
                 chartTagovi.Series["Tagovi"].Points.Clear();
                 var groups = SearchedEntries.GroupBy(x => x.ImportData.Tags).ToList();
                 foreach (var group in groups)
@@ -255,7 +273,7 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            
+
             if (e.ClickedItem.Name == ToolStripMenuItem2.Name)
             {
                 frm3 = new Import();
@@ -387,7 +405,7 @@ namespace AnalitikaAnketaDeltaMotors
         {
             if (user == null)
                 return false;
-            
+
             if (user.IsAdministrator)
                 return true;
 
@@ -410,10 +428,10 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void DataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            e.Cancel=true;
+            e.Cancel = true;
         }
 
-        private void intializeDataGrid(DataGridView dataGrid) 
+        private void intializeDataGrid(DataGridView dataGrid)
         {
             dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
             dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -444,17 +462,17 @@ namespace AnalitikaAnketaDeltaMotors
             SelectedIndex += direction;
 
             CntrlAnswer.DisablePrevious(false);
-            if (SelectedIndex == 0 )
+            if (SelectedIndex == 0)
             {
                 CntrlAnswer.DisablePrevious(true);
             }
-            
+
             CntrlAnswer.DisableNext(false);
             if (SelectedIndex == dataGridViewRezultatiAnkete.Rows.Count - 1)
             {
                 CntrlAnswer.DisableNext(true);
             }
-            
+
             dataGridViewRezultatiAnkete.ClearSelection();
             dataGridViewRezultatiAnkete.Rows[SelectedIndex].Selected = true;
 
@@ -482,7 +500,7 @@ namespace AnalitikaAnketaDeltaMotors
             _fitlerSubtopicDialog = new SubtopicBookmarks(FilterSubtopics);
             _fitlerSubtopicDialog.ShowDialog();
             FilterSubtopics = _fitlerSubtopicDialog.Subtopics;
-            labelFilterTopic.Text= "( " + FilterSubtopics.Count() + " )";
+            labelFilterTopic.Text = "( " + FilterSubtopics.Count() + " )";
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
