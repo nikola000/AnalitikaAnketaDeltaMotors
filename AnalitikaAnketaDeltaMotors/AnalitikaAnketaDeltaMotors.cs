@@ -492,26 +492,20 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            int broj;
+            double broj;
             double rezultat;
-            label4.Text = " ";
 
-            try
+
+            double.TryParse(textBox1.Text, out broj);
+            rezultat = SearchedEntries.Count() / broj * 100;
+            int rounded = (int)Math.Round(rezultat);
+            if (broj == 0)
             {
-
-              
-                broj = Convert.ToInt32(textBox1.Text);
-                rezultat = (SearchedEntries.Count() / broj)* 100;
-                int rounded = (int)Math.Round(rezultat);
-                label4.Text = rezultat.ToString();
-
-
+                label4.Text = "";
             }
-            catch (Exception)
-            {
+            else
+                label4.Text = rounded.ToString();
 
-                return;
-            }
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
