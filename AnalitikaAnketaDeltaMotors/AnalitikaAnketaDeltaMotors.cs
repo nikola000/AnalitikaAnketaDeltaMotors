@@ -495,21 +495,20 @@ namespace AnalitikaAnketaDeltaMotors
             double broj;
             double rezultat;
             double.TryParse(txtPosAnketa.Text, out broj);
-            try
-            {
-                rezultat = 5 / broj * 100;
-                int rounded = (int)Math.Round(rezultat);
+            if (SearchedEntries == null)
+                return;
+                rezultat = SearchedEntries.Count() / broj * 100;
+                    
+            
+            int rounded = (int)Math.Round(rezultat);
                 if (broj == 0)
                 {
                     lblStopaOdgovora.Text = "";
                 }
                 else
                     lblStopaOdgovora.Text = rounded.ToString();
-            }
-            catch
-            {
-                return;
-            }
+          
+          
            
         }
 
