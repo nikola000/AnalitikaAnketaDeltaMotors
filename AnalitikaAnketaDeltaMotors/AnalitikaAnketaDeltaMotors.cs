@@ -489,29 +489,34 @@ namespace AnalitikaAnketaDeltaMotors
         {
             SetChartSubtopics();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
+  
+        private void txtPosAnketa_TextChanged(object sender, EventArgs e)
         {
             double broj;
             double rezultat;
-
-
-            double.TryParse(textBox1.Text, out broj);
-            rezultat = SearchedEntries.Count() / broj * 100;
-            int rounded = (int)Math.Round(rezultat);
-            if (broj == 0)
+            double.TryParse(txtPosAnketa.Text, out broj);
+            try
             {
-                label4.Text = "";
+                rezultat = 5 / broj * 100;
+                int rounded = (int)Math.Round(rezultat);
+                if (broj == 0)
+                {
+                    lblStopaOdgovora.Text = "";
+                }
+                else
+                    lblStopaOdgovora.Text = rounded.ToString();
             }
-            else
-                label4.Text = rounded.ToString();
-
+            catch
+            {
+                return;
+            }
+           
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtPosAnketa_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-     (e.KeyChar != '.'))
+ (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
