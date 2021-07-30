@@ -31,6 +31,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bAddSubtopic = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,11 +59,23 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1.Size = new System.Drawing.Size(306, 181);
             this.dataGridView1.TabIndex = 4;
             // 
+            // bAddSubtopic
+            // 
+            this.bAddSubtopic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bAddSubtopic.Location = new System.Drawing.Point(10, 10);
+            this.bAddSubtopic.Name = "bAddSubtopic";
+            this.bAddSubtopic.Size = new System.Drawing.Size(141, 20);
+            this.bAddSubtopic.TabIndex = 6;
+            this.bAddSubtopic.Text = "Dodaj subtopic";
+            this.bAddSubtopic.UseVisualStyleBackColor = true;
+            this.bAddSubtopic.Click += new System.EventHandler(this.bAddSubtopic_Click);
+            // 
             // Subtopics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 227);
+            this.Controls.Add(this.bAddSubtopic);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Subtopics";
@@ -77,5 +90,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button bAddSubtopic;
     }
 }
