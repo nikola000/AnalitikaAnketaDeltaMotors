@@ -501,6 +501,7 @@ namespace AnalitikaAnketaDeltaMotors
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewRezultatiAnkete.Rows)
+            {
                 if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).Odgovor.Contains(textBox1.Text) && textBox1.Text != "")
                 {
                     row.DefaultCellStyle.BackColor = Color.Pink;
@@ -516,6 +517,8 @@ namespace AnalitikaAnketaDeltaMotors
                         row.DefaultCellStyle.BackColor = Color.White;
                     }
                 }
+            }
+        } 
         private bool filterSentiments(Entry entry)
         {
             List<Utils.Score> scores = new List<Utils.Score>();
