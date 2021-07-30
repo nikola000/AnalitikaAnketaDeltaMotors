@@ -95,6 +95,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartTagovi = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewRezultatiAnkete = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -108,17 +109,17 @@ namespace AnalitikaAnketaDeltaMotors
             this.cbMedium = new System.Windows.Forms.CheckBox();
             this.cbLow = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cb5 = new System.Windows.Forms.CheckBox();
-            this.cb3 = new System.Windows.Forms.CheckBox();
-            this.cb1 = new System.Windows.Forms.CheckBox();
-            this.cb9 = new System.Windows.Forms.CheckBox();
-            this.cb7 = new System.Windows.Forms.CheckBox();
             this.cb10 = new System.Windows.Forms.CheckBox();
             this.cb8 = new System.Windows.Forms.CheckBox();
             this.cb6 = new System.Windows.Forms.CheckBox();
             this.cb4 = new System.Windows.Forms.CheckBox();
             this.cb2 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cb9 = new System.Windows.Forms.CheckBox();
+            this.cb7 = new System.Windows.Forms.CheckBox();
+            this.cb5 = new System.Windows.Forms.CheckBox();
+            this.cb3 = new System.Windows.Forms.CheckBox();
+            this.cb1 = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -667,6 +668,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.textBox1);
             this.tabPage2.Controls.Add(this.dataGridViewRezultatiAnkete);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -677,10 +679,22 @@ namespace AnalitikaAnketaDeltaMotors
             this.tabPage2.Text = "Ankete";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(874, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 20);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // dataGridViewRezultatiAnkete
             // 
             this.dataGridViewRezultatiAnkete.AllowUserToAddRows = false;
             this.dataGridViewRezultatiAnkete.AllowUserToDeleteRows = false;
+            this.dataGridViewRezultatiAnkete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewRezultatiAnkete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRezultatiAnkete.Location = new System.Drawing.Point(3, 25);
             this.dataGridViewRezultatiAnkete.Name = "dataGridViewRezultatiAnkete";
@@ -823,66 +837,6 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Filter ocena";
             // 
-            // cb5
-            // 
-            this.cb5.AutoSize = true;
-            this.cb5.Checked = true;
-            this.cb5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb5.Location = new System.Drawing.Point(7, 66);
-            this.cb5.Name = "cb5";
-            this.cb5.Size = new System.Drawing.Size(32, 17);
-            this.cb5.TabIndex = 2;
-            this.cb5.Text = "5";
-            this.cb5.UseVisualStyleBackColor = true;
-            // 
-            // cb3
-            // 
-            this.cb3.AutoSize = true;
-            this.cb3.Checked = true;
-            this.cb3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb3.Location = new System.Drawing.Point(7, 43);
-            this.cb3.Name = "cb3";
-            this.cb3.Size = new System.Drawing.Size(32, 17);
-            this.cb3.TabIndex = 1;
-            this.cb3.Text = "3";
-            this.cb3.UseVisualStyleBackColor = true;
-            // 
-            // cb1
-            // 
-            this.cb1.AutoSize = true;
-            this.cb1.Checked = true;
-            this.cb1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb1.Location = new System.Drawing.Point(7, 20);
-            this.cb1.Name = "cb1";
-            this.cb1.Size = new System.Drawing.Size(32, 17);
-            this.cb1.TabIndex = 0;
-            this.cb1.Text = "1";
-            this.cb1.UseVisualStyleBackColor = true;
-            // 
-            // cb9
-            // 
-            this.cb9.AutoSize = true;
-            this.cb9.Checked = true;
-            this.cb9.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb9.Location = new System.Drawing.Point(7, 112);
-            this.cb9.Name = "cb9";
-            this.cb9.Size = new System.Drawing.Size(32, 17);
-            this.cb9.TabIndex = 4;
-            this.cb9.Text = "9";
-            this.cb9.UseVisualStyleBackColor = true;
-            // 
-            // cb7
-            // 
-            this.cb7.AutoSize = true;
-            this.cb7.Checked = true;
-            this.cb7.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb7.Location = new System.Drawing.Point(7, 89);
-            this.cb7.Name = "cb7";
-            this.cb7.Size = new System.Drawing.Size(32, 17);
-            this.cb7.TabIndex = 3;
-            this.cb7.Text = "7";
-            this.cb7.UseVisualStyleBackColor = true;
-            // 
             // cb10
             // 
             this.cb10.AutoSize = true;
@@ -942,13 +896,76 @@ namespace AnalitikaAnketaDeltaMotors
             this.cb2.TabIndex = 5;
             this.cb2.Text = "2";
             this.cb2.UseVisualStyleBackColor = true;
-            // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(974, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // cb9
+            // 
+            this.cb9.AutoSize = true;
+            this.cb9.Checked = true;
+            this.cb9.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb9.Location = new System.Drawing.Point(7, 112);
+            this.cb9.Name = "cb9";
+            this.cb9.Size = new System.Drawing.Size(32, 17);
+            this.cb9.TabIndex = 4;
+            this.cb9.Text = "9";
+            this.cb9.UseVisualStyleBackColor = true;
+            // 
+            // cb7
+            // 
+            this.cb7.AutoSize = true;
+            this.cb7.Checked = true;
+            this.cb7.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb7.Location = new System.Drawing.Point(7, 89);
+            this.cb7.Name = "cb7";
+            this.cb7.Size = new System.Drawing.Size(32, 17);
+            this.cb7.TabIndex = 3;
+            this.cb7.Text = "7";
+            this.cb7.UseVisualStyleBackColor = true;
+            // 
+            // cb5
+            // 
+            this.cb5.AutoSize = true;
+            this.cb5.Checked = true;
+            this.cb5.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb5.Location = new System.Drawing.Point(7, 66);
+            this.cb5.Name = "cb5";
+            this.cb5.Size = new System.Drawing.Size(32, 17);
+            this.cb5.TabIndex = 2;
+            this.cb5.Text = "5";
+            this.cb5.UseVisualStyleBackColor = true;
+            // 
+            // cb3
+            // 
+            this.cb3.AutoSize = true;
+            this.cb3.Checked = true;
+            this.cb3.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb3.Location = new System.Drawing.Point(7, 43);
+            this.cb3.Name = "cb3";
+            this.cb3.Size = new System.Drawing.Size(32, 17);
+            this.cb3.TabIndex = 1;
+            this.cb3.Text = "3";
+            this.cb3.UseVisualStyleBackColor = true;
+            // 
+            // cb1
+            // 
+            this.cb1.AutoSize = true;
+            this.cb1.Checked = true;
+            this.cb1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb1.Location = new System.Drawing.Point(7, 20);
+            this.cb1.Name = "cb1";
+            this.cb1.Size = new System.Drawing.Size(32, 17);
+            this.cb1.TabIndex = 0;
+            this.cb1.Text = "1";
+            this.cb1.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(818, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Pretraga:";
             // 
             // AnalitikaAnketaDeltaMotors
             // 
@@ -1072,6 +1089,7 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.CheckBox cb3;
         private System.Windows.Forms.CheckBox cb1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
