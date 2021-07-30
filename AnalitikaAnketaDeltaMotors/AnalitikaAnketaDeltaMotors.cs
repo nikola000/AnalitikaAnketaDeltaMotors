@@ -359,7 +359,9 @@ namespace AnalitikaAnketaDeltaMotors
 
             SearchedEntries = temp.ToList()
                 .Where(x => CheckPersmission(x))
-                .Where(x => AcceptFilterCriteria(x)).ToList();
+                .Where(x => AcceptFilterCriteria(x))
+                .Where(x => filterSentiments(x))
+                .Where(x => filterOcena(x)).ToList();
             dataGridViewRezultatiAnkete.DataSource = SearchedEntries;
 
             intializeDataGrid(dataGridViewRezultatiAnkete);
@@ -488,6 +490,84 @@ namespace AnalitikaAnketaDeltaMotors
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             SetChartSubtopics();
+        }
+        private bool filterSentiments(Entry entry)
+        {
+            List<Utils.Score> scores = new List<Utils.Score>();
+            if (cbLow.Checked)
+            {
+                scores.Add(Utils.Score.Low);
+            }
+            if (cbMedium.Checked)
+            {
+                scores.Add(Utils.Score.Medium);
+            }
+            if (cbHigh.Checked)
+            {
+                scores.Add(Utils.Score.High);
+            }
+            if (scores.Count < 1)
+            {
+                return true;
+            }
+            if (scores.Select(x => x).Intersect(entry.EntryScores.Select(x => x.Score).Distinct()).Count() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool filterOcena(Entry entry)
+        {
+            List<int> ocene = new List<int>();
+            if (cb1.Checked)
+            {
+                ocene.Add(1);
+            }
+            if (cb2.Checked)
+            {
+                ocene.Add(2);
+            }
+            if (cb3.Checked)
+            {
+                ocene.Add(3);
+            }
+            if (cb4.Checked)
+            {
+                ocene.Add(4);
+            }
+            if (cb5.Checked)
+            {
+                ocene.Add(5);
+            }
+            if (cb6.Checked)
+            {
+                ocene.Add(6);
+            }
+            if (cb7.Checked)
+            {
+                ocene.Add(7);
+            }
+            if (cb8.Checked)
+            {
+                ocene.Add(8);
+            }
+            if (cb9.Checked)
+            {
+                ocene.Add(9);
+            }
+            if (cb10.Checked)
+            {
+                ocene.Add(10);
+            }
+            if (ocene.Count < 1)
+            {
+                return true;
+            }
+            if (ocene.Contains(entry.Ocena))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
