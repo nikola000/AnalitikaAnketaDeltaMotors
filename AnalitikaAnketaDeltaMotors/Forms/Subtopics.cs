@@ -37,6 +37,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["TopicId"].Visible = false;
             dataGridView1.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns["Topic"].ReadOnly = true;
         }
 
         private void button1_Click(object sender, EventArgs e)

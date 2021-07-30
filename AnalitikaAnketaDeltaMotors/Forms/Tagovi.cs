@@ -31,6 +31,8 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Columns["Name"].HeaderText = "Naziv";
             dataGridView1.Columns["Group"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns["Group"].ReadOnly = true;
+            dataGridView1.Columns["ImportDatas"].Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
