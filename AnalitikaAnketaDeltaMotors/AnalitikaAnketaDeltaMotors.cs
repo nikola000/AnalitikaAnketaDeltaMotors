@@ -399,14 +399,20 @@ namespace AnalitikaAnketaDeltaMotors
         private void DataGridViewRezultatiAnkete_Paint(object sender, PaintEventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewRezultatiAnkete.Rows)
-                if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).EntryScores.Count > 0)
+                if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).Odgovor.Contains(textBox1.Text) && textBox1.Text != "")
                 {
-                    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    row.DefaultCellStyle.BackColor = Color.Pink;
                 }
                 else
                 {
-                    row.DefaultCellStyle.BackColor = Color.White;
-
+                    if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).EntryScores.Count > 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
                 }
         }
 
@@ -491,6 +497,25 @@ namespace AnalitikaAnketaDeltaMotors
         {
             SetChartSubtopics();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewRezultatiAnkete.Rows)
+                if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).Odgovor.Contains(textBox1.Text) && textBox1.Text != "")
+                {
+                    row.DefaultCellStyle.BackColor = Color.Pink;
+                }
+                else
+                {
+                    if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).EntryScores.Count > 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
+                }
         private bool filterSentiments(Entry entry)
         {
             List<Utils.Score> scores = new List<Utils.Score>();
