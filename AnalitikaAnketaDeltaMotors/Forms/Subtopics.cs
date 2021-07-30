@@ -48,5 +48,13 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 MessageBox.Show("Izmene su uspesno sacuvane");
             }
         }
+
+        private void bAddSubtopic_Click(object sender, EventArgs e)
+        {
+            AddingSubtopic addingSubtopic = new AddingSubtopic();
+            addingSubtopic.ShowDialog();
+            context.Subtopics.Include(x => x.Topic).Load();
+            SetDataGrid();
+        }
     }
 }
