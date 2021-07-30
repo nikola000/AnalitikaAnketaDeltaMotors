@@ -419,9 +419,9 @@ namespace AnalitikaAnketaDeltaMotors
         {
             dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
             dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = true;
             dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = false;
             dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = false;
             dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = false;
