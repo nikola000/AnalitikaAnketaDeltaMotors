@@ -185,12 +185,12 @@ namespace AnalitikaAnketaDeltaMotors
 
             if (SearchedEntries != null && SearchedEntries.Count() > 0)
             {
-                chartOverallNPS.Series["low"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count());
-                chartOverallNPS.Series["medium"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count());
-                chartOverallNPS.Series["high"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count());
-                chartOverallNPS.Series["low"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count() + " %";
-                chartOverallNPS.Series["medium"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count() + " %";
-                chartOverallNPS.Series["high"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count() + " %";
+                chartOverallNPS.Series["low"].Points.AddXY("", 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count());
+                chartOverallNPS.Series["medium"].Points.AddXY("", 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count());
+                chartOverallNPS.Series["high"].Points.AddXY("", 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count());
+                chartOverallNPS.Series["low"].Label = 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count() + " %";
+                chartOverallNPS.Series["medium"].Label = 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count() + " %";
+                chartOverallNPS.Series["high"].Label = 100.0 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count() + " %";
 
                 chartOverallNPS.Legends.Clear();
 
