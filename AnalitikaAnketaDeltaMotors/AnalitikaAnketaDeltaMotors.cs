@@ -12,6 +12,7 @@ using System.Data.Entity;
 using System.Collections.Generic;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.Classes;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -182,17 +183,34 @@ namespace AnalitikaAnketaDeltaMotors
             chartOverallNPS.Series["medium"].Points.Clear();
             chartOverallNPS.Series["high"].Points.Clear();
 
-            if (SearchedEntries != null)
+            if (SearchedEntries != null && SearchedEntries.Count() > 0)
             {
-                chartOverallNPS.Series["low"].Points.AddXY("", SearchedEntries
-                .SelectMany(x => x.EntryScores)
-                .Where(x => x.Score == Classes.Utils.Score.Low).Count());
-                chartOverallNPS.Series["medium"].Points.AddXY("", SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count());
-                chartOverallNPS.Series["high"].Points.AddXY("", SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.High).Count());
+                chartOverallNPS.Series["low"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count());
+                chartOverallNPS.Series["medium"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count());
+                chartOverallNPS.Series["high"].Points.AddXY("", 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count());
+                chartOverallNPS.Series["low"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena < 7).Count() + " %";
+                chartOverallNPS.Series["medium"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena == 7 || x.Ocena == 8).Count() + " %";
+                chartOverallNPS.Series["high"].Label = 100 / SearchedEntries.Count() * SearchedEntries.Where(x => x.Ocena > 8).Count() + " %";
+
+                chartOverallNPS.Legends.Clear();
+
+                chartOverallNPS.Legends.Add(new Legend("Legend1"));
+                chartOverallNPS.Legends["Legend1"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["low"].Legend = "Legend1";
+                chartOverallNPS.Series["low"].LegendText = "detraktori";
+                chartOverallNPS.Series["low"].IsVisibleInLegend = true;
+
+                chartOverallNPS.Legends.Add(new Legend("Legend2"));
+                chartOverallNPS.Legends["Legend2"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["medium"].Legend = "Legend2";
+                chartOverallNPS.Series["medium"].LegendText = "neutralni";
+                chartOverallNPS.Series["medium"].IsVisibleInLegend = true;
+
+                chartOverallNPS.Legends.Add(new Legend("Legend3"));
+                chartOverallNPS.Legends["Legend3"].Docking = Docking.Bottom;
+                chartOverallNPS.Series["high"].Legend = "Legend3";
+                chartOverallNPS.Series["high"].LegendText = "promoteri";
+                chartOverallNPS.Series["high"].IsVisibleInLegend = true;
             }
         }
 
