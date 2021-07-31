@@ -73,7 +73,10 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 comboBox1.Items.AddRange(db.Topics.Include(x => x.Subtopics).ToArray());
             }
-            comboBox1.SelectedItem = comboBox1.Items[0];
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedItem = comboBox1.Items[0];
+            }
         }
         private void SetupDashboard()
         {
