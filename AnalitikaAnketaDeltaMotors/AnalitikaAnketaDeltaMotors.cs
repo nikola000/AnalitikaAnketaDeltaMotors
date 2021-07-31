@@ -29,18 +29,18 @@ namespace AnalitikaAnketaDeltaMotors
         Podesavanja frmPodesavanja;
         Topics frmTopic;
         Subtopics frmSubtopic;
-        
+
 
         CtrlTagBookmarks _cntrlTags;
         TagBookmarks _fitlerTagDialog;
         SubtopicBookmarks _fitlerSubtopicDialog;
-        public CtrlAnswer CntrlAnswer  { get; set; }
+        public CtrlAnswer CntrlAnswer { get; set; }
         public List<Tag> FilterTags { get; set; }
         public List<Subtopic> FilterSubtopics { get; set; }
         public IEnumerable<Entry> SearchedEntries { get; set; }
         public int SelectedIndex { get; set; }
 
-        public AnalitikaAnketaDeltaMotors(IUserService userService,IEntryService entryService)
+        public AnalitikaAnketaDeltaMotors(IUserService userService, IEntryService entryService)
         {
             this._userService = userService;
             this._entryService = entryService;
@@ -84,7 +84,7 @@ namespace AnalitikaAnketaDeltaMotors
             SetChartOcene();
             CalculateNPS();
 
-            labelUkupnoOdgovora.Text = "Ukupno odgovora: " + ((SearchedEntries == null) ? 0 : SearchedEntries.Count()); 
+            labelUkupnoOdgovora.Text = "Ukupno odgovora: " + ((SearchedEntries == null) ? 0 : SearchedEntries.Count());
         }
 
         private void CalculateNPS()
@@ -97,7 +97,7 @@ namespace AnalitikaAnketaDeltaMotors
                 ucesceDetraktora = ((double)(SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6).Count()) / (double)(SearchedEntries.Count())) * 100;
                 ucescePromotera = ((double)(SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10).Count()) / (double)(SearchedEntries.Count())) * 100;
 
-                labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString(); 
+                labelNPS.Text = ((int)Math.Ceiling(ucescePromotera - ucesceDetraktora)).ToString();
             }
             else
             {
@@ -165,7 +165,7 @@ namespace AnalitikaAnketaDeltaMotors
                 {
                     chartSubtopics.Series["low"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
-                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId==item.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId == item.Id).Count());
                     chartSubtopics.Series["medium"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Id).Count());
@@ -224,7 +224,7 @@ namespace AnalitikaAnketaDeltaMotors
         private void SetChartTags()
         {
             if (SearchedEntries != null)
-            { 
+            {
                 chartTagovi.Series["Tagovi"].Points.Clear();
                 var groups = SearchedEntries.GroupBy(x => x.ImportData.Tags).ToList();
                 foreach (var group in groups)
@@ -255,7 +255,7 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            
+
             if (e.ClickedItem.Name == ToolStripMenuItem2.Name)
             {
                 frm3 = new Import();
@@ -387,7 +387,7 @@ namespace AnalitikaAnketaDeltaMotors
         {
             if (user == null)
                 return false;
-            
+
             if (user.IsAdministrator)
                 return true;
 
@@ -410,10 +410,10 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void DataGrid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
-            e.Cancel=true;
+            e.Cancel = true;
         }
 
-        private void intializeDataGrid(DataGridView dataGrid) 
+        private void intializeDataGrid(DataGridView dataGrid)
         {
             dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
             dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -444,17 +444,17 @@ namespace AnalitikaAnketaDeltaMotors
             SelectedIndex += direction;
 
             CntrlAnswer.DisablePrevious(false);
-            if (SelectedIndex == 0 )
+            if (SelectedIndex == 0)
             {
                 CntrlAnswer.DisablePrevious(true);
             }
-            
+
             CntrlAnswer.DisableNext(false);
             if (SelectedIndex == dataGridViewRezultatiAnkete.Rows.Count - 1)
             {
                 CntrlAnswer.DisableNext(true);
             }
-            
+
             dataGridViewRezultatiAnkete.ClearSelection();
             dataGridViewRezultatiAnkete.Rows[SelectedIndex].Selected = true;
 
@@ -482,14 +482,14 @@ namespace AnalitikaAnketaDeltaMotors
             _fitlerSubtopicDialog = new SubtopicBookmarks(FilterSubtopics);
             _fitlerSubtopicDialog.ShowDialog();
             FilterSubtopics = _fitlerSubtopicDialog.Subtopics;
-            labelFilterTopic.Text= "( " + FilterSubtopics.Count() + " )";
+            labelFilterTopic.Text = "( " + FilterSubtopics.Count() + " )";
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             SetChartSubtopics();
         }
-  
+
         private void txtPosAnketa_TextChanged(object sender, EventArgs e)
         {
             double broj;
@@ -497,19 +497,19 @@ namespace AnalitikaAnketaDeltaMotors
             double.TryParse(txtPosAnketa.Text, out broj);
             if (SearchedEntries == null)
                 return;
-                rezultat = SearchedEntries.Count() / broj * 100;
-                    
-            
+            rezultat = SearchedEntries.Count() / broj * 100;
+
+
             int rounded = (int)Math.Round(rezultat);
-                if (broj == 0)
-                {
-                    lblStopaOdgovora.Text = "";
-                }
-                else
-                    lblStopaOdgovora.Text = rounded.ToString();
-          
-          
-           
+            if (broj == 0)
+            {
+                lblStopaOdgovora.Text = "";
+            }
+            else
+                lblStopaOdgovora.Text = rounded.ToString();
+
+
+
         }
 
         private void txtPosAnketa_KeyPress(object sender, KeyPressEventArgs e)
@@ -519,6 +519,10 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 e.Handled = true;
             }
+
+
         }
+
+
     }
 }
