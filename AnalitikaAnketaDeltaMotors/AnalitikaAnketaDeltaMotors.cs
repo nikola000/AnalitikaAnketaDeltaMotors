@@ -607,14 +607,12 @@ namespace AnalitikaAnketaDeltaMotors
         private void txtPosAnketa_TextChanged(object sender, EventArgs e)
         {
             double broj;
-           
             double.TryParse(txtPosAnketa.Text, out broj);
-            if (SearchedEntries == null)
-                return;
-            if (broj == 0)
+            if (SearchedEntries == null || broj==0)
             {
-                lblStopaOdgovora.Text = " ";
-                return; 
+                label9.Text = "";
+                lblStopaOdgovora.Text = "";
+                return;
             }
             label9.Text = SearchedEntries.Count().ToString();
             lblStopaOdgovora.Text = (int)Math.Round(SearchedEntries.Count() / broj * 100) + " %";
