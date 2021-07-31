@@ -30,30 +30,30 @@ namespace AnalitikaAnketaDeltaMotors
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series33 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series34 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series35 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series36 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea19 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series37 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea20 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series38 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea21 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series39 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sistemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.prijavaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +95,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartTagovi = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewRezultatiAnkete = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -119,8 +120,13 @@ namespace AnalitikaAnketaDeltaMotors
             this.cb5 = new System.Windows.Forms.CheckBox();
             this.cb3 = new System.Windows.Forms.CheckBox();
             this.cb1 = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblStopaOdgovora = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtPosAnketa = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -390,42 +396,42 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // chartRezultati
             // 
-            chartArea15.Name = "ChartArea1";
-            this.chartRezultati.ChartAreas.Add(chartArea15);
+            chartArea8.Name = "ChartArea1";
+            this.chartRezultati.ChartAreas.Add(chartArea8);
             this.chartRezultati.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartRezultati.Location = new System.Drawing.Point(0, 0);
             this.chartRezultati.Name = "chartRezultati";
             this.chartRezultati.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series27.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series27.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series27.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series27.IsValueShownAsLabel = true;
-            series27.Name = "low";
-            series27.ShadowColor = System.Drawing.Color.DarkGray;
-            series27.ShadowOffset = 20;
-            series28.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series28.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series28.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series28.IsValueShownAsLabel = true;
-            series28.Name = "medium";
-            series28.ShadowColor = System.Drawing.Color.DarkGray;
-            series28.ShadowOffset = 20;
-            series29.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series29.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series29.Color = System.Drawing.Color.Green;
-            series29.IsValueShownAsLabel = true;
-            series29.Name = "high";
-            series29.ShadowColor = System.Drawing.Color.DarkGray;
-            series29.ShadowOffset = 20;
-            this.chartRezultati.Series.Add(series27);
-            this.chartRezultati.Series.Add(series28);
-            this.chartRezultati.Series.Add(series29);
+            series14.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series14.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series14.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series14.IsValueShownAsLabel = true;
+            series14.Name = "low";
+            series14.ShadowColor = System.Drawing.Color.DarkGray;
+            series14.ShadowOffset = 20;
+            series15.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series15.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series15.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series15.IsValueShownAsLabel = true;
+            series15.Name = "medium";
+            series15.ShadowColor = System.Drawing.Color.DarkGray;
+            series15.ShadowOffset = 20;
+            series16.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series16.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series16.Color = System.Drawing.Color.Green;
+            series16.IsValueShownAsLabel = true;
+            series16.Name = "high";
+            series16.ShadowColor = System.Drawing.Color.DarkGray;
+            series16.ShadowOffset = 20;
+            this.chartRezultati.Series.Add(series14);
+            this.chartRezultati.Series.Add(series15);
+            this.chartRezultati.Series.Add(series16);
             this.chartRezultati.Size = new System.Drawing.Size(398, 393);
             this.chartRezultati.TabIndex = 0;
             this.chartRezultati.Text = "chartDashboard";
@@ -435,41 +441,41 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartSubtopics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea16.Name = "ChartArea1";
-            this.chartSubtopics.ChartAreas.Add(chartArea16);
+            chartArea9.Name = "ChartArea1";
+            this.chartSubtopics.ChartAreas.Add(chartArea9);
             this.chartSubtopics.Location = new System.Drawing.Point(3, 30);
             this.chartSubtopics.Name = "chartSubtopics";
             this.chartSubtopics.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
-            series30.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series30.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series30.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series30.IsValueShownAsLabel = true;
-            series30.Name = "low";
-            series30.ShadowColor = System.Drawing.Color.DarkGray;
-            series30.ShadowOffset = 20;
-            series31.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series31.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series31.ChartArea = "ChartArea1";
-            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series31.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series31.IsValueShownAsLabel = true;
-            series31.Name = "medium";
-            series31.ShadowColor = System.Drawing.Color.DarkGray;
-            series31.ShadowOffset = 20;
-            series32.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series32.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series32.ChartArea = "ChartArea1";
-            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series32.Color = System.Drawing.Color.Green;
-            series32.IsValueShownAsLabel = true;
-            series32.Name = "high";
-            series32.ShadowColor = System.Drawing.Color.DarkGray;
-            series32.ShadowOffset = 20;
-            this.chartSubtopics.Series.Add(series30);
-            this.chartSubtopics.Series.Add(series31);
-            this.chartSubtopics.Series.Add(series32);
+            series17.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series17.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series17.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series17.IsValueShownAsLabel = true;
+            series17.Name = "low";
+            series17.ShadowColor = System.Drawing.Color.DarkGray;
+            series17.ShadowOffset = 20;
+            series18.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series18.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series18.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series18.IsValueShownAsLabel = true;
+            series18.Name = "medium";
+            series18.ShadowColor = System.Drawing.Color.DarkGray;
+            series18.ShadowOffset = 20;
+            series19.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series19.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series19.Color = System.Drawing.Color.Green;
+            series19.IsValueShownAsLabel = true;
+            series19.Name = "high";
+            series19.ShadowColor = System.Drawing.Color.DarkGray;
+            series19.ShadowOffset = 20;
+            this.chartSubtopics.Series.Add(series17);
+            this.chartSubtopics.Series.Add(series18);
+            this.chartSubtopics.Series.Add(series19);
             this.chartSubtopics.Size = new System.Drawing.Size(392, 360);
             this.chartSubtopics.TabIndex = 1;
             this.chartSubtopics.Text = "chartDashboard";
@@ -488,43 +494,43 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             this.chartOverallNPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chartOverallNPS.BorderlineWidth = 0;
-            chartArea17.Name = "ChartArea1";
-            this.chartOverallNPS.ChartAreas.Add(chartArea17);
+            chartArea10.Name = "ChartArea1";
+            this.chartOverallNPS.ChartAreas.Add(chartArea10);
             this.chartOverallNPS.Location = new System.Drawing.Point(3, 295);
             this.chartOverallNPS.Name = "chartOverallNPS";
-            series33.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series33.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            series33.ChartArea = "ChartArea1";
-            series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series33.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            series33.IsValueShownAsLabel = true;
-            series33.IsVisibleInLegend = false;
-            series33.Name = "low";
-            series33.ShadowColor = System.Drawing.Color.DarkGray;
-            series33.ShadowOffset = 20;
-            series34.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series34.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series34.ChartArea = "ChartArea1";
-            series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series34.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            series34.IsValueShownAsLabel = true;
-            series34.IsVisibleInLegend = false;
-            series34.Name = "medium";
-            series34.ShadowColor = System.Drawing.Color.DarkGray;
-            series34.ShadowOffset = 20;
-            series35.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series35.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            series35.ChartArea = "ChartArea1";
-            series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
-            series35.Color = System.Drawing.Color.Green;
-            series35.IsValueShownAsLabel = true;
-            series35.IsVisibleInLegend = false;
-            series35.Name = "high";
-            series35.ShadowColor = System.Drawing.Color.DarkGray;
-            series35.ShadowOffset = 20;
-            this.chartOverallNPS.Series.Add(series33);
-            this.chartOverallNPS.Series.Add(series34);
-            this.chartOverallNPS.Series.Add(series35);
+            series20.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series20.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series20.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            series20.IsValueShownAsLabel = true;
+            series20.IsVisibleInLegend = false;
+            series20.Name = "low";
+            series20.ShadowColor = System.Drawing.Color.DarkGray;
+            series20.ShadowOffset = 20;
+            series21.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series21.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series21.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            series21.IsValueShownAsLabel = true;
+            series21.IsVisibleInLegend = false;
+            series21.Name = "medium";
+            series21.ShadowColor = System.Drawing.Color.DarkGray;
+            series21.ShadowOffset = 20;
+            series22.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series22.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedBar;
+            series22.Color = System.Drawing.Color.Green;
+            series22.IsValueShownAsLabel = true;
+            series22.IsVisibleInLegend = false;
+            series22.Name = "high";
+            series22.ShadowColor = System.Drawing.Color.DarkGray;
+            series22.ShadowOffset = 20;
+            this.chartOverallNPS.Series.Add(series20);
+            this.chartOverallNPS.Series.Add(series21);
+            this.chartOverallNPS.Series.Add(series22);
             this.chartOverallNPS.Size = new System.Drawing.Size(280, 106);
             this.chartOverallNPS.TabIndex = 9;
             this.chartOverallNPS.Text = "chart1";
@@ -576,20 +582,20 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             this.chartOcene.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            chartArea18.Name = "ChartArea1";
-            this.chartOcene.ChartAreas.Add(chartArea18);
-            legend9.Name = "Legend1";
-            this.chartOcene.Legends.Add(legend9);
+            chartArea11.Name = "ChartArea1";
+            this.chartOcene.ChartAreas.Add(chartArea11);
+            legend5.Name = "Legend1";
+            this.chartOcene.Legends.Add(legend5);
             this.chartOcene.Location = new System.Drawing.Point(6, 12);
             this.chartOcene.Name = "chartOcene";
-            series36.ChartArea = "ChartArea1";
-            series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series36.IsValueShownAsLabel = true;
-            series36.Legend = "Legend1";
-            series36.Name = "Ocene";
-            series36.ShadowColor = System.Drawing.Color.DarkGray;
-            series36.ShadowOffset = 10;
-            this.chartOcene.Series.Add(series36);
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series23.IsValueShownAsLabel = true;
+            series23.Legend = "Legend1";
+            series23.Name = "Ocene";
+            series23.ShadowColor = System.Drawing.Color.DarkGray;
+            series23.ShadowOffset = 10;
+            this.chartOcene.Series.Add(series23);
             this.chartOcene.Size = new System.Drawing.Size(260, 150);
             this.chartOcene.TabIndex = 5;
             this.chartOcene.Text = "chart2";
@@ -597,20 +603,20 @@ namespace AnalitikaAnketaDeltaMotors
             // chartOdnosKodiranih
             // 
             this.chartOdnosKodiranih.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            chartArea19.Name = "ChartArea1";
-            this.chartOdnosKodiranih.ChartAreas.Add(chartArea19);
-            legend10.Name = "Legend1";
-            this.chartOdnosKodiranih.Legends.Add(legend10);
+            chartArea12.Name = "ChartArea1";
+            this.chartOdnosKodiranih.ChartAreas.Add(chartArea12);
+            legend6.Name = "Legend1";
+            this.chartOdnosKodiranih.Legends.Add(legend6);
             this.chartOdnosKodiranih.Location = new System.Drawing.Point(272, 12);
             this.chartOdnosKodiranih.Name = "chartOdnosKodiranih";
-            series37.ChartArea = "ChartArea1";
-            series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series37.IsValueShownAsLabel = true;
-            series37.Legend = "Legend1";
-            series37.Name = "Kodirani";
-            series37.ShadowColor = System.Drawing.Color.DarkGray;
-            series37.ShadowOffset = 10;
-            this.chartOdnosKodiranih.Series.Add(series37);
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series24.IsValueShownAsLabel = true;
+            series24.Legend = "Legend1";
+            series24.Name = "Kodirani";
+            series24.ShadowColor = System.Drawing.Color.DarkGray;
+            series24.ShadowOffset = 10;
+            this.chartOdnosKodiranih.Series.Add(series24);
             this.chartOdnosKodiranih.Size = new System.Drawing.Size(260, 150);
             this.chartOdnosKodiranih.TabIndex = 1;
             this.chartOdnosKodiranih.Text = "chart2";
@@ -618,20 +624,20 @@ namespace AnalitikaAnketaDeltaMotors
             // chartGroups
             // 
             this.chartGroups.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            chartArea20.Name = "ChartArea1";
-            this.chartGroups.ChartAreas.Add(chartArea20);
-            legend11.Name = "Legend1";
-            this.chartGroups.Legends.Add(legend11);
+            chartArea13.Name = "ChartArea1";
+            this.chartGroups.ChartAreas.Add(chartArea13);
+            legend7.Name = "Legend1";
+            this.chartGroups.Legends.Add(legend7);
             this.chartGroups.Location = new System.Drawing.Point(538, 12);
             this.chartGroups.Name = "chartGroups";
-            series38.ChartArea = "ChartArea1";
-            series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series38.IsValueShownAsLabel = true;
-            series38.Legend = "Legend1";
-            series38.Name = "Groups";
-            series38.ShadowColor = System.Drawing.Color.DarkGray;
-            series38.ShadowOffset = 10;
-            this.chartGroups.Series.Add(series38);
+            series25.ChartArea = "ChartArea1";
+            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series25.IsValueShownAsLabel = true;
+            series25.Legend = "Legend1";
+            series25.Name = "Groups";
+            series25.ShadowColor = System.Drawing.Color.DarkGray;
+            series25.ShadowOffset = 10;
+            this.chartGroups.Series.Add(series25);
             this.chartGroups.Size = new System.Drawing.Size(260, 150);
             this.chartGroups.TabIndex = 4;
             this.chartGroups.Text = "chart2";
@@ -640,20 +646,20 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             this.chartTagovi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea21.Name = "ChartArea1";
-            this.chartTagovi.ChartAreas.Add(chartArea21);
-            legend12.Name = "Legend1";
-            this.chartTagovi.Legends.Add(legend12);
+            chartArea14.Name = "ChartArea1";
+            this.chartTagovi.ChartAreas.Add(chartArea14);
+            legend8.Name = "Legend1";
+            this.chartTagovi.Legends.Add(legend8);
             this.chartTagovi.Location = new System.Drawing.Point(804, 12);
             this.chartTagovi.Name = "chartTagovi";
-            series39.ChartArea = "ChartArea1";
-            series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series39.IsValueShownAsLabel = true;
-            series39.Legend = "Legend1";
-            series39.Name = "Tagovi";
-            series39.ShadowColor = System.Drawing.Color.DarkGray;
-            series39.ShadowOffset = 10;
-            this.chartTagovi.Series.Add(series39);
+            series26.ChartArea = "ChartArea1";
+            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series26.IsValueShownAsLabel = true;
+            series26.Legend = "Legend1";
+            series26.Name = "Tagovi";
+            series26.ShadowColor = System.Drawing.Color.DarkGray;
+            series26.ShadowOffset = 10;
+            this.chartTagovi.Series.Add(series26);
             this.chartTagovi.Size = new System.Drawing.Size(260, 150);
             this.chartTagovi.TabIndex = 2;
             this.chartTagovi.Text = "chart2";
@@ -680,6 +686,16 @@ namespace AnalitikaAnketaDeltaMotors
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Ankete";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(818, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(50, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Pretraga:";
             // 
             // textBox1
             // 
@@ -959,16 +975,6 @@ namespace AnalitikaAnketaDeltaMotors
             this.cb1.Text = "1";
             this.cb1.UseVisualStyleBackColor = true;
             // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(818, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Pretraga:";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.label1);
@@ -982,11 +988,67 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Period";
             // 
+            // lblStopaOdgovora
+            // 
+            this.lblStopaOdgovora.Location = new System.Drawing.Point(89, 552);
+            this.lblStopaOdgovora.Name = "lblStopaOdgovora";
+            this.lblStopaOdgovora.Size = new System.Drawing.Size(67, 13);
+            this.lblStopaOdgovora.TabIndex = 31;
+            // 
+            // label9
+            // 
+            this.label9.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.label9.Location = new System.Drawing.Point(92, 531);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(64, 13);
+            this.label9.TabIndex = 29;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(-3, 552);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 13);
+            this.label8.TabIndex = 28;
+            this.label8.Text = "Stopa odgovora";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(-4, 531);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(97, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Ukupno odgovorilo";
+            // 
+            // txtPosAnketa
+            // 
+            this.txtPosAnketa.Location = new System.Drawing.Point(95, 508);
+            this.txtPosAnketa.Name = "txtPosAnketa";
+            this.txtPosAnketa.Size = new System.Drawing.Size(64, 20);
+            this.txtPosAnketa.TabIndex = 26;
+            this.txtPosAnketa.TextChanged += new System.EventHandler(this.txtPosAnketa_TextChanged);
+            this.txtPosAnketa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPosAnketa_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(-4, 511);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Poslatih anketa";
+            // 
             // AnalitikaAnketaDeltaMotors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 659);
+            this.Controls.Add(this.lblStopaOdgovora);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtPosAnketa);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -1105,6 +1167,12 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label lblStopaOdgovora;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtPosAnketa;
+        private System.Windows.Forms.Label label6;
     }
 }
 
