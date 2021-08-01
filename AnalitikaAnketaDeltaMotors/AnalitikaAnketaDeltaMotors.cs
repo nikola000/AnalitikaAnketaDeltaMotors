@@ -12,6 +12,7 @@ using System.Data.Entity;
 using System.Collections.Generic;
 using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using AnalitikaAnketaDeltaMotors.Classes;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace AnalitikaAnketaDeltaMotors
 {
@@ -71,8 +72,21 @@ namespace AnalitikaAnketaDeltaMotors
             using (DatabaseContext db = new DatabaseContext())
             {
                 comboBox1.Items.AddRange(db.Topics.Include(x => x.Subtopics).ToArray());
+                cmbFirstCompare.Items.AddRange(db.Groups.Include(x => x.Tags).ToArray());
+                cmbSecondCompare.Items.AddRange(db.Groups.Include(x => x.Tags).ToArray());
             }
-            comboBox1.SelectedItem = comboBox1.Items[0];
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedItem = comboBox1.Items[0];
+            }
+            if (cmbFirstCompare.Items.Count > 0)
+            {
+                cmbFirstCompare.SelectedItem = cmbFirstCompare.Items[0];
+            }
+            if (cmbSecondCompare.Items.Count > 0)
+            {
+                cmbSecondCompare.SelectedItem = cmbSecondCompare.Items[0];
+            }
         }
         private void SetupDashboard()
         {
@@ -601,6 +615,77 @@ namespace AnalitikaAnketaDeltaMotors
                 return true;
             }
             return false;
+        }
+        private List<int> CompareNPS(Group group)
+        {
+            List<int> NPSs = new List<int>();
+            if (SearchedEntries != null && SearchedEntries.Count() > 0)
+            {
+                for (int i = 1; i <= 6; i++)
+                {
+                    double ucescePromotera = 0;
+                    double ucesceDetraktora = 0;
+                    DateTime firstDate = new DateTime(dateTimePicker1.Value.Year, i, 1);
+                    DateTime secondDate = new DateTime(dateTimePicker1.Value.Year, i + 1, 1);
+                    ucesceDetraktora = ((double)(SearchedEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6 && x.CreatedAt > firstDate && x.CreatedAt < secondDate).Where(x => CompareTags(x.ImportData.Tags, group.Tags)).Count()) / (double)(SearchedEntries.Where(x => x.CreatedAt > firstDate && x.CreatedAt < secondDate).Count())) * 100;
+                    ucescePromotera = ((double)(SearchedEntries.Where(x => x.Ocena >= 9 && x.Ocena <= 10 && x.CreatedAt > firstDate && x.CreatedAt < secondDate).Where(x => CompareTags(x.ImportData.Tags, group.Tags)).Count()) / (double)(SearchedEntries.Where(x => x.CreatedAt > firstDate && x.CreatedAt < secondDate).Count())) * 100;
+                    if (double.IsNaN(ucesceDetraktora))
+                    {
+                        ucesceDetraktora = 0;
+                    }
+                    if (double.IsNaN(ucescePromotera))
+                    {
+                        ucescePromotera = 0;
+                    }
+                    NPSs.Add((int)Math.Ceiling(ucescePromotera - ucesceDetraktora));
+                }
+            }
+            return NPSs;
+        }
+        private void SetCompareNPSChart()
+        {
+            int n = 1;
+            string firstCompare = (cmbFirstCompare.SelectedItem as Group).Name;
+            string secondCompare = (cmbSecondCompare.SelectedItem as Group).Name;
+            if (cmbFirstCompare.SelectedItem as Group == cmbSecondCompare.SelectedItem as Group)
+            {
+                MessageBox.Show("Ne mozete uporedjivati istu grupu");
+                return;
+            }
+            chartCompareNPS.Series.Clear();
+            chartCompareNPS.Series.Add(firstCompare);
+            chartCompareNPS.Series[firstCompare].ChartType = SeriesChartType.Line;
+            chartCompareNPS.Series.Add(secondCompare);
+            chartCompareNPS.Series[secondCompare].ChartType = SeriesChartType.Line;
+            foreach (var item in CompareNPS(cmbFirstCompare.SelectedItem as Group))
+            {
+                chartCompareNPS.Series[firstCompare].Points.AddXY(n++, item);
+            }
+            n = 1;
+            foreach (var item in CompareNPS(cmbSecondCompare.SelectedItem as Group))
+            {
+                chartCompareNPS.Series[secondCompare].Points.AddXY(n++, item);
+            }
+        }
+
+        private bool CompareTags(ICollection<Tag> tagsImport, ICollection<Tag> tagsGroup)
+        {
+            foreach (var tagG in tagsGroup)
+            {
+                foreach (var tagI in tagsImport)
+                {
+                    if (tagG.Id == tagI.Id)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void bCompare_Click(object sender, EventArgs e)
+        {
+            SetCompareNPSChart();
         }
     }
 }
