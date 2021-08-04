@@ -13,5 +13,9 @@ namespace AnalitikaAnketaDeltaMotors.UnitOfWork.Models
         public int GroupId { get; set; }
         public Group Group { get; set; }
         public virtual ICollection<ImportData> ImportDatas { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

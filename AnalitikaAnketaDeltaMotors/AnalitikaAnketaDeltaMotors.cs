@@ -369,6 +369,8 @@ namespace AnalitikaAnketaDeltaMotors
             SetupDashboard();
 
             SetChartSubtopics();
+
+            SetChartComapareNPS();
         }
 
         private bool AcceptFilterCriteria(Entry entry)
@@ -601,6 +603,13 @@ namespace AnalitikaAnketaDeltaMotors
                 return true;
             }
             return false;
+        }
+        private void SetChartComapareNPS()
+        {
+            CtrlChartNPS _ctrlChartNPS = new CtrlChartNPS(SearchedEntries);
+            tabPage4.Controls.Clear();
+            _ctrlChartNPS.Dock = DockStyle.Fill;
+            tabPage4.Controls.Add(_ctrlChartNPS);
         }
     }
 }

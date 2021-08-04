@@ -98,6 +98,12 @@
     <Compile Include="Controls\CtrlAnswerGrades.Designer.cs">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CtrlChartNPS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlChartNPS.Designer.cs">
+      <DependentUpon>CtrlChartNPS.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CtrlSubtopicBookmarks.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -273,6 +279,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlAnswerGrades.resx">
       <DependentUpon>CtrlAnswerGrades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlChartNPS.resx">
+      <DependentUpon>CtrlChartNPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlSubtopicBookmarks.resx">
       <DependentUpon>CtrlSubtopicBookmarks.cs</DependentUpon>
