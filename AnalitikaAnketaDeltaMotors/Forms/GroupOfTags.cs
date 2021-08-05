@@ -78,7 +78,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         private void btnSave_Click(object sender, EventArgs e)
         {
             UpdateData();
-
+            TestChanges();
             int result = context.SaveChanges();
 
             if (AllGroups.Where(x => x.Id == _selectedGroupId).FirstOrDefault() != null)
@@ -152,6 +152,42 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
             _listOfTags.ListChanged += new ListChangedEventHandler(listOfTags_ListChanged);
         }
-        
+        private void TestChanges()
+        {
+            foreach (var item in context.ChangeTracker.Entries())
+            {
+                if (item.State == EntityState.Deleted)
+                {
+                    if (item.Entity is Tag)
+                    {
+                        int id = (item.Entity as Tag).Id;
+                        if (context.ImportDatas.Where(x => x.Tags.Where(c => c.Id == id).ToList().Count > 0).ToList().Count > 0)
+                        {
+                            item.State = EntityState.Unchanged;
+                        }
+                    }
+                    if (item.Entity is Group)
+                    {
+                        int id = (item.Entity as Group).Id;
+                        int nTags = (item.Entity as Group).Tags.Count;
+                        if (context.Tags.Where(x => x.GroupId == id).ToList().Count > 0) 
+                        {
+                            item.State = EntityState.Unchanged;
+                            foreach (var tagItem in context.ChangeTracker.Entries())
+                            {
+                                if (tagItem.Entity is Tag)
+                                {
+                                    int groupIdTag = (tagItem.Entity as Tag).GroupId;
+                                    if (id == groupIdTag)
+                                    {
+                                        tagItem.State = EntityState.Unchanged;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

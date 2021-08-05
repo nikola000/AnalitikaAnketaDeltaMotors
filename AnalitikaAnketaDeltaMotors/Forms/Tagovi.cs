@@ -1,6 +1,8 @@
 ﻿
+using AnalitikaAnketaDeltaMotors.UnitOfWork.Models;
 using System;
 using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
 namespace AnalitikaAnketaDeltaMotors.Forms
@@ -20,7 +22,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             SetDataGrid();
         }
         private void SetDataGrid()
-        {          
+        {
             dataGridView1.DataSource = context.Tags.Local.ToBindingList();
             InitializeDataGridView();
         }
@@ -37,8 +39,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            foreach (var item in context.ChangeTracker.Entries())
+            {
+                if (item.State == EntityState.Deleted)
+                {
+                    int id = (item.Entity as Tag).Id;
+                    if (context.ImportDatas.Where(x => x.Tags.Where(c => c.Id == id).ToList().Count > 0).ToList().Count > 0) 
+                    {
+                        item.State = EntityState.Unchanged;
+                    }
+                }
+            }
+             
             int result = context.SaveChanges();
-
+            dataGridView1.Sort(dataGridView1.Columns["Id"],System.ComponentModel.ListSortDirection.Ascending);
             if (result > 0)
             {
                 MessageBox.Show("Izmene su uspesno sacuvane");
