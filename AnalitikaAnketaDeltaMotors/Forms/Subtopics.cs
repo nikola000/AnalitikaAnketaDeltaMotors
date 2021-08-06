@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
+using UnitOfWorkExample.UnitOfWork.Models;
 
 namespace AnalitikaAnketaDeltaMotors.Forms
 {
@@ -42,8 +43,20 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int result = context.SaveChanges();
+            foreach (var item in context.ChangeTracker.Entries())
+            {
+                if (item.State == EntityState.Deleted)
+                {
+                    int id = (item.Entity as Subtopic).Id;
+                    if (context.EntryScores.Where(x => x.SubtopicId == id).ToList().Count > 0)
+                    {
+                        item.State = EntityState.Unchanged;
+                    }
+                }
+            }
 
+            int result = context.SaveChanges();
+            dataGridView1.Sort(dataGridView1.Columns["Id"], System.ComponentModel.ListSortDirection.Ascending);
             if (result > 0)
             {
                 MessageBox.Show("Izmene su uspesno sacuvane");

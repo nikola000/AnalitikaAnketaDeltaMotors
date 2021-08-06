@@ -169,7 +169,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                     if (item.Entity is Group)
                     {
                         int id = (item.Entity as Group).Id;
-                        int nTags = (item.Entity as Group).Tags.Count;
                         if (context.Tags.Where(x => x.GroupId == id).ToList().Count > 0) 
                         {
                             item.State = EntityState.Unchanged;
