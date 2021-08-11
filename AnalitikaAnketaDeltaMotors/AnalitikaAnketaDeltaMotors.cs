@@ -393,6 +393,9 @@ namespace AnalitikaAnketaDeltaMotors
             if (user.IsAdministrator)
                 return true;
 
+            if (entry.EntryScores.Count == 0)
+                return true;
+
             return entry.EntryScores.Any(x => x.UserId == null || x.UserId == user.Id);
         }
 
