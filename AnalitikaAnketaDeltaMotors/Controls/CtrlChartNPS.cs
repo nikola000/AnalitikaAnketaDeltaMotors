@@ -40,7 +40,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 {
                     double ucescePromotera = 0;
                     double ucesceDetraktora = 0;
-                    DateTime firstDate = new DateTime(dateTime.Year - 1, dateTime.Month, 1);
+                    DateTime firstDate = new DateTime(dateTime.Year, dateTime.Month, 1);
                     DateTime secondDate = firstDate.AddMonths(1);
                     dateTime = dateTime.AddMonths(1);
                     ucesceDetraktora = ((double)(FilteredEntries.Where(x => x.Ocena >= 0 && x.Ocena <= 6 && x.CreatedAt > firstDate && x.CreatedAt < secondDate).Count()) / (double)(FilteredEntries.Where(x => x.CreatedAt > firstDate && x.CreatedAt < secondDate).Count())) * 100;
@@ -194,7 +194,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
         private void applyFilters(Group group)
         {
             DateTime dateTime = DateTime.Now.AddMonths(-lastMonths);
-            DateTime firstDate = new DateTime(dateTime.Year - 1, dateTime.Month, 1);
+            DateTime firstDate = new DateTime(dateTime.Year, dateTime.Month, 1);
             DateTime secondDate = firstDate.AddMonths(lastMonths);
             FilteredEntries = SearchedEntries.Where(x => CompareTags(x.ImportData.Tags, group.Tags)).Where(x => x.CreatedAt > firstDate && x.CreatedAt < secondDate);
             if (cmbCompareTags.SelectedItem is Tag)
