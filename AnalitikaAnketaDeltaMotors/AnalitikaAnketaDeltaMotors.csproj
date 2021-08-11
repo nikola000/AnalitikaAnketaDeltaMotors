@@ -116,6 +116,12 @@
     <Compile Include="Forms\AddingSubtopic.Designer.cs">
       <DependentUpon>AddingSubtopic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AddingTag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddingTag.Designer.cs">
+      <DependentUpon>AddingTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AddingUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddingSubtopic.resx">
       <DependentUpon>AddingSubtopic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddingTag.resx">
+      <DependentUpon>AddingTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddingUser.resx">
       <DependentUpon>AddingUser.cs</DependentUpon>
