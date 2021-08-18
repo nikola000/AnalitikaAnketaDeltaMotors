@@ -507,7 +507,9 @@ namespace AnalitikaAnketaDeltaMotors
         {
             foreach (DataGridViewRow row in dataGridViewRezultatiAnkete.Rows)
             {
-                if (row.DataBoundItem != null && ((Entry)row.DataBoundItem).Odgovor.Contains(textBox1.Text) && textBox1.Text != "")
+                if (row.DataBoundItem != null && (((Entry)row.DataBoundItem).Odgovor.ToLower().Contains(textBox1.Text.ToLower()) 
+                    || ((Entry)row.DataBoundItem).PredlogPoboljsanja.ToLower().Contains(textBox1.Text.ToLower()) 
+                    || ((Entry)row.DataBoundItem).Kontakt.ToLower().Contains(textBox1.Text.ToLower())) && textBox1.Text != "")
                 {
                     row.DefaultCellStyle.BackColor = Color.Pink;
                 }
