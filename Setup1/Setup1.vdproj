@@ -188,6 +188,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -212,6 +220,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -581,7 +597,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup1"
         "ProductCode" = "8:{11F674FC-E903-4F7F-AEE6-42B2324BB372}"
-        "PackageCode" = "8:{92FA7AD4-A126-400C-B5EC-24417D4071D4}"
+        "PackageCode" = "8:{0EEBD36A-A8DC-4848-98B1-3104025C1B0E}"
         "UpgradeCode" = "8:{68183B2C-A800-4E11-9E9D-51F397D2305E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -902,8 +918,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1214"
+                            "Setting" = "3:2"
+                            "Value" = "8:Konekcija"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -915,8 +931,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1215"
+                            "Setting" = "3:2"
+                            "Value" = "8:Konekcija"
                             "DefaultValue" = "8:#1215"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -928,8 +944,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1246"
+                            "Setting" = "3:2"
+                            "Value" = "8:Konekcioni String"
                             "DefaultValue" = "8:#1246"
                             "UsePlugInResources" = "11:TRUE"
                             }

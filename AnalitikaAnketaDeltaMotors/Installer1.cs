@@ -38,5 +38,10 @@ namespace AnalitikaAnketaDeltaMotors
                 InitializeComponent();
             }
         }
+
+        public override void Uninstall(IDictionary savedState)
+        {
+            base.Uninstall(savedState);            
+        }
     }
 }
