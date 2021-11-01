@@ -31,6 +31,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.bAddTag = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,11 +60,23 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // bAddTag
+            // 
+            this.bAddTag.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bAddTag.Location = new System.Drawing.Point(12, 10);
+            this.bAddTag.Name = "bAddTag";
+            this.bAddTag.Size = new System.Drawing.Size(141, 20);
+            this.bAddTag.TabIndex = 7;
+            this.bAddTag.Text = "Dodaj tag";
+            this.bAddTag.UseVisualStyleBackColor = true;
+            this.bAddTag.Click += new System.EventHandler(this.bAddTag_Click);
+            // 
             // Tagovi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(327, 227);
+            this.Controls.Add(this.bAddTag);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Tagovi";
@@ -78,5 +91,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bAddTag;
     }
 }
