@@ -310,6 +310,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(6, 34);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -318,6 +319,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.CustomFormat = "dd.MM.yyyy";
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(6, 81);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -990,41 +992,43 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // lblStopaOdgovora
             // 
-            this.lblStopaOdgovora.Location = new System.Drawing.Point(89, 552);
+            this.lblStopaOdgovora.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStopaOdgovora.Location = new System.Drawing.Point(95, 552);
             this.lblStopaOdgovora.Name = "lblStopaOdgovora";
-            this.lblStopaOdgovora.Size = new System.Drawing.Size(67, 13);
+            this.lblStopaOdgovora.Size = new System.Drawing.Size(61, 20);
             this.lblStopaOdgovora.TabIndex = 31;
             // 
             // label9
             // 
             this.label9.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
-            this.label9.Location = new System.Drawing.Point(92, 531);
+            this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label9.Location = new System.Drawing.Point(95, 531);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(64, 13);
+            this.label9.Size = new System.Drawing.Size(61, 20);
             this.label9.TabIndex = 29;
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(-3, 552);
+            this.label8.Location = new System.Drawing.Point(4, 553);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(97, 13);
             this.label8.TabIndex = 28;
-            this.label8.Text = "Stopa odgovora";
+            this.label8.Text = "Stopa odg.";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(-4, 531);
+            this.label7.Location = new System.Drawing.Point(4, 532);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 13);
+            this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 27;
-            this.label7.Text = "Ukupno odgovorilo";
+            this.label7.Text = "Ukupno odg.";
             // 
             // txtPosAnketa
             // 
             this.txtPosAnketa.Location = new System.Drawing.Point(95, 508);
             this.txtPosAnketa.Name = "txtPosAnketa";
-            this.txtPosAnketa.Size = new System.Drawing.Size(64, 20);
+            this.txtPosAnketa.Size = new System.Drawing.Size(61, 20);
             this.txtPosAnketa.TabIndex = 26;
             this.txtPosAnketa.TextChanged += new System.EventHandler(this.txtPosAnketa_TextChanged);
             this.txtPosAnketa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPosAnketa_KeyPress);
@@ -1032,7 +1036,7 @@ namespace AnalitikaAnketaDeltaMotors
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(-4, 511);
+            this.label6.Location = new System.Drawing.Point(4, 511);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 13);
             this.label6.TabIndex = 25;

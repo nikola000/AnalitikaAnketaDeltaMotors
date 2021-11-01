@@ -620,7 +620,7 @@ namespace AnalitikaAnketaDeltaMotors
                 return;
             }
             label9.Text = SearchedEntries.Count().ToString();
-            lblStopaOdgovora.Text = (int)Math.Round(SearchedEntries.Count() / broj * 100) + " %";
+            lblStopaOdgovora.Text = Math.Round(SearchedEntries.Count() / broj * 100, 2) + " %";
         }
 
         private void txtPosAnketa_KeyPress(object sender, KeyPressEventArgs e)
