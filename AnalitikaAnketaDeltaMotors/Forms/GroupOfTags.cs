@@ -43,18 +43,25 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if ((Group)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem != null 
+            try
+            {
+                if ((Group)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem != null
                 && ((Group)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id != 0)
-            {
-                _selectedGroupId = ((Group)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id;
-                _filteredData = AllGroups.Where(x => x.Id == _selectedGroupId).FirstOrDefault().Tags;
-                InitializeListOfTags();
-                InitDatagrid();
+                {
+                    _selectedGroupId = ((Group)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id;
+                    _filteredData = AllGroups.Where(x => x.Id == _selectedGroupId).FirstOrDefault().Tags;
+                    InitializeListOfTags();
+                    InitDatagrid();
+                }
+                else
+                {
+                    dataGridView2.DataSource = null;
+                }
             }
-            else
+            catch (Exception)
             {
-                dataGridView2.DataSource = null;
             }
+            
         }
 
         private void listOfTags_ListChanged(object sender, ListChangedEventArgs e)

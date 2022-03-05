@@ -68,11 +68,15 @@ namespace AnalitikaAnketaDeltaMotors
         }
         private void InitializeComboBox()
         {
+            comboBox1.Items.Clear();
             using (DatabaseContext db = new DatabaseContext())
             {
                 comboBox1.Items.AddRange(db.Topics.Include(x => x.Subtopics).ToArray());
             }
-            comboBox1.SelectedItem = comboBox1.Items[0];
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedItem = comboBox1.Items[0];
+            }
         }
         private void SetupDashboard()
         {
@@ -158,6 +162,12 @@ namespace AnalitikaAnketaDeltaMotors
             chartSubtopics.Series["low"].Points.Clear();
             chartSubtopics.Series["medium"].Points.Clear();
             chartSubtopics.Series["high"].Points.Clear();
+
+            if (comboBox1.Items.Count == 0)
+            {
+                MessageBox.Show("Molimo unesite neki Topic ili Subtopic");
+                return;
+            }
 
             if (SearchedEntries != null)
             {
@@ -337,12 +347,14 @@ namespace AnalitikaAnketaDeltaMotors
         {
             frmTopic = new Topics();
             frmTopic.ShowDialog();
+            InitializeComboBox();
         }
 
         private void subtopicToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSubtopic = new Subtopics();
             frmSubtopic.ShowDialog();
+            InitializeComboBox();
         }
 
         private void bUcitaj_Click(object sender, EventArgs e)

@@ -41,18 +41,26 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if ((Topic)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem != null
+            try
+            {
+                if ((Topic)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem != null
                 && ((Topic)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id != 0)
-            {
-                _selectedTopicId = ((Topic)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id;
-                _filteredData = AllTopics.Where(x => x.Id == _selectedTopicId).FirstOrDefault().Subtopics;
-                InitializeListOfTags();
-                InitDatagrid();
+                {
+                    _selectedTopicId = ((Topic)dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].DataBoundItem).Id;
+                    _filteredData = AllTopics.Where(x => x.Id == _selectedTopicId).FirstOrDefault().Subtopics;
+                    InitializeListOfTags();
+                    InitDatagrid();
+                }
+                else
+                {
+                    dataGridView2.DataSource = null;
+                }
             }
-            else
+            catch (Exception)
             {
-                dataGridView2.DataSource = null;
+
             }
+            
         }
         private void _listOfSubtopics_ListChanged(object sender, ListChangedEventArgs e)
         {
