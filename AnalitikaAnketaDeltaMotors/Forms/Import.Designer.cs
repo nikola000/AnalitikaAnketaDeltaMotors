@@ -29,7 +29,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
             this.bUcitaj = new System.Windows.Forms.Button();
@@ -37,11 +37,11 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rtbReport = new System.Windows.Forms.RichTextBox();
             this.panelTags = new System.Windows.Forms.Panel();
             this.bAddTag = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.rtbReport = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -81,6 +81,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.txtIzborFajla.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIzborFajla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIzborFajla.Location = new System.Drawing.Point(3, 10);
             this.txtIzborFajla.Name = "txtIzborFajla";
             this.txtIzborFajla.Size = new System.Drawing.Size(472, 20);
@@ -92,14 +93,14 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(3, 37);
@@ -142,6 +143,26 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.splitContainer1.SplitterDistance = 690;
             this.splitContainer1.TabIndex = 6;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 336);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Status:";
+            // 
+            // rtbReport
+            // 
+            this.rtbReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbReport.Location = new System.Drawing.Point(4, 357);
+            this.rtbReport.Name = "rtbReport";
+            this.rtbReport.ReadOnly = true;
+            this.rtbReport.Size = new System.Drawing.Size(683, 129);
+            this.rtbReport.TabIndex = 5;
+            this.rtbReport.Text = "";
+            // 
             // panelTags
             // 
             this.panelTags.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -175,26 +196,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             this.btnSave.Text = "Sacuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // rtbReport
-            // 
-            this.rtbReport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtbReport.Location = new System.Drawing.Point(4, 357);
-            this.rtbReport.Name = "rtbReport";
-            this.rtbReport.ReadOnly = true;
-            this.rtbReport.Size = new System.Drawing.Size(683, 129);
-            this.rtbReport.TabIndex = 5;
-            this.rtbReport.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 336);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Status:";
             // 
             // label2
             // 

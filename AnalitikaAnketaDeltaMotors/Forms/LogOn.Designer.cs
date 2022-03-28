@@ -39,7 +39,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(80, 122);
+            this.button1.Location = new System.Drawing.Point(80, 109);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 20);
             this.button1.TabIndex = 2;
@@ -49,6 +49,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // tbUser
             // 
+            this.tbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUser.Location = new System.Drawing.Point(50, 36);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(192, 20);
@@ -57,6 +58,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // tbPassword
             // 
+            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Location = new System.Drawing.Point(50, 75);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(192, 20);
@@ -84,7 +86,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // bExit
             // 
-            this.bExit.Location = new System.Drawing.Point(147, 122);
+            this.bExit.Location = new System.Drawing.Point(147, 109);
             this.bExit.Name = "bExit";
             this.bExit.Size = new System.Drawing.Size(64, 20);
             this.bExit.TabIndex = 3;
@@ -96,7 +98,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(288, 172);
+            this.ClientSize = new System.Drawing.Size(288, 141);
             this.ControlBox = false;
             this.Controls.Add(this.bExit);
             this.Controls.Add(this.label2);

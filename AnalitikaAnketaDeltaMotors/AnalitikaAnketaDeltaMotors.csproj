@@ -151,6 +151,12 @@
     <Compile Include="Forms\Import.Designer.cs">
       <DependentUpon>Import.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\IzmenaAnketa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\IzmenaAnketa.Designer.cs">
+      <DependentUpon>IzmenaAnketa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\LogOn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -315,6 +321,9 @@
     <EmbeddedResource Include="Forms\Import.resx">
       <DependentUpon>Import.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\IzmenaAnketa.resx">
+      <DependentUpon>IzmenaAnketa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LogOn.resx">
       <DependentUpon>LogOn.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,6 +401,7 @@
     </Compile>
     <None Include="app.manifest" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\AnalitikaAnketaDeltaMotors.Migrations.Entry.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

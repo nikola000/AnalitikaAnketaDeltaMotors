@@ -266,11 +266,7 @@ namespace AnalitikaAnketaDeltaMotors
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
-            if (e.ClickedItem.Name == ToolStripMenuItem2.Name)
-            {
-                frm3 = new Import();
-                frm3.ShowDialog();
-            }
+            
         }
 
         private void izlazToolStripMenuItem_Click(object sender, EventArgs e)
@@ -450,6 +446,7 @@ namespace AnalitikaAnketaDeltaMotors
             dataGridViewRezultatiAnkete.DataError += DataGrid_DataError;
             dataGridViewRezultatiAnkete.Paint += DataGridViewRezultatiAnkete_Paint;
             dataGridViewRezultatiAnkete.DoubleClick += DataGrid_DoubleClick;
+            dataGridViewRezultatiAnkete.AllowUserToDeleteRows = true;
         }
 
         private void DataGrid_DoubleClick(object sender, EventArgs e)
@@ -569,6 +566,10 @@ namespace AnalitikaAnketaDeltaMotors
         private bool filterOcena(Entry entry)
         {
             List<int> ocene = new List<int>();
+            if (cb0.Checked)
+            {
+                ocene.Add(0);
+            }
             if (cb1.Checked)
             {
                 ocene.Add(1);
@@ -637,11 +638,48 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void txtPosAnketa_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
+        }
+
+        private void cbKriticari_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = cbKriticari.Checked;
+            cb0.Checked = isChecked;
+            cb1.Checked = isChecked;
+            cb2.Checked = isChecked;
+            cb3.Checked = isChecked;
+            cb4.Checked = isChecked;
+            cb5.Checked = isChecked;
+            cb6.Checked = isChecked;
+        }
+
+        private void cbNeutralni_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = cbNeutralni.Checked;
+            cb7.Checked = isChecked;
+            cb8.Checked = isChecked;
+        }
+
+        private void cbPromoteri_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = cbPromoteri.Checked;
+            cb9.Checked = isChecked;
+            cb10.Checked = isChecked;
+        }
+
+        private void anketeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm3 = new Import();
+            frm3.ShowDialog();
+        }
+
+        private void oznakeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            IzmenaAnketa izmenaAnketa = new IzmenaAnketa();
+            izmenaAnketa.ShowDialog();
         }
     }
 }
