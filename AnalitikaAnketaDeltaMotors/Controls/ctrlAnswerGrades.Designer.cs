@@ -55,9 +55,9 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton1.ForeColor = System.Drawing.Color.Red;
             this.radioButton1.Location = new System.Drawing.Point(11, 5);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(34, 17);
+            this.radioButton1.Size = new System.Drawing.Size(38, 17);
             this.radioButton1.TabIndex = 1;
-            this.radioButton1.Text = "O";
+            this.radioButton1.Text = "⬛";
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
@@ -75,12 +75,12 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.ForeColor = System.Drawing.Color.Yellow;
-            this.radioButton2.Location = new System.Drawing.Point(51, 5);
+            this.radioButton2.ForeColor = System.Drawing.Color.Gold;
+            this.radioButton2.Location = new System.Drawing.Point(70, 5);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(34, 17);
+            this.radioButton2.Size = new System.Drawing.Size(38, 17);
             this.radioButton2.TabIndex = 3;
-            this.radioButton2.Text = "O";
+            this.radioButton2.Text = "⬛";
             this.radioButton2.UseVisualStyleBackColor = true;
             this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
@@ -89,28 +89,30 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.ForeColor = System.Drawing.Color.Green;
-            this.radioButton3.Location = new System.Drawing.Point(91, 5);
+            this.radioButton3.Location = new System.Drawing.Point(129, 5);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(34, 17);
+            this.radioButton3.Size = new System.Drawing.Size(38, 17);
             this.radioButton3.TabIndex = 4;
-            this.radioButton3.Text = "O";
+            this.radioButton3.Text = "⬛";
             this.radioButton3.UseVisualStyleBackColor = true;
             this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.radioButton3);
             this.panel1.Controls.Add(this.radioButton2);
             this.panel1.Controls.Add(this.radioButton1);
             this.panel1.Location = new System.Drawing.Point(6, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(138, 28);
+            this.panel1.Size = new System.Drawing.Size(172, 28);
             this.panel1.TabIndex = 5;
             // 
             // ctrlAnswerGrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);

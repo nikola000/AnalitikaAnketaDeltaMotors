@@ -265,6 +265,10 @@
     <Compile Include="Migrations\202107170955018_entryscoreuser.designer.cs">
       <DependentUpon>202107170955018_entryscoreuser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203281823394_addColumnKomentarInTableEntry.cs" />
+    <Compile Include="Migrations\202203281823394_addColumnKomentarInTableEntry.designer.cs">
+      <DependentUpon>202203281823394_addColumnKomentarInTableEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -389,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107170955018_entryscoreuser.resx">
       <DependentUpon>202107170955018_entryscoreuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203281823394_addColumnKomentarInTableEntry.resx">
+      <DependentUpon>202203281823394_addColumnKomentarInTableEntry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

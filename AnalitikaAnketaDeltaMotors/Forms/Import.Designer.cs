@@ -81,10 +81,9 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             this.txtIzborFajla.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIzborFajla.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIzborFajla.Location = new System.Drawing.Point(3, 10);
+            this.txtIzborFajla.Location = new System.Drawing.Point(7, 10);
             this.txtIzborFajla.Name = "txtIzborFajla";
-            this.txtIzborFajla.Size = new System.Drawing.Size(472, 20);
+            this.txtIzborFajla.Size = new System.Drawing.Size(468, 20);
             this.txtIzborFajla.TabIndex = 3;
             // 
             // dataGridView1

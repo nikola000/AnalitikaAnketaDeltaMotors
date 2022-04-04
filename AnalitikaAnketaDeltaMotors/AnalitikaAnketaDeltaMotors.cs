@@ -53,7 +53,13 @@ namespace AnalitikaAnketaDeltaMotors
 
             // dashborad
             SetupDashboard();
+
+            InitMenuItems();
+
+            intializeDataGrid(dataGridViewRezultatiAnkete);
         }
+
+        private void InitMenuItems() => izmenaAnketaToolStripMenuItem.Visible = Configuration.GetInstance().CurrentUser != null ? Configuration.GetInstance().CurrentUser.IsAdministrator : false;
 
         private void InitFilters()
         {
@@ -128,13 +134,19 @@ namespace AnalitikaAnketaDeltaMotors
                     var topic = item.FirstOrDefault();
                     chartRezultati.Series["low"].Points.AddXY(topic.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
-                        .Where(x => x.Score == Classes.Utils.Score.Low && x.Subtopic.Topic.Id == topic.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.Subtopic.Topic.Id == topic.Id)
+                        .Where(x => cbLow.Checked == true)
+                        .Count());
                     chartRezultati.Series["medium"].Points.AddXY(topic.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
-                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.Subtopic.Topic.Id == topic.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.Subtopic.Topic.Id == topic.Id)
+                        .Where(x => cbMedium.Checked == true)
+                        .Count());
                     chartRezultati.Series["high"].Points.AddXY(topic.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
-                        .Where(x => x.Score == Classes.Utils.Score.High && x.Subtopic.Topic.Id == topic.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.High && x.Subtopic.Topic.Id == topic.Id)
+                        .Where(x => cbHigh.Checked == true)
+                        .Count());
 
                 }
             }
@@ -150,11 +162,23 @@ namespace AnalitikaAnketaDeltaMotors
                 var ocene = SearchedEntries
                             .Select(x => x.Ocena).Distinct();
 
-                foreach (var ocena in ocene)
-                {
-                    chartOcene.Series["Ocene"].Points.AddXY(ocena.ToString(), SearchedEntries
-                            .Where(x => x.Ocena == ocena).Count());
-                }
+                chartOcene.Series["Ocene"].Points.AddXY("Kriticari", SearchedEntries
+                    //.Where(x => cbLow.Checked == true)
+                    .Where(x => new int[] { 0,1,2,3,4,5,6 }.Contains(x.Ocena)).Count());
+
+                chartOcene.Series["Ocene"].Points.AddXY("Neutralni", SearchedEntries
+                    //.Where(x => cbMedium.Checked == true)
+                    .Where(x => new int[] { 7, 8 }.Contains(x.Ocena)).Count());
+
+                chartOcene.Series["Ocene"].Points.AddXY("Promoteri", SearchedEntries
+                    //.Where(x => cbHigh.Checked == true)
+                    .Where(x => new int[] { 9, 10 }.Contains(x.Ocena)).Count());
+
+                //foreach (var ocena in ocene)
+                //{
+                //    chartOcene.Series["Ocene"].Points.AddXY(ocena.ToString(), SearchedEntries
+                //            .Where(x => x.Ocena == ocena).Count());
+                //}
             }
         }
         private void SetChartSubtopics()
@@ -175,12 +199,15 @@ namespace AnalitikaAnketaDeltaMotors
                 {
                     chartSubtopics.Series["low"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
+                        .Where(x => cbLow.Checked == true)
                         .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId == item.Id).Count());
                     chartSubtopics.Series["medium"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
+                        .Where(x => cbMedium.Checked == true)
                         .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Id).Count());
                     chartSubtopics.Series["high"].Points.AddXY(item.Name, SearchedEntries
                         .SelectMany(x => x.EntryScores)
+                        .Where(x => cbHigh.Checked == true)
                         .Where(x => x.Score == Classes.Utils.Score.High && x.SubtopicId == item.Id).Count());
                 }
             }
@@ -192,17 +219,74 @@ namespace AnalitikaAnketaDeltaMotors
             chartOverallNPS.Series["medium"].Points.Clear();
             chartOverallNPS.Series["high"].Points.Clear();
 
+            chartOverallNPS.ChartAreas[0].AxisY.LabelStyle.Format = "###0\\%";
+            chartOverallNPS.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+
             if (SearchedEntries != null)
             {
-                chartOverallNPS.Series["low"].Points.AddXY("", SearchedEntries
-                .SelectMany(x => x.EntryScores)
-                .Where(x => x.Score == Classes.Utils.Score.Low).Count());
-                chartOverallNPS.Series["medium"].Points.AddXY("", SearchedEntries
+                decimal totalScores = 0;
+
+                if (cbLow.Checked == true)
+                {
+                    totalScores += SearchedEntries
                     .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count());
-                chartOverallNPS.Series["high"].Points.AddXY("", SearchedEntries
+                    .Where(x => cbLow.Checked == true && x.Score == Classes.Utils.Score.Low)
+                    .Count();
+                }
+
+                if (cbMedium.Checked == true)
+                {
+                    totalScores += SearchedEntries
                     .SelectMany(x => x.EntryScores)
-                    .Where(x => x.Score == Classes.Utils.Score.High).Count());
+                    .Where(x => cbMedium.Checked == true && x.Score == Classes.Utils.Score.Medium)
+                    .Count();
+                }
+
+                if (cbHigh.Checked == true)
+                {
+                    totalScores += SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => cbHigh.Checked == true && x.Score == Classes.Utils.Score.High)
+                    .Count();
+                }
+
+                if (totalScores == 0)
+                {
+                    chartOverallNPS.Series["low"].Points.Clear();
+                    chartOverallNPS.Series["medium"].Points.Clear();
+                    chartOverallNPS.Series["high"].Points.Clear();
+                    return;
+                }
+
+                decimal low = Math.Round(SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => cbLow.Checked == true)
+                    .Where(x => x.Score == Classes.Utils.Score.Low).Count() / totalScores * 100, 1);
+
+                decimal medium = Math.Round(SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => cbMedium.Checked == true)
+                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count() / totalScores * 100, 1);
+
+                decimal high = Math.Round(SearchedEntries
+                    .SelectMany(x => x.EntryScores)
+                    .Where(x => cbHigh.Checked == true)
+                    .Where(x => x.Score == Classes.Utils.Score.High).Count() / totalScores * 100, 1);
+                
+                if (low != 0)
+                {
+                    chartOverallNPS.Series["low"].Points.AddXY("", low);
+                }
+
+                if (medium != 0)
+                {
+                    chartOverallNPS.Series["medium"].Points.AddXY("", medium);
+                }
+
+                if (high != 0)
+                {
+                    chartOverallNPS.Series["high"].Points.AddXY("", high);
+                }
             }
         }
 
@@ -357,6 +441,8 @@ namespace AnalitikaAnketaDeltaMotors
         {
             dataGridViewRezultatiAnkete.AutoGenerateColumns = true;
 
+            dbContext = new DatabaseContext();
+
             var temp = dbContext.Entries
                 .Include(x => x.ImportData.Tags.Select(y => y.Group))
                 .Include(x => x.EntryScores
@@ -372,7 +458,14 @@ namespace AnalitikaAnketaDeltaMotors
                 .Where(x => filterOcena(x)).ToList();
             dataGridViewRezultatiAnkete.DataSource = SearchedEntries;
 
-            intializeDataGrid(dataGridViewRezultatiAnkete);
+            dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
+            dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = true;
+            dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = false;
+            dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = false;
 
             SetupDashboard();
 
@@ -434,15 +527,6 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void intializeDataGrid(DataGridView dataGrid)
         {
-            dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
-            dataGridViewRezultatiAnkete.Columns["Odgovor"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewRezultatiAnkete.Columns["Ocena"].Visible = true;
-            dataGridViewRezultatiAnkete.Columns["PredlogPoboljsanja"].Visible = true;
-            dataGridViewRezultatiAnkete.Columns["Kontakt"].Visible = true;
-            dataGridViewRezultatiAnkete.Columns["ImportDataId"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["ImportData"].Visible = false;
-            dataGridViewRezultatiAnkete.Columns["EntryScores"].Visible = false;
-
             dataGridViewRezultatiAnkete.DataError += DataGrid_DataError;
             dataGridViewRezultatiAnkete.Paint += DataGridViewRezultatiAnkete_Paint;
             dataGridViewRezultatiAnkete.DoubleClick += DataGrid_DoubleClick;
@@ -459,6 +543,8 @@ namespace AnalitikaAnketaDeltaMotors
             Entry currentEntry = (Entry)(sender as DataGridView).CurrentRow.DataBoundItem;
             tabPage3.Controls.Clear();
             CntrlAnswer = new CtrlAnswer(currentEntry, dbContext, changeEntry);
+            CntrlAnswer.Height = tabPage3.Height;
+            CntrlAnswer.Width = tabPage3.Width;
             disableButtons();
             tabPage3.Controls.Add(CntrlAnswer);
             CntrlAnswer.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -476,6 +562,8 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 tabPage3.Controls.Clear();
                 CntrlAnswer = new CtrlAnswer((Entry)_selected, dbContext, changeEntry);
+                CntrlAnswer.Height = tabPage3.Height;
+                CntrlAnswer.Width = tabPage3.Width;
                 disableButtons();
                 tabPage3.Controls.Add(CntrlAnswer);
                 tabControl1.SelectTab(tabPage3);
@@ -680,6 +768,11 @@ namespace AnalitikaAnketaDeltaMotors
         {
             IzmenaAnketa izmenaAnketa = new IzmenaAnketa();
             izmenaAnketa.ShowDialog();
+        }
+
+        private void toolStripStatusLabelLogin_TextChanged(object sender, EventArgs e)
+        {
+            InitMenuItems();
         }
     }
 }

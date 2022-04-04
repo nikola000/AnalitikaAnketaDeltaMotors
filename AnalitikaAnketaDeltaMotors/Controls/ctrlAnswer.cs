@@ -31,10 +31,11 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             this.entry = entry;
             this.dbContext = dbContext;
             this.changeEntry = changeEntry;
-            disabledSubtopics = new List<Subtopic>();            
+            disabledSubtopics = new List<Subtopic>();
             InitializeComponent();
             this.listBox1.DrawMode = DrawMode.OwnerDrawFixed;
             this.listBox1.DrawItem += new DrawItemEventHandler(this.listBox1_DrawItem);
+            tbKomentar.Text = entry.Komentar;
         }
 
         private void ctrlAnswer_Load(object sender, EventArgs e)
@@ -42,6 +43,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             foreach (var item in this.entry.EntryScores)
             {
                 ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(item);
+                ctrlAnswerGrades.Width = flowLayoutPanel1.Width - 5;
                 flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
                 disabledSubtopics.Add(item.Subtopic);
             }
@@ -51,7 +53,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void DrawItemEventHandler(object sender, DrawItemEventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
@@ -101,6 +103,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             entryScoreTemp.Score = SelectedScore;
             entryScoreTemp.UserId = Configuration.GetInstance().CurrentUser.Id;
             ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(entryScoreTemp);
+            ctrlAnswerGrades.Width = flowLayoutPanel1.Width - 5;
             flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
             entry.EntryScores.Add(entryScoreTemp);
             disabledSubtopics.Add(entryScoreTemp.Subtopic);
@@ -136,15 +139,23 @@ namespace AnalitikaAnketaDeltaMotors.Controls
 
         private void fillSubtopics()
         {
-            foreach (var Topic in dbContext.Set<Topic>().AsEnumerable().ToList())
+            listBox1.Visible = false;
+            IEnumerable<Topic> topics = dbContext.Set<Topic>().AsEnumerable().ToList();
+            int total = topics.Count();
+            progressBar1.Maximum = total;
+            progressBar1.Value = 0;
+            foreach (var Topic in topics)
             {
                 listBox1.Items.Add(Topic);
                 foreach (var Subtopic in dbContext.Subtopics.Where(x => x.TopicId == Topic.Id).ToList())
                 {
                     listBox1.Items.Add(Subtopic);
                 }
+                progressBar1.Value++;
             }
             subtopicsAvailable();
+            listBox1.Visible = true;
+            progressBar1.Value = 0;
         }
         private void subtopicsAvailable()
         {
@@ -205,6 +216,7 @@ namespace AnalitikaAnketaDeltaMotors.Controls
             foreach (var item in this.entry.EntryScores)
             {
                 ctrlAnswerGrades ctrlAnswerGrades = new ctrlAnswerGrades(item);
+                ctrlAnswerGrades.Width = flowLayoutPanel1.Width - 5;
                 flowLayoutPanel1.Controls.Add(ctrlAnswerGrades);
                 disabledSubtopics.Add(item.Subtopic);
             }

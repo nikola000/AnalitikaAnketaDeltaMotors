@@ -39,7 +39,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             progressBar1.Value = 0;
             if (txtIzborFajla.Text.Trim() == "")
             {
-                MessageBox.Show("Morate izbrati excel file", "Upozorenje", MessageBoxButtons.OK);
+                MessageBox.Show("Morate izbrati excel file", "Import", MessageBoxButtons.OK);
             }
             else
             {
@@ -79,7 +79,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                         newEntry.Odgovor = row[2].ToString();
                         newEntry.PredlogPoboljsanja = row[3].ToString();
                         newEntry.Kontakt = row[4].ToString();
-
+                        newEntry.Komentar = row[5].ToString();
                         if (!db.Entries.Any(c => c.CreatedAt == newEntry.CreatedAt && c.Ocena == newEntry.Ocena && c.Kontakt == newEntry.Kontakt))
                         {
                             entries.Add(newEntry);

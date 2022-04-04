@@ -17,6 +17,7 @@ namespace UnitOfWorkExample.UnitOfWork.Models
         public string PredlogPoboljsanja { get; set; }
         public string Kontakt { get; set; }
         public int ImportDataId{get; set; }
+        public string Komentar { get; set; }
         public ImportData ImportData { get; set; }
         public virtual ICollection<EntryScore> EntryScores { get; set; }
     }

@@ -49,7 +49,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // tbUser
             // 
-            this.tbUser.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbUser.Location = new System.Drawing.Point(50, 36);
             this.tbUser.Name = "tbUser";
             this.tbUser.Size = new System.Drawing.Size(192, 20);
@@ -58,7 +57,6 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             // 
             // tbPassword
             // 
-            this.tbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tbPassword.Location = new System.Drawing.Point(50, 75);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(192, 20);
