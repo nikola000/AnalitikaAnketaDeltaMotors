@@ -455,7 +455,8 @@ namespace AnalitikaAnketaDeltaMotors
                 .Where(x => CheckPersmission(x))
                 .Where(x => AcceptFilterCriteria(x))
                 .Where(x => filterSentiments(x))
-                .Where(x => filterOcena(x)).ToList();
+                .Where(x => filterOcena(x))
+                .ToList();
             dataGridViewRezultatiAnkete.DataSource = SearchedEntries;
 
             dataGridViewRezultatiAnkete.Columns["CreatedAt"].HeaderText = "Datum";
@@ -475,11 +476,17 @@ namespace AnalitikaAnketaDeltaMotors
         private bool AcceptFilterCriteria(Entry entry)
         {
             bool pass = false;
-            if (FilterTags.Select(x => x.Id).Intersect(entry.ImportData.Tags.Select(y => y.Id).Distinct()).Count() > 0)
+            if (FilterTags.Count > 0 &&
+                FilterTags.Select(x => x.Id).Intersect(entry.ImportData.Tags.Select(y => y.Id).Distinct()).Count() > 0)
             {
                 pass = true;
             }
-            if (FilterSubtopics.Select(x => x.Id).Intersect(entry.EntryScores.Select(x => x.Subtopic.Id).Distinct()).Count() > 0)
+            if (FilterSubtopics.Count > 0 &&
+                FilterSubtopics.Select(x => x.Id).Intersect(entry.EntryScores.Select(x => x.Subtopic.Id).Distinct()).Count() > 0)
+            {
+                pass = true;
+            }
+            if (FilterTags.Count == 0 && FilterSubtopics.Count == 0)
             {
                 pass = true;
             }

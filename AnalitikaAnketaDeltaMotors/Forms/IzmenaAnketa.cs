@@ -19,9 +19,28 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         public IzmenaAnketa()
         {
             InitializeComponent();
+
+            dbContext = new DatabaseContext();
+
+            dataGridView1.DataError += DataGrid_DataError;
+            dataGridView1.Paint += DataGridView1_Paint; ;
+            dataGridView1.AllowUserToDeleteRows = true;
+            dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
         }
-        private void intializeDataGrid(DataGridView dataGrid)
+        private void intializeDataGrid()
         {
+            dataGridView1.AutoGenerateColumns = true;
+
+            var temp = dbContext.Entries
+                .Include(x => x.ImportData.Tags.Select(y => y.Group))
+                .Include(x => x.EntryScores
+                    .Select(y => y.Subtopic)
+                    .Select(z => z.Topic))
+                .Where(x => x.CreatedAt >= dateTimePicker1.Value &&
+                            x.CreatedAt <= dateTimePicker2.Value).ToList();
+
+            dataGridView1.DataSource = temp;
+
             dataGridView1.AutoGenerateColumns = true;
 
             dataGridView1.Columns["CreatedAt"].HeaderText = "Datum";
@@ -33,17 +52,61 @@ namespace AnalitikaAnketaDeltaMotors.Forms
             dataGridView1.Columns["ImportData"].Visible = false;
             dataGridView1.Columns["EntryScores"].Visible = false;
             dataGridView1.Columns["Id"].ReadOnly = true;
-
-            dataGridView1.DataError += DataGrid_DataError;
-            dataGridView1.Paint += DataGridView1_Paint; ;
-            //dataGridView1.DoubleClick += DataGrid_DoubleClick;
             dataGridView1.AllowUserToDeleteRows = true;
-            dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
+            dataGridView1.UserDeletingRow += DataGridView1_UserDeletingRow;
+            dataGridView1.MouseClick += dataGridView1_MouseClick;
+
+           
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                int currentMouseOverRow = dataGridView1.HitTest(e.X, e.Y).RowIndex;
+
+                ContextMenu m = new ContextMenu();
+                if (currentMouseOverRow >= 0)
+                {
+                    MenuItem menuItem = new MenuItem("Delete");
+                    menuItem.Click += MenuItem_Click;
+                    m.MenuItems.Add(menuItem);
+                }
+
+                m.Show(dataGridView1, new Point(e.X, e.Y));
+
+            }
+        }
+
+        private void MenuItem_Click(object sender, EventArgs e)
+        {
+            Deletion();
+        }
+
+        private void Deletion()
+        {
+            if (MessageBox.Show("Da li ste sigurni da zelite da obrisete izabrane redove", "Brisanje", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                foreach (DataGridViewRow item in dataGridView1.SelectedRows)
+                {
+                    dbContext.Entries.Remove(((Entry)item.DataBoundItem));
+                }
+                dbContext.SaveChanges();
+            }
+            intializeDataGrid();
+        }
+
+        private void DataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            //throw new NotImplementedException();
         }
 
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
+            if (e.RowIndex > 0)
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.LightGreen;
+            }
         }
 
         private void DataGridView1_Paint(object sender, PaintEventArgs e)
@@ -58,26 +121,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void bUcitaj_Click(object sender, EventArgs e)
         {
-            
-            if (dbContext != null)
-            {
-                dbContext.Dispose();
-            }
-            dbContext = new DatabaseContext();
-
-            dataGridView1.AutoGenerateColumns = true;
-
-            var temp = dbContext.Entries
-                .Include(x => x.ImportData.Tags.Select(y => y.Group))
-                .Include(x => x.EntryScores
-                    .Select(y => y.Subtopic)
-                    .Select(z => z.Topic))
-                .Where(x => x.CreatedAt >= dateTimePicker1.Value &&
-                            x.CreatedAt <= dateTimePicker2.Value).ToList();
-
-            dataGridView1.DataSource = temp;
-
-            intializeDataGrid(dataGridView1);
+            intializeDataGrid();
         }
 
         private void bSave_Click(object sender, EventArgs e)
@@ -110,6 +154,19 @@ namespace AnalitikaAnketaDeltaMotors.Forms
                 {
                     dbContext.Dispose();
                 }
+            }
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                Deletion();
             }
         }
     }

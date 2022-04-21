@@ -32,7 +32,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                 Sheets excelSheets = wb.Worksheets;
                 Worksheet sheet = (Worksheet)excelSheets[1];
                 Range xlRange = sheet.UsedRange;
-                int colCount = xlRange.Columns.Count;
+                int colCount = 7;//xlRange.Columns.Count;
 
                 int rowCount = 0;
                 for (int i = 2; i < xlRange.Rows.Count; i++)

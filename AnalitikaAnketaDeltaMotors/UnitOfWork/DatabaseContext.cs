@@ -19,7 +19,8 @@ namespace UnitOfWorkExample.UnitOfWork
         //public DatabaseContext() : base("AnalitikaConnection")
         public DatabaseContext() : base(AnalitikaAnketaDeltaMotors.Classes.Configuration.GetInstance().ConnectionString)
         {
-            Database.SetInitializer<DatabaseContext>(new CreateDatabaseIfNotExists<DatabaseContext>());
+            //Database.SetInitializer<DatabaseContext>(new CreateDatabaseIfNotExists<DatabaseContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext, AnalitikaAnketaDeltaMotors.Migrations.Configuration>());
             //Database.SetInitializer<DatabaseContext>(null);
         }
 
