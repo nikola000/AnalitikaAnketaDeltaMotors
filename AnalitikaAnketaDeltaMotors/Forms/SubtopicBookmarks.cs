@@ -33,7 +33,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             _subtopicBookmarks = new CtrlSubtopicBookmarks(Subtopics);
             _subtopicBookmarks.Dock = DockStyle.Fill;
-            Controls.Add(_subtopicBookmarks);
+            panel1.Controls.Add(_subtopicBookmarks);
         }
         private void SubtopicBookmarks_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -57,6 +57,11 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             isOk = false;
             this.Close();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

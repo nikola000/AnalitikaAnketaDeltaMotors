@@ -127,27 +127,42 @@ namespace AnalitikaAnketaDeltaMotors
                     .Select(x => x.Subtopic)
                     .Select(x => x.Topic).ToList();
 
-                var topicGroups = topics.GroupBy(x => x.Id);
+                var topicGroups = topics.GroupBy(x => x.Id).OrderBy(x => x.Count());
 
                 foreach (var item in topicGroups)
                 {
                     var topic = item.FirstOrDefault();
-                    chartRezultati.Series["low"].Points.AddXY(topic.Name, SearchedEntries
+
+                    var lowValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.Low && x.Subtopic.Topic.Id == topic.Id)
                         .Where(x => cbLow.Checked == true)
-                        .Count());
-                    chartRezultati.Series["medium"].Points.AddXY(topic.Name, SearchedEntries
+                        .Count();
+                    var mediumValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.Medium && x.Subtopic.Topic.Id == topic.Id)
                         .Where(x => cbMedium.Checked == true)
-                        .Count());
-                    chartRezultati.Series["high"].Points.AddXY(topic.Name, SearchedEntries
+                        .Count();
+                    var highValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => x.Score == Classes.Utils.Score.High && x.Subtopic.Topic.Id == topic.Id)
                         .Where(x => cbHigh.Checked == true)
-                        .Count());
+                        .Count();
 
+                    if (lowValue != 0)
+                    {
+                        chartRezultati.Series["low"].Points.AddXY(topic.Name, lowValue);
+                    }
+
+                    if (mediumValue != 0)
+                    {
+                        chartRezultati.Series["medium"].Points.AddXY(topic.Name, mediumValue);
+                    }
+
+                    if (highValue != 0)
+                    {
+                        chartRezultati.Series["high"].Points.AddXY(topic.Name, highValue);
+                    }
                 }
             }
         }
@@ -156,29 +171,51 @@ namespace AnalitikaAnketaDeltaMotors
         {
             if (SearchedEntries != null)
             {
-
                 chartOcene.Series["Ocene"].Points.Clear();
 
                 var ocene = SearchedEntries
                             .Select(x => x.Ocena).Distinct();
 
-                chartOcene.Series["Ocene"].Points.AddXY("Kriticari", SearchedEntries
-                    //.Where(x => cbLow.Checked == true)
-                    .Where(x => new int[] { 0,1,2,3,4,5,6 }.Contains(x.Ocena)).Count());
+                decimal kriticari = SearchedEntries.Where(x => new int[] { 0, 1, 2, 3, 4, 5, 6 }.Contains(x.Ocena)).Count();
+                decimal neutralni = SearchedEntries.Where(x => new int[] { 7, 8 }.Contains(x.Ocena)).Count();
+                decimal promoteri = SearchedEntries.Where(x => new int[] { 9, 10 }.Contains(x.Ocena)).Count();
+                decimal ukupno = SearchedEntries.Count();
 
-                chartOcene.Series["Ocene"].Points.AddXY("Neutralni", SearchedEntries
-                    //.Where(x => cbMedium.Checked == true)
-                    .Where(x => new int[] { 7, 8 }.Contains(x.Ocena)).Count());
+                chartOcene.Series["Ocene"].Points.AddXY("Kriticari", kriticari);
 
-                chartOcene.Series["Ocene"].Points.AddXY("Promoteri", SearchedEntries
-                    //.Where(x => cbHigh.Checked == true)
-                    .Where(x => new int[] { 9, 10 }.Contains(x.Ocena)).Count());
+                chartOcene.Series["Ocene"].Points.AddXY("Neutralni", neutralni);
 
-                //foreach (var ocena in ocene)
-                //{
-                //    chartOcene.Series["Ocene"].Points.AddXY(ocena.ToString(), SearchedEntries
-                //            .Where(x => x.Ocena == ocena).Count());
-                //}
+                chartOcene.Series["Ocene"].Points.AddXY("Promoteri", promoteri);
+
+                // linechart
+                chartOverallNPS.Series["low"].Points.Clear();
+                chartOverallNPS.Series["medium"].Points.Clear();
+                chartOverallNPS.Series["high"].Points.Clear();
+
+                chartOverallNPS.ChartAreas[0].AxisY.LabelStyle.Format = "###0\\%";
+                chartOverallNPS.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+
+                if (ukupno != 0)
+                {
+                    decimal low = Math.Round(kriticari / ukupno * 100, 1);
+                    decimal medium = Math.Round(neutralni / ukupno * 100, 1);
+                    decimal high = Math.Round(promoteri / ukupno * 100, 1);
+
+                    if (low != 0)
+                    {
+                        chartOverallNPS.Series["low"].Points.AddXY("", low);
+                    }
+
+                    if (medium != 0)
+                    {
+                        chartOverallNPS.Series["medium"].Points.AddXY("", medium);
+                    }
+
+                    if (high != 0)
+                    {
+                        chartOverallNPS.Series["high"].Points.AddXY("", high);
+                    }
+                } 
             }
         }
         private void SetChartSubtopics()
@@ -195,99 +232,128 @@ namespace AnalitikaAnketaDeltaMotors
 
             if (SearchedEntries != null)
             {
-                foreach (var item in ((Topic)comboBox1.SelectedItem).Subtopics)
+                var grupisano = SearchedEntries
+                        .SelectMany(x => x.EntryScores)
+                        .Where(x => (cbLow.Checked == true && x.Score == Classes.Utils.Score.Low)
+                            || (cbMedium.Checked == true && x.Score == Classes.Utils.Score.Medium)
+                            || (cbHigh.Checked == true && x.Score == Classes.Utils.Score.High))
+                        .Where(x => ((Topic)comboBox1.SelectedItem).Subtopics.Select(y => y.Id).Contains(x.SubtopicId))
+                        .GroupBy(x => x.SubtopicId)
+                        .OrderBy(x => x.Count());
+                        
+
+                foreach (var item in grupisano)
                 {
-                    chartSubtopics.Series["low"].Points.AddXY(item.Name, SearchedEntries
+                    var subtopic = ((Topic)comboBox1.SelectedItem).Subtopics.FirstOrDefault(x => x.Id == item.Key);
+
+                    var lowValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => cbLow.Checked == true)
-                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId == item.Id).Count());
-                    chartSubtopics.Series["medium"].Points.AddXY(item.Name, SearchedEntries
+                        .Where(x => x.Score == Classes.Utils.Score.Low && x.SubtopicId == item.Key).Count();
+
+                    var mediumValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => cbMedium.Checked == true)
-                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Id).Count());
-                    chartSubtopics.Series["high"].Points.AddXY(item.Name, SearchedEntries
+                        .Where(x => x.Score == Classes.Utils.Score.Medium && x.SubtopicId == item.Key).Count();
+
+                    var highValue = SearchedEntries
                         .SelectMany(x => x.EntryScores)
                         .Where(x => cbHigh.Checked == true)
-                        .Where(x => x.Score == Classes.Utils.Score.High && x.SubtopicId == item.Id).Count());
+                        .Where(x => x.Score == Classes.Utils.Score.High && x.SubtopicId == item.Key).Count();
+
+                    if (lowValue != 0)
+                    {
+                        chartSubtopics.Series["low"].Points.AddXY(subtopic.Name, lowValue);
+                    }
+
+                    if (mediumValue != 0)
+                    {
+                        chartSubtopics.Series["medium"].Points.AddXY(subtopic.Name, mediumValue);
+                    }
+
+                    if (highValue != 0)
+                    {
+                        chartSubtopics.Series["high"].Points.AddXY(subtopic.Name, highValue);
+                    }
                 }
             }
         }
 
         private void SetChartOverallNPS()
         {
-            chartOverallNPS.Series["low"].Points.Clear();
-            chartOverallNPS.Series["medium"].Points.Clear();
-            chartOverallNPS.Series["high"].Points.Clear();
+            //chartOverallNPS.Series["low"].Points.Clear();
+            //chartOverallNPS.Series["medium"].Points.Clear();
+            //chartOverallNPS.Series["high"].Points.Clear();
 
-            chartOverallNPS.ChartAreas[0].AxisY.LabelStyle.Format = "###0\\%";
-            chartOverallNPS.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
+            //chartOverallNPS.ChartAreas[0].AxisY.LabelStyle.Format = "###0\\%";
+            //chartOverallNPS.ChartAreas[0].AxisX.LabelStyle.Enabled = false;
 
-            if (SearchedEntries != null)
-            {
-                decimal totalScores = 0;
+            //if (SearchedEntries != null)
+            //{
+            //    decimal totalScores = 0;
 
-                if (cbLow.Checked == true)
-                {
-                    totalScores += SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbLow.Checked == true && x.Score == Classes.Utils.Score.Low)
-                    .Count();
-                }
+            //    if (cbLow.Checked == true)
+            //    {
+            //        totalScores += SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbLow.Checked == true && x.Score == Classes.Utils.Score.Low)
+            //        .Count();
+            //    }
 
-                if (cbMedium.Checked == true)
-                {
-                    totalScores += SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbMedium.Checked == true && x.Score == Classes.Utils.Score.Medium)
-                    .Count();
-                }
+            //    if (cbMedium.Checked == true)
+            //    {
+            //        totalScores += SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbMedium.Checked == true && x.Score == Classes.Utils.Score.Medium)
+            //        .Count();
+            //    }
 
-                if (cbHigh.Checked == true)
-                {
-                    totalScores += SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbHigh.Checked == true && x.Score == Classes.Utils.Score.High)
-                    .Count();
-                }
+            //    if (cbHigh.Checked == true)
+            //    {
+            //        totalScores += SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbHigh.Checked == true && x.Score == Classes.Utils.Score.High)
+            //        .Count();
+            //    }
 
-                if (totalScores == 0)
-                {
-                    chartOverallNPS.Series["low"].Points.Clear();
-                    chartOverallNPS.Series["medium"].Points.Clear();
-                    chartOverallNPS.Series["high"].Points.Clear();
-                    return;
-                }
+            //    if (totalScores == 0)
+            //    {
+            //        chartOverallNPS.Series["low"].Points.Clear();
+            //        chartOverallNPS.Series["medium"].Points.Clear();
+            //        chartOverallNPS.Series["high"].Points.Clear();
+            //        return;
+            //    }
 
-                decimal low = Math.Round(SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbLow.Checked == true)
-                    .Where(x => x.Score == Classes.Utils.Score.Low).Count() / totalScores * 100, 1);
+            //    decimal low = Math.Round(SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbLow.Checked == true)
+            //        .Where(x => x.Score == Classes.Utils.Score.Low).Count() / totalScores * 100, 1);
 
-                decimal medium = Math.Round(SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbMedium.Checked == true)
-                    .Where(x => x.Score == Classes.Utils.Score.Medium).Count() / totalScores * 100, 1);
+            //    decimal medium = Math.Round(SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbMedium.Checked == true)
+            //        .Where(x => x.Score == Classes.Utils.Score.Medium).Count() / totalScores * 100, 1);
 
-                decimal high = Math.Round(SearchedEntries
-                    .SelectMany(x => x.EntryScores)
-                    .Where(x => cbHigh.Checked == true)
-                    .Where(x => x.Score == Classes.Utils.Score.High).Count() / totalScores * 100, 1);
+            //    decimal high = Math.Round(SearchedEntries
+            //        .SelectMany(x => x.EntryScores)
+            //        .Where(x => cbHigh.Checked == true)
+            //        .Where(x => x.Score == Classes.Utils.Score.High).Count() / totalScores * 100, 1);
                 
-                if (low != 0)
-                {
-                    chartOverallNPS.Series["low"].Points.AddXY("", low);
-                }
+            //    if (low != 0)
+            //    {
+            //        chartOverallNPS.Series["low"].Points.AddXY("", low);
+            //    }
 
-                if (medium != 0)
-                {
-                    chartOverallNPS.Series["medium"].Points.AddXY("", medium);
-                }
+            //    if (medium != 0)
+            //    {
+            //        chartOverallNPS.Series["medium"].Points.AddXY("", medium);
+            //    }
 
-                if (high != 0)
-                {
-                    chartOverallNPS.Series["high"].Points.AddXY("", high);
-                }
-            }
+            //    if (high != 0)
+            //    {
+            //        chartOverallNPS.Series["high"].Points.AddXY("", high);
+            //    }
+            //}
         }
 
         private void SetChartGroups()
@@ -453,7 +519,8 @@ namespace AnalitikaAnketaDeltaMotors
 
             SearchedEntries = temp.ToList()
                 .Where(x => CheckPersmission(x))
-                .Where(x => AcceptFilterCriteria(x))
+                .Where(x => AcceptFilterTags(x))
+                .Where(x => AcceptFilterSubtopic(x))
                 .Where(x => filterSentiments(x))
                 .Where(x => filterOcena(x))
                 .ToList();
@@ -487,6 +554,36 @@ namespace AnalitikaAnketaDeltaMotors
                 pass = true;
             }
             if (FilterTags.Count == 0 && FilterSubtopics.Count == 0)
+            {
+                pass = true;
+            }
+            //if (entry.EntryScores != null && entry.EntryScores.Count() == 0)
+            //{
+            //    pass = true;
+            //}
+            return pass;
+        }
+
+        private bool AcceptFilterTags(Entry entry)
+        {
+            bool pass = false;
+            if (FilterTags.Count > 0 &&
+                FilterTags.Select(x => x.Id).Intersect(entry.ImportData.Tags.Select(y => y.Id).Distinct()).Count() > 0)
+            {
+                pass = true;
+            }
+            return pass;
+        }
+
+        private bool AcceptFilterSubtopic(Entry entry)
+        {
+            bool pass = false;
+            if (FilterSubtopics.Count > 0 &&
+                FilterSubtopics.Select(x => x.Id).Intersect(entry.EntryScores.Select(x => x.Subtopic.Id).Distinct()).Count() > 0)
+            {
+                pass = true;
+            }
+            if ((entry.EntryScores != null && entry.EntryScores.Count() == 0) || entry.EntryScores == null)
             {
                 pass = true;
             }
@@ -648,7 +745,7 @@ namespace AnalitikaAnketaDeltaMotors
             {
                 scores.Add(Utils.Score.High);
             }
-            if (scores.Count < 1)
+            if (cbNekodirani.Checked && entry.EntryScores.Select(x => x.Score).Distinct().Count() == 0)
             {
                 return true;
             }

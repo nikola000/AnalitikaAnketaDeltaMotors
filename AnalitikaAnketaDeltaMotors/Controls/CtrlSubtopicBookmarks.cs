@@ -89,5 +89,17 @@ namespace AnalitikaAnketaDeltaMotors.Controls
                 }
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                control.Visible = true;
+                if (textBox1.Text != "" && !control.Text.ToLowerInvariant().Contains(textBox1.Text.ToLowerInvariant()))
+                {
+                    control.Visible = false;
+                }
+            }
+        }
     }
 }

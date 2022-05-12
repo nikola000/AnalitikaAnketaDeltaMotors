@@ -138,6 +138,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbNeutralni = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbNekodirani = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -203,64 +204,64 @@ namespace AnalitikaAnketaDeltaMotors
             // prijavaToolStripMenuItem
             // 
             this.prijavaToolStripMenuItem.Name = "prijavaToolStripMenuItem";
-            this.prijavaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.prijavaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.prijavaToolStripMenuItem.Text = "Prijava";
             this.prijavaToolStripMenuItem.Click += new System.EventHandler(this.prijavaToolStripMenuItem_Click);
             // 
             // korisniciToolStripMenuItem
             // 
             this.korisniciToolStripMenuItem.Name = "korisniciToolStripMenuItem";
-            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.korisniciToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.korisniciToolStripMenuItem.Text = "Korisnici";
             this.korisniciToolStripMenuItem.Click += new System.EventHandler(this.korisniciToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // grupeOznakaToolStripMenuItem
             // 
             this.grupeOznakaToolStripMenuItem.Name = "grupeOznakaToolStripMenuItem";
-            this.grupeOznakaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.grupeOznakaToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.grupeOznakaToolStripMenuItem.Text = "Grupe oznaka";
             this.grupeOznakaToolStripMenuItem.Click += new System.EventHandler(this.grupeOznakaToolStripMenuItem_Click);
             // 
             // oznakeToolStripMenuItem
             // 
             this.oznakeToolStripMenuItem.Name = "oznakeToolStripMenuItem";
-            this.oznakeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.oznakeToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.oznakeToolStripMenuItem.Text = "Oznake";
             this.oznakeToolStripMenuItem.Click += new System.EventHandler(this.oznakeToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // topicToolStripMenuItem
             // 
             this.topicToolStripMenuItem.Name = "topicToolStripMenuItem";
-            this.topicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.topicToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.topicToolStripMenuItem.Text = "Topic";
             this.topicToolStripMenuItem.Click += new System.EventHandler(this.topicToolStripMenuItem_Click);
             // 
             // subtopicToolStripMenuItem
             // 
             this.subtopicToolStripMenuItem.Name = "subtopicToolStripMenuItem";
-            this.subtopicToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.subtopicToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.subtopicToolStripMenuItem.Text = "Subtopic";
             this.subtopicToolStripMenuItem.Click += new System.EventHandler(this.subtopicToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
             // 
             // izlazToolStripMenuItem
             // 
             this.izlazToolStripMenuItem.Name = "izlazToolStripMenuItem";
-            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izlazToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.izlazToolStripMenuItem.Text = "Izlaz";
             this.izlazToolStripMenuItem.Click += new System.EventHandler(this.izlazToolStripMenuItem_Click);
             // 
@@ -276,14 +277,14 @@ namespace AnalitikaAnketaDeltaMotors
             // anketeToolStripMenuItem
             // 
             this.anketeToolStripMenuItem.Name = "anketeToolStripMenuItem";
-            this.anketeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.anketeToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.anketeToolStripMenuItem.Text = "Import";
             this.anketeToolStripMenuItem.Click += new System.EventHandler(this.anketeToolStripMenuItem_Click);
             // 
             // izmenaAnketaToolStripMenuItem
             // 
             this.izmenaAnketaToolStripMenuItem.Name = "izmenaAnketaToolStripMenuItem";
-            this.izmenaAnketaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.izmenaAnketaToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.izmenaAnketaToolStripMenuItem.Text = "Izmena";
             this.izmenaAnketaToolStripMenuItem.Click += new System.EventHandler(this.oznakeToolStripMenuItem1_Click);
             // 
@@ -298,7 +299,7 @@ namespace AnalitikaAnketaDeltaMotors
             // bazaToolStripMenuItem
             // 
             this.bazaToolStripMenuItem.Name = "bazaToolStripMenuItem";
-            this.bazaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bazaToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.bazaToolStripMenuItem.Text = "Baza";
             this.bazaToolStripMenuItem.Click += new System.EventHandler(this.bazaToolStripMenuItem_Click);
             // 
@@ -830,6 +831,7 @@ namespace AnalitikaAnketaDeltaMotors
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cbNekodirani);
             this.groupBox4.Controls.Add(this.cbHigh);
             this.groupBox4.Controls.Add(this.cbMedium);
             this.groupBox4.Controls.Add(this.cbLow);
@@ -1179,6 +1181,18 @@ namespace AnalitikaAnketaDeltaMotors
             this.panel2.Size = new System.Drawing.Size(133, 25);
             this.panel2.TabIndex = 35;
             // 
+            // cbNekodirani
+            // 
+            this.cbNekodirani.AutoSize = true;
+            this.cbNekodirani.Checked = true;
+            this.cbNekodirani.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNekodirani.Location = new System.Drawing.Point(88, 20);
+            this.cbNekodirani.Name = "cbNekodirani";
+            this.cbNekodirani.Size = new System.Drawing.Size(77, 17);
+            this.cbNekodirani.TabIndex = 3;
+            this.cbNekodirani.Text = "Nekodirani";
+            this.cbNekodirani.UseVisualStyleBackColor = true;
+            // 
             // AnalitikaAnketaDeltaMotors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1337,6 +1351,7 @@ namespace AnalitikaAnketaDeltaMotors
         private System.Windows.Forms.CheckBox cbPromoteri;
         private System.Windows.Forms.ToolStripMenuItem anketeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izmenaAnketaToolStripMenuItem;
+        private System.Windows.Forms.CheckBox cbNekodirani;
     }
 }
 

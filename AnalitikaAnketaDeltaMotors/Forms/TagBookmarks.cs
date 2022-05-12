@@ -35,7 +35,7 @@ namespace AnalitikaAnketaDeltaMotors.Forms
         {
             _tagBookmarks = new CtrlTagBookmarks(Tags);
             _tagBookmarks.Dock = DockStyle.Fill;
-            Controls.Add(_tagBookmarks);
+            panel1.Controls.Add(_tagBookmarks);
         }
 
         private void TagBookmarks_FormClosing(object sender, FormClosingEventArgs e)
