@@ -34,7 +34,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
                 Range xlRange = sheet.UsedRange;
                 int colCount = 7;//xlRange.Columns.Count;
 
-                int rowCount = 0;
+                int rowCount = 1;
                 for (int i = 2; i < xlRange.Rows.Count; i++)
                 {
                     try

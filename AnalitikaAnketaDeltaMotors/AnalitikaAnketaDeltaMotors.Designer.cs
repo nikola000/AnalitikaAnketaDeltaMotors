@@ -108,6 +108,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.labelFilterTopic = new System.Windows.Forms.Label();
             this.buttonOpenFilterTopic = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbNekodirani = new System.Windows.Forms.CheckBox();
             this.cbHigh = new System.Windows.Forms.CheckBox();
             this.cbMedium = new System.Windows.Forms.CheckBox();
             this.cbLow = new System.Windows.Forms.CheckBox();
@@ -138,7 +139,6 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.cbNeutralni = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.cbNekodirani = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -670,6 +670,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartGroups.Legends.Add(legend3);
             this.chartGroups.Location = new System.Drawing.Point(526, 12);
             this.chartGroups.Name = "chartGroups";
+            this.chartGroups.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series12.ChartArea = "ChartArea1";
             series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series12.IsValueShownAsLabel = true;
@@ -692,6 +693,7 @@ namespace AnalitikaAnketaDeltaMotors
             this.chartTagovi.Legends.Add(legend4);
             this.chartTagovi.Location = new System.Drawing.Point(781, 12);
             this.chartTagovi.Name = "chartTagovi";
+            this.chartTagovi.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Light;
             series13.ChartArea = "ChartArea1";
             series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series13.IsValueShownAsLabel = true;
@@ -841,6 +843,18 @@ namespace AnalitikaAnketaDeltaMotors
             this.groupBox4.TabIndex = 15;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Filter sentiment";
+            // 
+            // cbNekodirani
+            // 
+            this.cbNekodirani.AutoSize = true;
+            this.cbNekodirani.Checked = true;
+            this.cbNekodirani.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbNekodirani.Location = new System.Drawing.Point(88, 20);
+            this.cbNekodirani.Name = "cbNekodirani";
+            this.cbNekodirani.Size = new System.Drawing.Size(77, 17);
+            this.cbNekodirani.TabIndex = 3;
+            this.cbNekodirani.Text = "Nekodirani";
+            this.cbNekodirani.UseVisualStyleBackColor = true;
             // 
             // cbHigh
             // 
@@ -1180,18 +1194,6 @@ namespace AnalitikaAnketaDeltaMotors
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(133, 25);
             this.panel2.TabIndex = 35;
-            // 
-            // cbNekodirani
-            // 
-            this.cbNekodirani.AutoSize = true;
-            this.cbNekodirani.Checked = true;
-            this.cbNekodirani.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbNekodirani.Location = new System.Drawing.Point(88, 20);
-            this.cbNekodirani.Name = "cbNekodirani";
-            this.cbNekodirani.Size = new System.Drawing.Size(77, 17);
-            this.cbNekodirani.TabIndex = 3;
-            this.cbNekodirani.Text = "Nekodirani";
-            this.cbNekodirani.UseVisualStyleBackColor = true;
             // 
             // AnalitikaAnketaDeltaMotors
             // 

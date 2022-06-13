@@ -187,6 +187,10 @@ namespace AnalitikaAnketaDeltaMotors
 
                 chartOcene.Series["Ocene"].Points.AddXY("Promoteri", promoteri);
 
+                chartOcene.Series["Ocene"].Points[0].Color = Color.Tomato;
+                chartOcene.Series["Ocene"].Points[1].Color = Color.Gold;
+                chartOcene.Series["Ocene"].Points[2].Color = Color.LightGreen;
+
                 // linechart
                 chartOverallNPS.Series["low"].Points.Clear();
                 chartOverallNPS.Series["medium"].Points.Clear();
