@@ -90,6 +90,7 @@
     <Compile Include="AnalitikaAnketaDeltaMotors.Designer.cs">
       <DependentUpon>AnalitikaAnketaDeltaMotors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\SeriesContainer.cs" />
     <Compile Include="Classes\Utils.cs" />
     <Compile Include="Controls\CtrlAnswer.cs">
       <SubType>UserControl</SubType>

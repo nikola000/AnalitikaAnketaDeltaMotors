@@ -117,9 +117,13 @@ namespace AnalitikaAnketaDeltaMotors
 
         private void SetChartRezultati()
         {
+            chartRezultati.ChartAreas[0].AxisX.Interval = 1;
+            
             chartRezultati.Series["low"].Points.Clear();
             chartRezultati.Series["medium"].Points.Clear();
             chartRezultati.Series["high"].Points.Clear();
+
+            Dictionary<int, SeriesContainer> dict = new Dictionary<int, SeriesContainer>();
 
             if (SearchedEntries != null)
             {
@@ -149,20 +153,23 @@ namespace AnalitikaAnketaDeltaMotors
                         .Where(x => cbHigh.Checked == true)
                         .Count();
 
-                    if (lowValue != 0)
+                    dict.Add(topic.Id, new SeriesContainer()
                     {
-                        chartRezultati.Series["low"].Points.AddXY(topic.Name, lowValue);
-                    }
+                        Low = lowValue,
+                        Medium = mediumValue,
+                        High = highValue,
+                        Topic = topic
+                    });
+                }
 
-                    if (mediumValue != 0)
-                    {
-                        chartRezultati.Series["medium"].Points.AddXY(topic.Name, mediumValue);
-                    }
+                var ordered = dict.OrderBy(x => x.Value.Total())
+                    .ToDictionary(x => x.Key, x => x.Value);
 
-                    if (highValue != 0)
-                    {
-                        chartRezultati.Series["high"].Points.AddXY(topic.Name, highValue);
-                    }
+                foreach (var item in ordered.Where(x => x.Value.Total() != 0))
+                {
+                    chartRezultati.Series["low"].Points.AddXY(item.Value.Topic.Name, item.Value.Low);
+                    chartRezultati.Series["medium"].Points.AddXY(item.Value.Topic.Name, item.Value.Medium);
+                    chartRezultati.Series["high"].Points.AddXY(item.Value.Topic.Name, item.Value.High);
                 }
             }
         }
@@ -224,9 +231,12 @@ namespace AnalitikaAnketaDeltaMotors
         }
         private void SetChartSubtopics()
         {
+            chartSubtopics.ChartAreas[0].AxisX.Interval = 1;
             chartSubtopics.Series["low"].Points.Clear();
             chartSubtopics.Series["medium"].Points.Clear();
             chartSubtopics.Series["high"].Points.Clear();
+
+            Dictionary<int, SeriesContainer> dict = new Dictionary<int, SeriesContainer>();
 
             if (comboBox1.Items.Count == 0)
             {
@@ -265,20 +275,23 @@ namespace AnalitikaAnketaDeltaMotors
                         .Where(x => cbHigh.Checked == true)
                         .Where(x => x.Score == Classes.Utils.Score.High && x.SubtopicId == item.Key).Count();
 
-                    if (lowValue != 0)
+                    dict.Add(subtopic.Id, new SeriesContainer()
                     {
-                        chartSubtopics.Series["low"].Points.AddXY(subtopic.Name, lowValue);
-                    }
+                        Low = lowValue,
+                        Medium = mediumValue,
+                        High = highValue,
+                        Subtopic = subtopic
+                    });
+                }
 
-                    if (mediumValue != 0)
-                    {
-                        chartSubtopics.Series["medium"].Points.AddXY(subtopic.Name, mediumValue);
-                    }
+                var ordered = dict.OrderBy(x => x.Value.Total())
+                    .ToDictionary(x => x.Key, x => x.Value);
 
-                    if (highValue != 0)
-                    {
-                        chartSubtopics.Series["high"].Points.AddXY(subtopic.Name, highValue);
-                    }
+                foreach (var item in ordered.Where(x => x.Value.Total() != 0))
+                {
+                    chartSubtopics.Series["low"].Points.AddXY(item.Value.Subtopic.Name, item.Value.Low);
+                    chartSubtopics.Series["medium"].Points.AddXY(item.Value.Subtopic.Name, item.Value.Medium);
+                    chartSubtopics.Series["high"].Points.AddXY(item.Value.Subtopic.Name, item.Value.High);
                 }
             }
         }
