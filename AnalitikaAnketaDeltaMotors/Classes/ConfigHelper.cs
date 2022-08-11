@@ -31,7 +31,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
             using (FileStream fs = File.Create("config.db"))
             {
                 AddText(fs, value);
-            }
+            } 
         }
 
         public static (bool, string) CheckConnection(string connString)
