@@ -1,7 +1,9 @@
 ﻿using AnalitikaAnketaDeltaMotors.Classes;
 using System;
+using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using UnitOfWorkExample.UnitOfWork;
 
@@ -28,27 +30,9 @@ namespace AnalitikaAnketaDeltaMotors.Forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Trim().Length < 1)
-            {
-                MessageBox.Show("morate uneti konekcioni string");
-                return;
-            }
-
-
-            using (DatabaseContext dbContext = new DatabaseContext())
-            {
-                try
-                {
-                    dbContext.Database.Exists();
-                    MessageBox.Show("Konekcija uspesna");
-                }
-
-
-                catch
-                {
-                    MessageBox.Show("Konekcija neuspesna");
-                }
-            }
+            (bool res, string message) = ConfigHelper.CheckConnection(textBox1.Text);
+            MessageBox.Show(message);
         }
+
     }
 }

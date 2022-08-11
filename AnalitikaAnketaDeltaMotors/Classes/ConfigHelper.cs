@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AnalitikaAnketaDeltaMotors.Classes
 {
@@ -29,6 +31,25 @@ namespace AnalitikaAnketaDeltaMotors.Classes
             using (FileStream fs = File.Create("config.db"))
             {
                 AddText(fs, value);
+            }
+        }
+
+        public static (bool, string) CheckConnection(string connString)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    conn.Open();
+                }
+                Cursor.Current = Cursors.WaitCursor;
+                return (true, "Konekcija uspesna");
+            }
+            catch (Exception ex)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                return (false, "Konekcija neuspesna. Error: " + ex);
             }
         }
 

@@ -46,17 +46,25 @@ namespace AnalitikaAnketaDeltaMotors
             this._entryService = entryService;
             InitializeComponent();
 
-            // filteri
-            InitFilters();
+            (bool res, string message) = ConfigHelper.CheckConnection(Configuration.GetInstance().ConnectionString);
+            if (!res)
+            {
+                MessageBox.Show(message);
+            }
+            else
+            {
+                // filteri
+                InitFilters();
 
-            InitializeComboBox();
+                InitializeComboBox();
 
-            // dashborad
-            SetupDashboard();
+                // dashborad
+                SetupDashboard();
 
-            InitMenuItems();
+                InitMenuItems();
 
-            intializeDataGrid(dataGridViewRezultatiAnkete);
+                intializeDataGrid(dataGridViewRezultatiAnkete);
+            }
         }
 
         private void InitMenuItems() => izmenaAnketaToolStripMenuItem.Visible = Configuration.GetInstance().CurrentUser != null ? Configuration.GetInstance().CurrentUser.IsAdministrator : false;

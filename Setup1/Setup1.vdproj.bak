@@ -111,12 +111,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F7AAD44BD32D4584AC7835BCB923C6B8"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_594C7E5C717A44D292F53BC5C40FFF3C"
         "MsmSig" = "8:_UNDEFINED"
@@ -546,26 +540,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F7AAD44BD32D4584AC7835BCB923C6B8"
-            {
-            "SourcePath" = "8:..\\AnalitikaAnketaDeltaMotors\\icons8-survey-results-64.ico"
-            "TargetName" = "8:icons8-survey-results-64.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_86F2E6F1B1A54E5691168F0C243FD246"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
         }
         "FileType"
         {
@@ -623,7 +597,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:VoC Delta Motors"
         "ProductCode" = "8:{11F674FC-E903-4F7F-AEE6-42B2324BB372}"
-        "PackageCode" = "8:{38325393-F09D-4ED7-AFDC-B5BB1B6416BE}"
+        "PackageCode" = "8:{05607449-8470-4B82-8A70-45632DE36EA7}"
         "UpgradeCode" = "8:{68183B2C-A800-4E11-9E9D-51F397D2305E}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -745,7 +719,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2D48FFD557A440068A5E782EE57334E4"
             {
-            "Name" = "8:VoC Delta Motors"
+            "Name" = "8:AnalitikaAnketaDeltaMotors"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -754,7 +728,7 @@
             "Target" = "8:_594C7E5C717A44D292F53BC5C40FFF3C"
             "Folder" = "8:_B271ECFB3E2E4E30BEE85D7014C7BE67"
             "WorkingFolder" = "8:_86F2E6F1B1A54E5691168F0C243FD246"
-            "Icon" = "8:_F7AAD44BD32D4584AC7835BCB923C6B8"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -945,7 +919,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Molimo unesite konekcioni string baze"
+                            "Value" = "8:Konekcija"
                             "DefaultValue" = "8:#1214"
                             "UsePlugInResources" = "11:TRUE"
                             }
