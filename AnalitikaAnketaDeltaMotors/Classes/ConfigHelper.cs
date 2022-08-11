@@ -30,7 +30,7 @@ namespace AnalitikaAnketaDeltaMotors.Classes
         {
             using (FileStream fs = File.Create("config.db"))
             {
-                AddText(fs, value);
+                AddText(fs, value); 
             } 
         }
 
